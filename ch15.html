@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>17&nbsp; Chapter 15 — AI Infrastructure – AI Engineer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ch16.html" rel="next">
+<link href="./ch14.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch15.html">Part V — Production Systems</a></li><li class="breadcrumb-item"><a href="./ch15.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chapter 15 — AI Infrastructure</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">AI Engineer</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface — The End of Software as We Knew It</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — The New Discipline of AI Engineering</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 1 — From Programmer to AI Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 2 — The AI Engineering Stack</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 3 — Thinking in Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — The AI Engineering Environment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 4 — The AI Systems Builder Workstation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 5 — Terminal as the Control Center</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 6 — IDE + Terminal Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 7 — The AI Systems Builder Workstation Setup</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Building AI Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 8 — Prompt Engineering as Architecture</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 9 — AI Pipelines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 10 — Agents</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 11 — Tools and External Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Reliability and Evaluation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 12 — AI Evaluation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 13 — Observability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chapter 14 — Debugging AI Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Production Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch15.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chapter 15 — AI Infrastructure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Chapter 16 — Scaling AI Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Chapter 17 — AI Products</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — The Future of AI Engineers</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Chapter 18 — AI as Co-Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Chapter 19 — From Code to System Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Chapter 20 — The Philosophy of AI Engineering</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">References</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">17.1</span> Introduction</a></li>
+  <li><a href="#core-infrastructure-components" id="toc-core-infrastructure-components" class="nav-link" data-scroll-target="#core-infrastructure-components"><span class="header-section-number">17.2</span> Core Infrastructure Components</a>
+  <ul class="collapse">
+  <li><a href="#three-fundamental-capabilities" id="toc-three-fundamental-capabilities" class="nav-link" data-scroll-target="#three-fundamental-capabilities"><span class="header-section-number">17.2.1</span> Three Fundamental Capabilities</a></li>
+  <li><a href="#model-serving" id="toc-model-serving" class="nav-link" data-scroll-target="#model-serving"><span class="header-section-number">17.2.2</span> Model Serving</a></li>
+  <li><a href="#vector-databases" id="toc-vector-databases" class="nav-link" data-scroll-target="#vector-databases"><span class="header-section-number">17.2.3</span> Vector Databases</a></li>
+  <li><a href="#caching" id="toc-caching" class="nav-link" data-scroll-target="#caching"><span class="header-section-number">17.2.4</span> Caching</a></li>
+  </ul></li>
+  <li><a href="#infrastructure-architecture" id="toc-infrastructure-architecture" class="nav-link" data-scroll-target="#infrastructure-architecture"><span class="header-section-number">17.3</span> Infrastructure Architecture</a>
+  <ul class="collapse">
+  <li><a href="#system-design" id="toc-system-design" class="nav-link" data-scroll-target="#system-design"><span class="header-section-number">17.3.1</span> System Design</a></li>
+  <li><a href="#deployment-patterns" id="toc-deployment-patterns" class="nav-link" data-scroll-target="#deployment-patterns"><span class="header-section-number">17.3.2</span> Deployment Patterns</a></li>
+  <li><a href="#infrastructure-as-code" id="toc-infrastructure-as-code" class="nav-link" data-scroll-target="#infrastructure-as-code"><span class="header-section-number">17.3.3</span> Infrastructure as Code</a></li>
+  </ul></li>
+  <li><a href="#scalability-and-performance" id="toc-scalability-and-performance" class="nav-link" data-scroll-target="#scalability-and-performance"><span class="header-section-number">17.4</span> Scalability and Performance</a>
+  <ul class="collapse">
+  <li><a href="#scaling-strategies" id="toc-scaling-strategies" class="nav-link" data-scroll-target="#scaling-strategies"><span class="header-section-number">17.4.1</span> Scaling Strategies</a></li>
+  <li><a href="#performance-optimization" id="toc-performance-optimization" class="nav-link" data-scroll-target="#performance-optimization"><span class="header-section-number">17.4.2</span> Performance Optimization</a></li>
+  </ul></li>
+  <li><a href="#monitoring-and-observability" id="toc-monitoring-and-observability" class="nav-link" data-scroll-target="#monitoring-and-observability"><span class="header-section-number">17.5</span> Monitoring and Observability</a>
+  <ul class="collapse">
+  <li><a href="#infrastructure-monitoring" id="toc-infrastructure-monitoring" class="nav-link" data-scroll-target="#infrastructure-monitoring"><span class="header-section-number">17.5.1</span> Infrastructure Monitoring</a></li>
+  <li><a href="#alerting" id="toc-alerting" class="nav-link" data-scroll-target="#alerting"><span class="header-section-number">17.5.2</span> Alerting</a></li>
+  </ul></li>
+  <li><a href="#security-and-compliance" id="toc-security-and-compliance" class="nav-link" data-scroll-target="#security-and-compliance"><span class="header-section-number">17.6</span> Security and Compliance</a>
+  <ul class="collapse">
+  <li><a href="#security-considerations" id="toc-security-considerations" class="nav-link" data-scroll-target="#security-considerations"><span class="header-section-number">17.6.1</span> Security Considerations</a></li>
+  </ul></li>
+  <li><a href="#cost-management" id="toc-cost-management" class="nav-link" data-scroll-target="#cost-management"><span class="header-section-number">17.7</span> Cost Management</a>
+  <ul class="collapse">
+  <li><a href="#cost-drivers" id="toc-cost-drivers" class="nav-link" data-scroll-target="#cost-drivers"><span class="header-section-number">17.7.1</span> Cost Drivers</a></li>
+  <li><a href="#cost-optimization-strategies" id="toc-cost-optimization-strategies" class="nav-link" data-scroll-target="#cost-optimization-strategies"><span class="header-section-number">17.7.2</span> Cost Optimization Strategies</a></li>
+  </ul></li>
+  <li><a href="#reliability-and-resilience" id="toc-reliability-and-resilience" class="nav-link" data-scroll-target="#reliability-and-resilience"><span class="header-section-number">17.8</span> Reliability and Resilience</a>
+  <ul class="collapse">
+  <li><a href="#high-availability" id="toc-high-availability" class="nav-link" data-scroll-target="#high-availability"><span class="header-section-number">17.8.1</span> High Availability</a></li>
+  <li><a href="#disaster-recovery" id="toc-disaster-recovery" class="nav-link" data-scroll-target="#disaster-recovery"><span class="header-section-number">17.8.2</span> Disaster Recovery</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">17.9</span> Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch15.html">Part V — Production Systems</a></li><li class="breadcrumb-item"><a href="./ch15.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chapter 15 — AI Infrastructure</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chapter 15 — AI Infrastructure</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">17.1</span> Introduction</h2>
+<p>Beneath every AI system lies an infrastructure layer that enables models to run reliably, data to be retrieved efficiently, and system performance to remain stable under real-world workloads. While much attention is often given to models and prompts, these components cannot operate effectively without a supporting environment that manages computation, storage, and access patterns.</p>
+<p>AI infrastructure provides this foundation.</p>
+<p>It is the layer responsible for turning experimental AI capabilities into operational systems. Without infrastructure, models remain research artifacts; with infrastructure, they become components of scalable applications.</p>
+</section>
+<section id="core-infrastructure-components" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="core-infrastructure-components"><span class="header-section-number">17.2</span> Core Infrastructure Components</h2>
+<section id="three-fundamental-capabilities" class="level3" data-number="17.2.1">
+<h3 data-number="17.2.1" class="anchored" data-anchor-id="three-fundamental-capabilities"><span class="header-section-number">17.2.1</span> Three Fundamental Capabilities</h3>
+<p>At a high level, the infrastructure of most AI systems revolves around three core capabilities:</p>
+<pre><code>model serving
+vector databases
+caching</code></pre>
+<p>Each of these elements plays a distinct role in the architecture of intelligent systems.</p>
+</section>
+<section id="model-serving" class="level3" data-number="17.2.2">
+<h3 data-number="17.2.2" class="anchored" data-anchor-id="model-serving"><span class="header-section-number">17.2.2</span> Model Serving</h3>
+<p><strong>What is Model Serving?</strong></p>
+<p>Model serving refers to the mechanisms through which AI models are made available to applications. A trained model must be loaded into memory, exposed through an interface, and capable of processing requests from external systems.</p>
+<p><strong>The Serving Process</strong></p>
+<p>Model serving involves several stages:</p>
+<ol type="1">
+<li><strong>Model loading</strong>: Loading model weights and configurations into memory</li>
+<li><strong>Initialization</strong>: Setting up the runtime environment and preprocessing</li>
+<li><strong>Interface exposure</strong>: Creating APIs or endpoints for model access</li>
+<li><strong>Request handling</strong>: Processing incoming inference requests</li>
+<li><strong>Response generation</strong>: Returning model outputs to callers</li>
+</ol>
+<p><strong>Serving Architectures</strong></p>
+<p><strong>Local Serving</strong>: - Models run on the same machine as the application - Low latency, simple deployment - Limited scalability, resource constraints</p>
+<p><strong>Remote Serving</strong>: - Models run on separate servers or cloud services - Better scalability, resource isolation - Higher latency, network dependencies</p>
+<p><strong>Hybrid Approaches</strong>: - Cache frequently used models locally - Offload expensive inference to remote services - Balance latency and resource utilization</p>
+<p><strong>Resource Management</strong></p>
+<p>Model serving must manage computational resources efficiently:</p>
+<ul>
+<li><strong>GPU memory</strong>: Loading large models requires significant GPU memory</li>
+<li><strong>Batch processing</strong>: Combining multiple requests for efficiency</li>
+<li><strong>Request scheduling</strong>: Prioritizing and managing concurrent requests</li>
+<li><strong>Scaling</strong>: Adding or removing serving instances based on load</li>
+</ul>
+<p><strong>Serving Frameworks</strong></p>
+<p>Several frameworks provide model serving capabilities:</p>
+<ul>
+<li><strong>vLLM</strong>: High-throughput serving for large language models</li>
+<li><strong>Triton Inference Server</strong>: Flexible serving for multiple model types</li>
+<li><strong>Ray Serve</strong>: Distributed model serving framework</li>
+<li><strong>TensorFlow Serving</strong>: Serving for TensorFlow models</li>
+<li><strong>ONNX Runtime</strong>: Serving for ONNX models</li>
+<li><strong>Custom implementations</strong>: Tailored solutions for specific needs</li>
+</ul>
+<p><strong>Serving Considerations</strong></p>
+<ul>
+<li><strong>Model format compatibility</strong>: Ensure models can be loaded by the serving system</li>
+<li><strong>Version management</strong>: Support multiple model versions simultaneously</li>
+<li><strong>Monitoring</strong>: Track performance, errors, and resource usage</li>
+<li><strong>Security</strong>: Authenticate and authorize model access</li>
+<li><strong>Cost management</strong>: Optimize resource usage and minimize costs</li>
+</ul>
+</section>
+<section id="vector-databases" class="level3" data-number="17.2.3">
+<h3 data-number="17.2.3" class="anchored" data-anchor-id="vector-databases"><span class="header-section-number">17.2.3</span> Vector Databases</h3>
+<p><strong>What are Vector Databases?</strong></p>
+<p>Vector databases are specialized databases optimized for storing and searching vector representations, particularly embeddings. They enable efficient semantic search by finding vectors that are close in high-dimensional space.</p>
+<p><strong>The Role of Vector Databases</strong></p>
+<p>In retrieval-augmented generation systems, vector databases:</p>
+<ol type="1">
+<li>Store embeddings of documents or other content</li>
+<li>Enable semantic search to find relevant information</li>
+<li>Support filtering and metadata queries</li>
+<li>Scale to millions of vectors with efficient indexing</li>
+</ol>
+<p><strong>Vector Database Operations</strong></p>
+<p><strong>Indexing</strong>: - Building efficient indexes for fast search - Supporting approximate nearest neighbor search - Balancing accuracy and performance</p>
+<p><strong>Querying</strong>: - Converting queries to vector embeddings - Finding nearest neighbors in the database - Returning ranked results with similarity scores</p>
+<p><strong>Management</strong>: - Inserting, updating, and deleting vectors - Managing metadata and filters - Handling schema changes and migrations</p>
+<p><strong>Popular Vector Databases</strong></p>
+<ul>
+<li><strong>Pinecone</strong>: Managed vector database service</li>
+<li><strong>Weaviate</strong>: Open-source vector database with GraphQL API</li>
+<li><strong>Qdrant</strong>: Open-source vector database</li>
+<li><strong>Chroma</strong>: Open-source embedding database</li>
+<li><strong>Milvus</strong>: Open-source vector database for scale</li>
+<li><strong>pgvector</strong>: PostgreSQL extension for vector similarity</li>
+</ul>
+<p><strong>Vector Database Considerations</strong></p>
+<ul>
+<li><strong>Index type</strong>: Choose appropriate index for use case (HNSW, IVF, etc.)</li>
+<li><strong>Dimensionality</strong>: Match embedding dimensions from models</li>
+<li><strong>Distance metric</strong>: Choose appropriate similarity measure (cosine, Euclidean, etc.)</li>
+<li><strong>Scalability</strong>: Ensure database scales with data volume</li>
+<li><strong>Consistency</strong>: Balance read/write performance and consistency</li>
+</ul>
+</section>
+<section id="caching" class="level3" data-number="17.2.4">
+<h3 data-number="17.2.4" class="anchored" data-anchor-id="caching"><span class="header-section-number">17.2.4</span> Caching</h3>
+<p><strong>Why Cache?</strong></p>
+<p>AI model inference can be computationally expensive, particularly when dealing with large models and high request volumes. Many systems therefore implement caching strategies that store previously computed results so that identical or similar requests can be served more efficiently.</p>
+<p><strong>Types of Caching</strong></p>
+<p><strong>Prompt Caching</strong>: - Store responses for identical prompts - Avoid redundant model invocations - Simple but effective for repeated queries</p>
+<p><strong>Embedding Caching</strong>: - Store vector representations of text - Avoid recomputing embeddings - Useful for retrieval systems</p>
+<p><strong>Retrieval Caching</strong>: - Store frequently accessed document results - Avoid repeated database queries - Effective for popular content</p>
+<p><strong>Response Caching</strong>: - Store complete model responses - Serve cached responses when possible - Requires careful invalidation</p>
+<p><strong>Caching Strategies</strong></p>
+<p><strong>Cache Invalidation</strong>: - <strong>Time-based</strong>: Expire cache entries after a duration - <strong>Event-based</strong>: Invalidate when underlying data changes - <strong>Manual</strong>: Explicit cache clearing and updates - <strong>Hybrid</strong>: Combine multiple strategies</p>
+<p><strong>Cache Size Management</strong>: - <strong>LRU (Least Recently Used)</strong>: Evict oldest entries - <strong>LFU (Least Frequently Used)</strong>: Evict least accessed entries - <strong>Size-based</strong>: Limit total cache size - <strong>TTL-based</strong>: Remove expired entries</p>
+<p><strong>Cache Distribution</strong>: - <strong>Local cache</strong>: In-memory cache on each instance - <strong>Distributed cache</strong>: Shared cache across instances - <strong>Multi-tier cache</strong>: Multiple cache layers (local, distributed, CDN)</p>
+<p><strong>Caching Challenges</strong></p>
+<p><strong>Stale Data</strong>: - Cached information may become outdated - Balance performance with freshness - Implement appropriate invalidation strategies</p>
+<p><strong>Cache Misses</strong>: - Cache misses can be expensive - Need fallback strategies - Monitor cache hit rates</p>
+<p><strong>Memory Usage</strong>: - Caches consume memory - Balance cache size with other needs - Monitor memory pressure</p>
+<p><strong>Consistency</strong>: - Multiple cache copies can become inconsistent - Implement cache coherence mechanisms - Handle concurrent updates</p>
+</section>
+</section>
+<section id="infrastructure-architecture" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="infrastructure-architecture"><span class="header-section-number">17.3</span> Infrastructure Architecture</h2>
+<section id="system-design" class="level3" data-number="17.3.1">
+<h3 data-number="17.3.1" class="anchored" data-anchor-id="system-design"><span class="header-section-number">17.3.1</span> System Design</h3>
+<p>Effective infrastructure design considers:</p>
+<ul>
+<li><strong>Components</strong>: Model serving, databases, caching layers</li>
+<li><strong>Connections</strong>: How components interact</li>
+<li><strong>Data flow</strong>: How information moves through the system</li>
+<li><strong>Failure handling</strong>: What happens when components fail</li>
+</ul>
+</section>
+<section id="deployment-patterns" class="level3" data-number="17.3.2">
+<h3 data-number="17.3.2" class="anchored" data-anchor-id="deployment-patterns"><span class="header-section-number">17.3.2</span> Deployment Patterns</h3>
+<p><strong>Monolithic Deployment</strong>: - All components run together - Simpler deployment and management - Limited scalability and isolation</p>
+<p><strong>Microservices Deployment</strong>: - Components run as separate services - Better scalability and isolation - More complex deployment and coordination</p>
+<p><strong>Hybrid Approaches</strong>: - Some components monolithic, others microservices - Balance simplicity and scalability - Common in real-world systems</p>
+</section>
+<section id="infrastructure-as-code" class="level3" data-number="17.3.3">
+<h3 data-number="17.3.3" class="anchored" data-anchor-id="infrastructure-as-code"><span class="header-section-number">17.3.3</span> Infrastructure as Code</h3>
+<p>Modern infrastructure is managed through code:</p>
+<ul>
+<li><strong>Configuration files</strong>: Define infrastructure declaratively</li>
+<li><strong>Version control</strong>: Track infrastructure changes</li>
+<li><strong>Automated deployment</strong>: Apply changes consistently</li>
+<li><strong>Testing</strong>: Validate infrastructure configurations</li>
+</ul>
+</section>
+</section>
+<section id="scalability-and-performance" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="scalability-and-performance"><span class="header-section-number">17.4</span> Scalability and Performance</h2>
+<section id="scaling-strategies" class="level3" data-number="17.4.1">
+<h3 data-number="17.4.1" class="anchored" data-anchor-id="scaling-strategies"><span class="header-section-number">17.4.1</span> Scaling Strategies</h3>
+<p><strong>Vertical Scaling</strong>: - Increase resources on single instance - Simpler but limited - Good for moderate growth</p>
+<p><strong>Horizontal Scaling</strong>: - Add more instances - Better for large scale - Requires coordination</p>
+<p><strong>Auto-scaling</strong>: - Automatically adjust based on load - Cost-effective for variable workloads - Requires monitoring and policies</p>
+</section>
+<section id="performance-optimization" class="level3" data-number="17.4.2">
+<h3 data-number="17.4.2" class="anchored" data-anchor-id="performance-optimization"><span class="header-section-number">17.4.2</span> Performance Optimization</h3>
+<p><strong>Model Optimization</strong>: - Quantization: Reduce model precision - Pruning: Remove unimportant parameters - Distillation: Train smaller models - Compilation: Optimize for specific hardware</p>
+<p><strong>Infrastructure Optimization</strong>: - Load balancing: Distribute requests efficiently - Connection pooling: Reuse connections - Batching: Process multiple requests together - Compression: Reduce data transfer size</p>
+</section>
+</section>
+<section id="monitoring-and-observability" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="monitoring-and-observability"><span class="header-section-number">17.5</span> Monitoring and Observability</h2>
+<section id="infrastructure-monitoring" class="level3" data-number="17.5.1">
+<h3 data-number="17.5.1" class="anchored" data-anchor-id="infrastructure-monitoring"><span class="header-section-number">17.5.1</span> Infrastructure Monitoring</h3>
+<p>Key metrics to monitor:</p>
+<ul>
+<li><strong>Resource utilization</strong>: CPU, memory, GPU, disk, network</li>
+<li><strong>Request metrics</strong>: Throughput, latency, error rates</li>
+<li><strong>Model metrics</strong>: Inference time, token usage, costs</li>
+<li><strong>Database metrics</strong>: Query performance, cache hit rates</li>
+<li><strong>System health</strong>: Service availability, error patterns</li>
+</ul>
+</section>
+<section id="alerting" class="level3" data-number="17.5.2">
+<h3 data-number="17.5.2" class="anchored" data-anchor-id="alerting"><span class="header-section-number">17.5.2</span> Alerting</h3>
+<p>Set up alerts for:</p>
+<ul>
+<li><strong>Resource exhaustion</strong>: High CPU, memory, or GPU usage</li>
+<li><strong>Performance degradation</strong>: Increased latency or error rates</li>
+<li><strong>Service failures</strong>: Model serving or database failures</li>
+<li><strong>Cost anomalies</strong>: Unexpected cost increases</li>
+<li><strong>Security events</strong>: Unauthorized access attempts</li>
+</ul>
+</section>
+</section>
+<section id="security-and-compliance" class="level2" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="security-and-compliance"><span class="header-section-number">17.6</span> Security and Compliance</h2>
+<section id="security-considerations" class="level3" data-number="17.6.1">
+<h3 data-number="17.6.1" class="anchored" data-anchor-id="security-considerations"><span class="header-section-number">17.6.1</span> Security Considerations</h3>
+<p><strong>Authentication and Authorization</strong>: - Control access to models and data - Implement proper authentication mechanisms - Enforce authorization policies</p>
+<p><strong>Data Protection</strong>: - Encrypt data at rest and in transit - Protect sensitive information - Comply with privacy regulations</p>
+<p><strong>Infrastructure Security</strong>: - Secure network configurations - Regular security updates - Vulnerability scanning</p>
+<p><strong>Model Security</strong>: - Prevent prompt injection attacks - Validate and sanitize inputs - Monitor for abuse</p>
+</section>
+</section>
+<section id="cost-management" class="level2" data-number="17.7">
+<h2 data-number="17.7" class="anchored" data-anchor-id="cost-management"><span class="header-section-number">17.7</span> Cost Management</h2>
+<section id="cost-drivers" class="level3" data-number="17.7.1">
+<h3 data-number="17.7.1" class="anchored" data-anchor-id="cost-drivers"><span class="header-section-number">17.7.1</span> Cost Drivers</h3>
+<p>AI infrastructure costs include:</p>
+<ul>
+<li><strong>Compute costs</strong>: GPUs, CPUs, memory</li>
+<li><strong>Storage costs</strong>: Databases, logs, backups</li>
+<li><strong>Network costs</strong>: Data transfer, API calls</li>
+<li><strong>Service costs</strong>: Managed services and APIs</li>
+<li><strong>Operations costs</strong>: Monitoring, support, maintenance</li>
+</ul>
+</section>
+<section id="cost-optimization-strategies" class="level3" data-number="17.7.2">
+<h3 data-number="17.7.2" class="anchored" data-anchor-id="cost-optimization-strategies"><span class="header-section-number">17.7.2</span> Cost Optimization Strategies</h3>
+<p><strong>Model Optimization</strong>: - Use appropriate model sizes - Implement effective caching - Batch requests efficiently</p>
+<p><strong>Resource Optimization</strong>: - Right-size infrastructure - Use spot instances when appropriate - Implement auto-scaling</p>
+<p><strong>Operational Optimization</strong>: - Monitor costs regularly - Identify cost anomalies - Implement cost alerts</p>
+</section>
+</section>
+<section id="reliability-and-resilience" class="level2" data-number="17.8">
+<h2 data-number="17.8" class="anchored" data-anchor-id="reliability-and-resilience"><span class="header-section-number">17.8</span> Reliability and Resilience</h2>
+<section id="high-availability" class="level3" data-number="17.8.1">
+<h3 data-number="17.8.1" class="anchored" data-anchor-id="high-availability"><span class="header-section-number">17.8.1</span> High Availability</h3>
+<p>Design for availability:</p>
+<ul>
+<li><strong>Redundancy</strong>: Multiple instances or regions</li>
+<li><strong>Failover</strong>: Automatic switching to backups</li>
+<li><strong>Load balancing</strong>: Distribute load across instances</li>
+<li><strong>Monitoring</strong>: Detect and respond to failures</li>
+</ul>
+</section>
+<section id="disaster-recovery" class="level3" data-number="17.8.2">
+<h3 data-number="17.8.2" class="anchored" data-anchor-id="disaster-recovery"><span class="header-section-number">17.8.2</span> Disaster Recovery</h3>
+<p>Plan for disasters:</p>
+<ul>
+<li><strong>Backups</strong>: Regular backups of data and configurations</li>
+<li><strong>Recovery procedures</strong>: Documented recovery processes</li>
+<li><strong>Testing</strong>: Regular disaster recovery drills</li>
+<li><strong>Documentation</strong>: Clear runbooks and procedures</li>
+</ul>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="17.9">
+<h2 data-number="17.9" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">17.9</span> Conclusion</h2>
+<p>AI infrastructure therefore represents the foundation upon which the rest of the AI engineering stack is built.</p>
+<p>Without it, intelligent systems remain fragile experiments.</p>
+<p>With it, they become operational systems capable of reliable performance in real-world environments.</p>
+<p>The infrastructure layer—comprising model serving, vector databases, and caching—provides the operational backbone that makes AI systems possible. Effective infrastructure design requires careful consideration of performance, scalability, cost, reliability, and security.</p>
+<p>As AI systems move from prototypes to production, infrastructure becomes increasingly critical. It is the difference between a system that works in the lab and one that works in the real world.</p>
+<p>The next chapter examines scaling—the challenges and strategies for taking AI systems from small-scale experiments to large-scale production deployments.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./ch14.html" class="pagination-link" aria-label="Chapter 14 — Debugging AI Systems">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chapter 14 — Debugging AI Systems</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ch16.html" class="pagination-link" aria-label="Chapter 16 — Scaling AI Systems">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Chapter 16 — Scaling AI Systems</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Chapter 4 — The AI Systems Builder Workstation – AI Engineer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ch05.html" rel="next">
+<link href="./ch03.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch04.html">Part II — The AI Engineering Environment</a></li><li class="breadcrumb-item"><a href="./ch04.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 4 — The AI Systems Builder Workstation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">AI Engineer</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface — The End of Software as We Knew It</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — The New Discipline of AI Engineering</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 1 — From Programmer to AI Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 2 — The AI Engineering Stack</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 3 — Thinking in Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — The AI Engineering Environment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch04.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 4 — The AI Systems Builder Workstation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 5 — Terminal as the Control Center</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 6 — IDE + Terminal Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 7 — The AI Systems Builder Workstation Setup</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Building AI Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 8 — Prompt Engineering as Architecture</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 9 — AI Pipelines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 10 — Agents</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 11 — Tools and External Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Reliability and Evaluation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 12 — AI Evaluation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 13 — Observability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chapter 14 — Debugging AI Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Production Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chapter 15 — AI Infrastructure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Chapter 16 — Scaling AI Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Chapter 17 — AI Products</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — The Future of AI Engineers</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Chapter 18 — AI as Co-Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Chapter 19 — From Code to System Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Chapter 20 — The Philosophy of AI Engineering</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">References</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a></li>
+  <li><a href="#the-traditional-development-environment" id="toc-the-traditional-development-environment" class="nav-link" data-scroll-target="#the-traditional-development-environment"><span class="header-section-number">6.2</span> The Traditional Development Environment</a>
+  <ul class="collapse">
+  <li><a href="#the-coding-centric-model" id="toc-the-coding-centric-model" class="nav-link" data-scroll-target="#the-coding-centric-model"><span class="header-section-number">6.2.1</span> The Coding-Centric Model</a></li>
+  <li><a href="#limitations-for-ai-engineering" id="toc-limitations-for-ai-engineering" class="nav-link" data-scroll-target="#limitations-for-ai-engineering"><span class="header-section-number">6.2.2</span> Limitations for AI Engineering</a></li>
+  </ul></li>
+  <li><a href="#the-ai-systems-builder-workstation-philosophy" id="toc-the-ai-systems-builder-workstation-philosophy" class="nav-link" data-scroll-target="#the-ai-systems-builder-workstation-philosophy"><span class="header-section-number">6.3</span> The AI Systems Builder Workstation Philosophy</a>
+  <ul class="collapse">
+  <li><a href="#three-core-principles" id="toc-three-core-principles" class="nav-link" data-scroll-target="#three-core-principles"><span class="header-section-number">6.3.1</span> Three Core Principles</a></li>
+  <li><a href="#principle-1-the-workstation-as-control-surface" id="toc-principle-1-the-workstation-as-control-surface" class="nav-link" data-scroll-target="#principle-1-the-workstation-as-control-surface"><span class="header-section-number">6.3.2</span> Principle 1: The Workstation as Control Surface</a></li>
+  <li><a href="#principle-2-support-for-rapid-experimentation" id="toc-principle-2-support-for-rapid-experimentation" class="nav-link" data-scroll-target="#principle-2-support-for-rapid-experimentation"><span class="header-section-number">6.3.3</span> Principle 2: Support for Rapid Experimentation</a></li>
+  <li><a href="#principle-3-structure-for-reproducibility" id="toc-principle-3-structure-for-reproducibility" class="nav-link" data-scroll-target="#principle-3-structure-for-reproducibility"><span class="header-section-number">6.3.4</span> Principle 3: Structure for Reproducibility</a></li>
+  </ul></li>
+  <li><a href="#environment-architecture" id="toc-environment-architecture" class="nav-link" data-scroll-target="#environment-architecture"><span class="header-section-number">6.4</span> Environment Architecture</a>
+  <ul class="collapse">
+  <li><a href="#a-layered-design" id="toc-a-layered-design" class="nav-link" data-scroll-target="#a-layered-design"><span class="header-section-number">6.4.1</span> A Layered Design</a></li>
+  <li><a href="#the-terminal-foundation" id="toc-the-terminal-foundation" class="nav-link" data-scroll-target="#the-terminal-foundation"><span class="header-section-number">6.4.2</span> The Terminal Foundation</a></li>
+  <li><a href="#the-ide-integration-layer" id="toc-the-ide-integration-layer" class="nav-link" data-scroll-target="#the-ide-integration-layer"><span class="header-section-number">6.4.3</span> The IDE Integration Layer</a></li>
+  <li><a href="#ai-specific-tools" id="toc-ai-specific-tools" class="nav-link" data-scroll-target="#ai-specific-tools"><span class="header-section-number">6.4.4</span> AI-Specific Tools</a></li>
+  </ul></li>
+  <li><a href="#the-system-builder-mindset" id="toc-the-system-builder-mindset" class="nav-link" data-scroll-target="#the-system-builder-mindset"><span class="header-section-number">6.5</span> The System Builder Mindset</a>
+  <ul class="collapse">
+  <li><a href="#from-coder-to-operator" id="toc-from-coder-to-operator" class="nav-link" data-scroll-target="#from-coder-to-operator"><span class="header-section-number">6.5.1</span> From Coder to Operator</a></li>
+  <li><a href="#the-continuous-cycle" id="toc-the-continuous-cycle" class="nav-link" data-scroll-target="#the-continuous-cycle"><span class="header-section-number">6.5.2</span> The Continuous Cycle</a></li>
+  <li><a href="#rapid-context-switching" id="toc-rapid-context-switching" class="nav-link" data-scroll-target="#rapid-context-switching"><span class="header-section-number">6.5.3</span> Rapid Context Switching</a></li>
+  </ul></li>
+  <li><a href="#the-workspace-structure" id="toc-the-workspace-structure" class="nav-link" data-scroll-target="#the-workspace-structure"><span class="header-section-number">6.6</span> The Workspace Structure</a>
+  <ul class="collapse">
+  <li><a href="#organizing-by-function" id="toc-organizing-by-function" class="nav-link" data-scroll-target="#organizing-by-function"><span class="header-section-number">6.6.1</span> Organizing by Function</a></li>
+  <li><a href="#project-level-organization" id="toc-project-level-organization" class="nav-link" data-scroll-target="#project-level-organization"><span class="header-section-number">6.6.2</span> Project-Level Organization</a></li>
+  </ul></li>
+  <li><a href="#the-workstation-as-experimental-platform" id="toc-the-workstation-as-experimental-platform" class="nav-link" data-scroll-target="#the-workstation-as-experimental-platform"><span class="header-section-number">6.7</span> The Workstation as Experimental Platform</a>
+  <ul class="collapse">
+  <li><a href="#the-laboratory-metaphor" id="toc-the-laboratory-metaphor" class="nav-link" data-scroll-target="#the-laboratory-metaphor"><span class="header-section-number">6.7.1</span> The Laboratory Metaphor</a></li>
+  <li><a href="#the-value-of-local-experimentation" id="toc-the-value-of-local-experimentation" class="nav-link" data-scroll-target="#the-value-of-local-experimentation"><span class="header-section-number">6.7.2</span> The Value of Local Experimentation</a></li>
+  <li><a href="#the-transition-to-production" id="toc-the-transition-to-production" class="nav-link" data-scroll-target="#the-transition-to-production"><span class="header-section-number">6.7.3</span> The Transition to Production</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6.8</span> Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch04.html">Part II — The AI Engineering Environment</a></li><li class="breadcrumb-item"><a href="./ch04.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 4 — The AI Systems Builder Workstation</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 4 — The AI Systems Builder Workstation</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
+<p>In traditional software development, the developer’s computer is primarily a coding environment. It is a place where source code is written, compiled, and tested before being deployed to larger systems. The workstation functions as a local interface to a broader infrastructure.</p>
+<p>For AI engineers, this conception is incomplete.</p>
+<p>Modern AI development requires continuous experimentation with models, prompts, pipelines, and agents. Engineers must observe system behavior, iterate on designs, test integrations, run evaluation loops, and monitor outputs across multiple layers of the stack. These activities are not isolated coding tasks. They are system-building tasks.</p>
+<p>As a result, the workstation itself becomes part of the engineering system.</p>
+<p>An effective AI engineer does not simply configure a machine for programming. Instead, the workstation is designed as a structured environment for constructing and operating intelligent systems.</p>
+<p>In this sense, the engineer’s computer becomes something more than a development machine. It becomes an experimental platform.</p>
+<pre><code>AI laboratory</code></pre>
+<p>Within this laboratory, models can be invoked, pipelines can be assembled, agents can be executed, logs can be observed, and experiments can be conducted. The workstation provides the local infrastructure necessary to explore, design, and refine AI systems before they are deployed into production environments.</p>
+<p>This shift leads to a different philosophy of workstation design.</p>
+<p>The AI Systems Builder Workstation is not optimized solely for editing code. It is optimized for orchestrating systems.</p>
+</section>
+<section id="the-traditional-development-environment" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="the-traditional-development-environment"><span class="header-section-number">6.2</span> The Traditional Development Environment</h2>
+<section id="the-coding-centric-model" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="the-coding-centric-model"><span class="header-section-number">6.2.1</span> The Coding-Centric Model</h3>
+<p>Most development environments are designed around a coding-centric model:</p>
+<ul>
+<li><strong>Primary activity</strong>: Writing and editing source code</li>
+<li><strong>Primary tool</strong>: Integrated Development Environment (IDE)</li>
+<li><strong>Primary workflow</strong>: Write code → Compile → Test → Debug</li>
+<li><strong>Primary interface</strong>: Graphical user interface</li>
+</ul>
+<p>This model works well for traditional software development, where the engineer’s primary task is to implement algorithms and data structures.</p>
+</section>
+<section id="limitations-for-ai-engineering" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="limitations-for-ai-engineering"><span class="header-section-number">6.2.2</span> Limitations for AI Engineering</h3>
+<p>AI engineering introduces activities that fall outside this model:</p>
+<ul>
+<li><strong>Running pipelines</strong>: Executing multi-stage transformations that involve models, tools, and data retrieval</li>
+<li><strong>Observing behavior</strong>: Monitoring logs, metrics, and traces in real time</li>
+<li><strong>Iterating rapidly</strong>: Quick cycles of prompt modification and testing</li>
+<li><strong>Managing experiments</strong>: Tracking multiple concurrent experiments and their results</li>
+<li><strong>Interacting with models</strong>: Direct communication with language models through prompts</li>
+</ul>
+<p>The traditional development environment, optimized for code editing, provides poor support for these activities.</p>
+</section>
+</section>
+<section id="the-ai-systems-builder-workstation-philosophy" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="the-ai-systems-builder-workstation-philosophy"><span class="header-section-number">6.3</span> The AI Systems Builder Workstation Philosophy</h2>
+<section id="three-core-principles" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="three-core-principles"><span class="header-section-number">6.3.1</span> Three Core Principles</h3>
+<p>The design of an AI Systems Builder Workstation is guided by three principles:</p>
+<ol type="1">
+<li><strong>The workstation is a control surface, not just a coding machine</strong></li>
+<li><strong>The environment should support rapid experimentation and observation</strong></li>
+<li><strong>The workspace should be structured for reproducibility and clarity</strong></li>
+</ol>
+<p>Let us examine each principle in detail.</p>
+</section>
+<section id="principle-1-the-workstation-as-control-surface" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="principle-1-the-workstation-as-control-surface"><span class="header-section-number">6.3.2</span> Principle 1: The Workstation as Control Surface</h3>
+<p>In conventional development environments, the primary activity is writing and compiling code. Most interactions occur within an integrated development environment. In contrast, AI system construction involves:</p>
+<ul>
+<li>Running pipelines that orchestrate multiple components</li>
+<li>Observing outputs in real time as systems execute</li>
+<li>Interacting directly with models through prompts</li>
+<li>Invoking tools and external services</li>
+<li>Iterating rapidly across multiple experiments</li>
+</ul>
+<p>The workstation therefore becomes a control surface for system behavior. Engineers must be able to:</p>
+<ul>
+<li>Execute commands that launch pipelines and agents</li>
+<li>Inspect logs and system state</li>
+<li>Launch experiments and track their progress</li>
+<li>Interact with AI models directly</li>
+<li>Monitor resource usage and performance</li>
+</ul>
+<p>This requirement leads to a workflow that is centered not only on editors but also on command-line environments and automation tools. The terminal becomes as important as the IDE.</p>
+</section>
+<section id="principle-2-support-for-rapid-experimentation" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="principle-2-support-for-rapid-experimentation"><span class="header-section-number">6.3.3</span> Principle 2: Support for Rapid Experimentation</h3>
+<p>AI engineering is fundamentally experimental. Engineers must:</p>
+<ul>
+<li>Try different prompt formulations to see which produce better results</li>
+<li>Test various pipeline configurations to optimize performance</li>
+<li>Experiment with different models and parameters</li>
+<li>Evaluate system behavior across diverse inputs</li>
+<li>Iterate quickly based on observed results</li>
+</ul>
+<p>The workstation must support this experimental cycle. It should provide:</p>
+<ul>
+<li>Fast execution of experiments with minimal overhead</li>
+<li>Easy comparison of different experimental configurations</li>
+<li>Clear visibility into experimental results</li>
+<li>Ability to revert to previous states when experiments fail</li>
+<li>Tools for organizing and tracking multiple concurrent experiments</li>
+</ul>
+<p>Speed of iteration is critical. The time between making a change and observing its results should be minimized to enable rapid learning and refinement.</p>
+</section>
+<section id="principle-3-structure-for-reproducibility" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="principle-3-structure-for-reproducibility"><span class="header-section-number">6.3.4</span> Principle 3: Structure for Reproducibility</h3>
+<p>AI projects generate many artifacts: prompts, agent configurations, datasets, experiments, evaluation logs, and documentation. Without careful organization, these materials fragment rapidly.</p>
+<p>The workstation should impose structure on the workspace itself:</p>
+<ul>
+<li><strong>Project organization</strong>: Clear directory structures that separate concerns</li>
+<li><strong>Configuration management</strong>: Version control for prompts, pipeline configurations, and experimental parameters</li>
+<li><strong>Experiment tracking</strong>: Systems for recording what was tried, when, and with what results</li>
+<li><strong>Documentation</strong>: Integrated documentation that explains design decisions and system behavior</li>
+<li><strong>Reproducibility</strong>: Bootstrap scripts and configuration files that allow environments to be reconstructed</li>
+</ul>
+<p>A disciplined workspace ensures that projects remain understandable and reproducible as they evolve.</p>
+</section>
+</section>
+<section id="environment-architecture" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="environment-architecture"><span class="header-section-number">6.4</span> Environment Architecture</h2>
+<section id="a-layered-design" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="a-layered-design"><span class="header-section-number">6.4.1</span> A Layered Design</h3>
+<p>A well-designed workstation organizes tools and workflows in a layered manner:</p>
+<pre><code>Operating System
+    ↓
+Terminal Environment
+    ↓
+Shell (zsh, bash)
+    ↓
+Developer Tools (editors, version control, package managers)
+    ↓
+AI-Specific Tools (model clients, evaluation frameworks, experiment trackers)
+    ↓
+Project Workflows</code></pre>
+<p>Each layer serves a specific role within the broader engineering workflow.</p>
+</section>
+<section id="the-terminal-foundation" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="the-terminal-foundation"><span class="header-section-number">6.4.2</span> The Terminal Foundation</h3>
+<p>The terminal environment forms the foundation of the AI Systems Builder Workstation. It provides:</p>
+<ul>
+<li>Direct control over processes and system resources</li>
+<li>Access to the command-line ecosystem (ripgrep, fzf, tmux, etc.)</li>
+<li>The ability to orchestrate multiple concurrent processes</li>
+<li>Session management for long-running experiments</li>
+<li>Scripting and automation capabilities</li>
+</ul>
+<p>The terminal is not a legacy tool—it is the primary control surface through which AI systems are orchestrated, observed, and manipulated.</p>
+</section>
+<section id="the-ide-integration-layer" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="the-ide-integration-layer"><span class="header-section-number">6.4.3</span> The IDE Integration Layer</h3>
+<p>Above the terminal sits the integrated development environment. The IDE provides:</p>
+<ul>
+<li>Code editing and navigation capabilities</li>
+<li>Refactoring tools and static analysis</li>
+<li>Debugging interfaces for deterministic components</li>
+<li>Project management and build system integration</li>
+<li>Integration with version control systems</li>
+</ul>
+<p>In the AI engineering workflow, the IDE and terminal complement each other. The IDE is where code is written and structured components are implemented. The terminal is where systems are executed, observed, and debugged.</p>
+</section>
+<section id="ai-specific-tools" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4" class="anchored" data-anchor-id="ai-specific-tools"><span class="header-section-number">6.4.4</span> AI-Specific Tools</h3>
+<p>Integrated with these components are AI-specific tools that enable the core activities of AI engineering:</p>
+<ul>
+<li><strong>Model clients</strong>: Libraries and command-line tools for invoking language models and other AI systems</li>
+<li><strong>Prompt management</strong>: Systems for organizing, versioning, and deploying prompts</li>
+<li><strong>Evaluation frameworks</strong>: Tools for running tests, measuring performance, and tracking metrics</li>
+<li><strong>Experiment trackers</strong>: Systems for recording experimental configurations and results</li>
+<li><strong>Observability platforms</strong>: Interfaces for viewing logs, traces, and metrics</li>
+</ul>
+<p>These tools bridge the gap between the general-purpose development environment and the specific requirements of AI systems construction.</p>
+</section>
+</section>
+<section id="the-system-builder-mindset" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="the-system-builder-mindset"><span class="header-section-number">6.5</span> The System Builder Mindset</h2>
+<section id="from-coder-to-operator" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="from-coder-to-operator"><span class="header-section-number">6.5.1</span> From Coder to Operator</h3>
+<p>An AI engineer does not approach development as the incremental construction of isolated programs. Instead, the engineer approaches the workstation as the command center for system design.</p>
+<p>Every tool within the environment exists to support:</p>
+<ul>
+<li>The creation of intelligent systems</li>
+<li>The execution and observation of those systems</li>
+<li>The refinement and improvement of system behavior</li>
+</ul>
+<p>In this mindset, the engineer becomes both designer and operator of intelligent systems.</p>
+</section>
+<section id="the-continuous-cycle" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="the-continuous-cycle"><span class="header-section-number">6.5.2</span> The Continuous Cycle</h3>
+<p>The system builder mindset manifests in a continuous cycle of activities:</p>
+<pre><code>Design → Implement → Execute → Observe → Iterate</code></pre>
+<ul>
+<li><strong>Design</strong>: Plan the architecture, define components, specify interfaces</li>
+<li><strong>Implement</strong>: Write code, configure prompts, set up pipelines</li>
+<li><strong>Execute</strong>: Launch the system, run experiments, test behavior</li>
+<li><strong>Observe</strong>: Monitor logs, examine outputs, analyze metrics</li>
+<li><strong>Iterate</strong>: Refine designs based on observations, repeat the cycle</li>
+</ul>
+<p>This cycle differs from traditional development workflows where implementation and execution are more clearly separated. In AI engineering, execution and observation are continuous, driving iterative refinement.</p>
+</section>
+<section id="rapid-context-switching" class="level3" data-number="6.5.3">
+<h3 data-number="6.5.3" class="anchored" data-anchor-id="rapid-context-switching"><span class="header-section-number">6.5.3</span> Rapid Context Switching</h3>
+<p>The AI engineer must be comfortable moving between different contexts and tools:</p>
+<ul>
+<li>From the IDE (editing code) to the terminal (executing commands)</li>
+<li>From prompt design (crafting interfaces) to pipeline construction (structuring flows)</li>
+<li>From local development (testing on small datasets) to production consideration (scalability and cost)</li>
+<li>From implementation details (how components work) to system-level concerns (how they interact)</li>
+</ul>
+<p>This ability to move fluidly between levels of abstraction is a hallmark of the system builder mindset.</p>
+</section>
+</section>
+<section id="the-workspace-structure" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="the-workspace-structure"><span class="header-section-number">6.6</span> The Workspace Structure</h2>
+<section id="organizing-by-function" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="organizing-by-function"><span class="header-section-number">6.6.1</span> Organizing by Function</h3>
+<p>A disciplined workspace should separate work by system function rather than by accidental chronology. One effective structure is the following:</p>
+<pre><code>workspace
+├─ ai
+├─ agents
+├─ systems
+├─ research
+├─ books
+└─ tools</code></pre>
+<p>This organization reflects the major domains of AI systems building:</p>
+<ul>
+<li><strong>ai</strong>: Model experiments, inference utilities, and evaluation artifacts</li>
+<li><strong>agents</strong>: Agent frameworks, tool-using systems, and orchestration experiments</li>
+<li><strong>systems</strong>: Architecture-level projects, reusable frameworks, and infrastructure repositories</li>
+<li><strong>research</strong>: Papers, notes, datasets, and exploratory investigations</li>
+<li><strong>books</strong>: Long-form writing and technical monographs</li>
+<li><strong>tools</strong>: Standalone CLI utilities, helper scripts, and reusable developer tooling</li>
+</ul>
+</section>
+<section id="project-level-organization" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="project-level-organization"><span class="header-section-number">6.6.2</span> Project-Level Organization</h3>
+<p>Inside each project, further structure should be imposed. A typical AI engineering project may include:</p>
+<pre><code>project
+├─ src
+├─ configs
+├─ scripts
+├─ prompts
+├─ eval
+├─ tests
+├─ docs
+└─ logs</code></pre>
+<p>This layout encourages separation of concerns:</p>
+<ul>
+<li><strong>src</strong>: Source code for deterministic components</li>
+<li><strong>configs</strong>: Configuration files for models, pipelines, and agents</li>
+<li><strong>scripts</strong>: Utility scripts and automation tools</li>
+<li><strong>prompts</strong>: Prompt templates and prompt libraries</li>
+<li><strong>eval</strong>: Evaluation datasets, scripts, and results</li>
+<li><strong>tests</strong>: Test suites for deterministic components</li>
+<li><strong>docs</strong>: Documentation and design notes</li>
+<li><strong>logs</strong>: System logs and experiment outputs</li>
+</ul>
+<p>As systems become more complex, this distinction becomes essential to reproducibility and maintainability.</p>
+</section>
+</section>
+<section id="the-workstation-as-experimental-platform" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="the-workstation-as-experimental-platform"><span class="header-section-number">6.7</span> The Workstation as Experimental Platform</h2>
+<section id="the-laboratory-metaphor" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="the-laboratory-metaphor"><span class="header-section-number">6.7.1</span> The Laboratory Metaphor</h3>
+<p>The AI Systems Builder Workstation functions as a laboratory. Just as a scientific laboratory provides equipment, instruments, and organized space for conducting experiments, the AI engineer’s workstation provides:</p>
+<ul>
+<li><strong>Tools</strong>: The software and hardware necessary to build and test systems</li>
+<li><strong>Instruments</strong>: Observability tools for measuring and understanding system behavior</li>
+<li><strong>Organized space</strong>: Structured workspaces that keep materials accessible and understandable</li>
+<li><strong>Reproducibility</strong>: Systems for recording experiments and replicating results</li>
+</ul>
+</section>
+<section id="the-value-of-local-experimentation" class="level3" data-number="6.7.2">
+<h3 data-number="6.7.2" class="anchored" data-anchor-id="the-value-of-local-experimentation"><span class="header-section-number">6.7.2</span> The Value of Local Experimentation</h3>
+<p>Local experimentation on the workstation is essential for several reasons:</p>
+<ul>
+<li><strong>Speed</strong>: Local execution is faster than cloud-based iteration</li>
+<li><strong>Cost</strong>: Running experiments locally avoids cloud computing charges</li>
+<li><strong>Privacy</strong>: Sensitive data and prompts can be tested without external exposure</li>
+<li><strong>Debugging</strong>: Local environments provide better debugging capabilities</li>
+<li><strong>Flexibility</strong>: Engineers can experiment freely without concern for affecting production systems</li>
+</ul>
+</section>
+<section id="the-transition-to-production" class="level3" data-number="6.7.3">
+<h3 data-number="6.7.3" class="anchored" data-anchor-id="the-transition-to-production"><span class="header-section-number">6.7.3</span> The Transition to Production</h3>
+<p>The workstation is not only for local development—it is also where production systems are designed and tested before deployment. Engineers should:</p>
+<ul>
+<li>Design systems with production constraints in mind (latency, cost, scalability)</li>
+<li>Test under conditions that approximate production loads</li>
+<li>Consider infrastructure requirements early in the design process</li>
+<li>Build observability and monitoring into local development workflows</li>
+</ul>
+<p>When systems move from workstation to production, the transition should be smooth because the workstation has been designed as a scaled-down version of the production environment.</p>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6.8</span> Conclusion</h2>
+<p>The AI Systems Builder Workstation represents a fundamental shift in how engineers approach their work.</p>
+<p>In traditional software development, the workstation is a coding machine—a place where programs are written and tested before being deployed elsewhere.</p>
+<p>In AI engineering, the workstation is an experimental platform—a structured environment for constructing, operating, and refining intelligent systems.</p>
+<p>This shift requires:</p>
+<ul>
+<li><strong>A new philosophy</strong>: The workstation as control surface and laboratory</li>
+<li><strong>A new architecture</strong>: Layered environments that support rapid experimentation</li>
+<li><strong>A new mindset</strong>: System builder rather than mere coder</li>
+<li><strong>A new organization</strong>: Structured workspaces that ensure reproducibility</li>
+</ul>
+<p>The next chapter explores the most critical component of this workstation: the terminal. Far from being a legacy tool, the terminal is the system control layer through which AI engineers orchestrate, observe, and manipulate the complex systems they build.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./ch03.html" class="pagination-link" aria-label="Chapter 3 — Thinking in Systems">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 3 — Thinking in Systems</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ch05.html" class="pagination-link" aria-label="Chapter 5 — Terminal as the Control Center">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 5 — Terminal as the Control Center</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Chapter 1 — From Programmer to AI Engineer – AI Engineer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ch02.html" rel="next">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01.html">Part I — The New Discipline of AI Engineering</a></li><li class="breadcrumb-item"><a href="./ch01.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 1 — From Programmer to AI Engineer</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">AI Engineer</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface — The End of Software as We Knew It</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — The New Discipline of AI Engineering</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch01.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 1 — From Programmer to AI Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 2 — The AI Engineering Stack</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 3 — Thinking in Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — The AI Engineering Environment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 4 — The AI Systems Builder Workstation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 5 — Terminal as the Control Center</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 6 — IDE + Terminal Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 7 — The AI Systems Builder Workstation Setup</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Building AI Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 8 — Prompt Engineering as Architecture</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 9 — AI Pipelines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 10 — Agents</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 11 — Tools and External Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Reliability and Evaluation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 12 — AI Evaluation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 13 — Observability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chapter 14 — Debugging AI Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Production Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chapter 15 — AI Infrastructure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Chapter 16 — Scaling AI Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Chapter 17 — AI Products</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — The Future of AI Engineers</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Chapter 18 — AI as Co-Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Chapter 19 — From Code to System Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Chapter 20 — The Philosophy of AI Engineering</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">References</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
+  <li><a href="#traditional-software-engineering" id="toc-traditional-software-engineering" class="nav-link" data-scroll-target="#traditional-software-engineering"><span class="header-section-number">3.2</span> Traditional Software Engineering</a>
+  <ul class="collapse">
+  <li><a href="#the-foundation-of-deterministic-logic" id="toc-the-foundation-of-deterministic-logic" class="nav-link" data-scroll-target="#the-foundation-of-deterministic-logic"><span class="header-section-number">3.2.1</span> The Foundation of Deterministic Logic</a></li>
+  <li><a href="#the-programmers-mental-model" id="toc-the-programmers-mental-model" class="nav-link" data-scroll-target="#the-programmers-mental-model"><span class="header-section-number">3.2.2</span> The Programmer’s Mental Model</a></li>
+  <li><a href="#successes-of-the-deterministic-paradigm" id="toc-successes-of-the-deterministic-paradigm" class="nav-link" data-scroll-target="#successes-of-the-deterministic-paradigm"><span class="header-section-number">3.2.3</span> Successes of the Deterministic Paradigm</a></li>
+  </ul></li>
+  <li><a href="#the-ai-paradigm-shift" id="toc-the-ai-paradigm-shift" class="nav-link" data-scroll-target="#the-ai-paradigm-shift"><span class="header-section-number">3.3</span> The AI Paradigm Shift</a>
+  <ul class="collapse">
+  <li><a href="#from-deterministic-to-probabilistic" id="toc-from-deterministic-to-probabilistic" class="nav-link" data-scroll-target="#from-deterministic-to-probabilistic"><span class="header-section-number">3.3.1</span> From Deterministic to Probabilistic</a></li>
+  <li><a href="#key-characteristics-of-ai-systems" id="toc-key-characteristics-of-ai-systems" class="nav-link" data-scroll-target="#key-characteristics-of-ai-systems"><span class="header-section-number">3.3.2</span> Key Characteristics of AI Systems</a></li>
+  <li><a href="#the-new-mental-model" id="toc-the-new-mental-model" class="nav-link" data-scroll-target="#the-new-mental-model"><span class="header-section-number">3.3.3</span> The New Mental Model</a></li>
+  </ul></li>
+  <li><a href="#human-model-collaboration" id="toc-human-model-collaboration" class="nav-link" data-scroll-target="#human-model-collaboration"><span class="header-section-number">3.4</span> Human + Model Collaboration</a>
+  <ul class="collapse">
+  <li><a href="#the-collaborative-paradigm" id="toc-the-collaborative-paradigm" class="nav-link" data-scroll-target="#the-collaborative-paradigm"><span class="header-section-number">3.4.1</span> The Collaborative Paradigm</a></li>
+  <li><a href="#capabilities-of-modern-ai" id="toc-capabilities-of-modern-ai" class="nav-link" data-scroll-target="#capabilities-of-modern-ai"><span class="header-section-number">3.4.2</span> Capabilities of Modern AI</a></li>
+  <li><a href="#limitations-to-address" id="toc-limitations-to-address" class="nav-link" data-scroll-target="#limitations-to-address"><span class="header-section-number">3.4.3</span> Limitations to Address</a></li>
+  </ul></li>
+  <li><a href="#the-emerging-role" id="toc-the-emerging-role" class="nav-link" data-scroll-target="#the-emerging-role"><span class="header-section-number">3.5</span> The Emerging Role</a>
+  <ul class="collapse">
+  <li><a href="#software-engineer-vs.-ai-engineer" id="toc-software-engineer-vs.-ai-engineer" class="nav-link" data-scroll-target="#software-engineer-vs.-ai-engineer"><span class="header-section-number">3.5.1</span> Software Engineer vs.&nbsp;AI Engineer</a></li>
+  <li><a href="#core-competencies" id="toc-core-competencies" class="nav-link" data-scroll-target="#core-competencies"><span class="header-section-number">3.5.2</span> Core Competencies</a></li>
+  <li><a href="#the-hybrid-nature-of-ai-engineering" id="toc-the-hybrid-nature-of-ai-engineering" class="nav-link" data-scroll-target="#the-hybrid-nature-of-ai-engineering"><span class="header-section-number">3.5.3</span> The Hybrid Nature of AI Engineering</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3.6</span> Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch01.html">Part I — The New Discipline of AI Engineering</a></li><li class="breadcrumb-item"><a href="./ch01.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 1 — From Programmer to AI Engineer</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 1 — From Programmer to AI Engineer</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
+<p>The landscape of software engineering is undergoing a fundamental transformation. For decades, the core task of the software engineer was clear: design algorithms, write code, and build systems that executed deterministic logic with precision. As artificial intelligence becomes increasingly integrated into software systems, the role of the engineer is evolving. We are moving from writing deterministic code to designing intelligent systems that can reason, learn, and collaborate with humans.</p>
+<p>This transformation is not merely about adopting new tools or learning new frameworks. It represents a fundamental shift in how we conceive of software itself. The engineer’s mental model, the abstractions we work with, and the questions we ask during development are all changing.</p>
+<p>This chapter examines that transformation. We begin by understanding the foundations of traditional software engineering, then explore how AI systems challenge those foundations, and finally articulate the new role and competencies of the AI engineer.</p>
+</section>
+<section id="traditional-software-engineering" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="traditional-software-engineering"><span class="header-section-number">3.2</span> Traditional Software Engineering</h2>
+<section id="the-foundation-of-deterministic-logic" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="the-foundation-of-deterministic-logic"><span class="header-section-number">3.2.1</span> The Foundation of Deterministic Logic</h3>
+<p>Traditional software engineering is built upon a stable foundation: deterministic logic. This principle has shaped every aspect of the discipline, from programming languages to development methodologies.</p>
+<p>In a deterministic system:</p>
+<ul>
+<li><strong>Code executes exactly as written</strong>: Every line of code specifies precisely what the machine should do</li>
+<li><strong>Inputs produce predictable outputs</strong>: Given the same input, a program always produces the same output</li>
+<li><strong>Behavior is fully specified</strong>: The programmer controls every aspect of system behavior through explicit instructions</li>
+<li><strong>Debugging follows logical chains</strong>: When errors occur, they can be traced through deterministic cause-and-effect relationships</li>
+</ul>
+<p>This foundation has served software engineering well. It enables rigorous testing, formal verification, and predictable system behavior. Engineers can reason about correctness by examining the code itself—every behavior can be explained by some sequence of executed instructions.</p>
+</section>
+<section id="the-programmers-mental-model" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="the-programmers-mental-model"><span class="header-section-number">3.2.2</span> The Programmer’s Mental Model</h3>
+<p>The deterministic foundation shapes how programmers think about software. The prevailing mental model can be represented as follows:</p>
+<pre><code>Input → Logic → Output</code></pre>
+<p>In this model:</p>
+<ul>
+<li>The engineer designs algorithms that transform inputs into outputs</li>
+<li>The engineer writes explicit instructions that implement those algorithms</li>
+<li>The engineer manages state and control flow through loops, conditionals, and data structures</li>
+<li>The engineer tests the system against expected outcomes to verify correctness</li>
+</ul>
+<p>The locus of control is clear: the programmer specifies every transformation, and the machine follows those specifications precisely. This mental model works exceptionally well for problems that can be reduced to well-defined algorithms.</p>
+</section>
+<section id="successes-of-the-deterministic-paradigm" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="successes-of-the-deterministic-paradigm"><span class="header-section-number">3.2.3</span> Successes of the Deterministic Paradigm</h3>
+<p>The deterministic paradigm has enabled remarkable achievements. From operating systems that manage complex hardware to financial systems that process millions of transactions, from embedded controllers in medical devices to search engines that index the web, deterministic software has transformed nearly every domain of human activity.</p>
+<p>The discipline of software engineering—its languages, its patterns, its methodologies—has been refined over decades to optimize for this paradigm. We have developed powerful abstractions for managing complexity, rigorous practices for ensuring correctness, and sophisticated tools for maintaining and evolving codebases.</p>
+</section>
+</section>
+<section id="the-ai-paradigm-shift" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="the-ai-paradigm-shift"><span class="header-section-number">3.3</span> The AI Paradigm Shift</h2>
+<section id="from-deterministic-to-probabilistic" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="from-deterministic-to-probabilistic"><span class="header-section-number">3.3.1</span> From Deterministic to Probabilistic</h3>
+<p>Artificial intelligence introduces a fundamental change in how we think about software. Modern AI systems, particularly those based on large language models and other forms of statistical learning, do not operate primarily through explicit instructions. They operate through probabilistic inference.</p>
+<p>The transformation can be represented as follows:</p>
+<pre><code>Input → Model → Probabilistic Output</code></pre>
+<p>In this paradigm:</p>
+<ul>
+<li><strong>Outputs are predictions, not deterministic results</strong>: The model generates responses based on statistical patterns rather than fixed rules</li>
+<li><strong>Behavior emerges from training data</strong>: The model’s capabilities derive from patterns learned from vast datasets, not from hand-crafted algorithms</li>
+<li><strong>Uncertainty must be managed</strong>: Because outputs are probabilistic, engineers must quantify and manage uncertainty</li>
+<li><strong>Testing requires statistical approaches</strong>: Validation involves measuring tendencies across many examples rather than verifying single cases</li>
+</ul>
+<p>This shift challenges core assumptions that have guided software engineering for decades. The engineer can no longer specify every behavior through explicit code. Instead, the engineer designs the conditions under which intelligence operates.</p>
+</section>
+<section id="key-characteristics-of-ai-systems" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="key-characteristics-of-ai-systems"><span class="header-section-number">3.3.2</span> Key Characteristics of AI Systems</h3>
+<p>To understand the implications of this shift, we must examine the key characteristics that distinguish AI systems from traditional software:</p>
+<p><strong>Variation in Outputs</strong>: Unlike deterministic functions, AI models may produce different outputs each time they are invoked, even with identical inputs. This variation is not a bug—it is an inherent feature of probabilistic inference. Engineers must determine whether this variation remains within acceptable bounds for the application.</p>
+<p><strong>Training Data Influence</strong>: The behavior of an AI system is shaped by the data on which it was trained. Engineers cannot fully predict how a model will respond to novel inputs without understanding the patterns present in the training data. This introduces the need for careful data curation and continuous monitoring of model behavior.</p>
+<p><strong>Prompt-Driven Behavior</strong>: The same model can perform vastly different tasks depending on how it is prompted. The prompt functions as an interface that specifies the task, provides context, and constrains the model’s behavior. Engineers must therefore design prompts with the same care they once devoted to designing APIs.</p>
+<p><strong>Capability Without Explicit Specification</strong>: AI models can perform tasks—such as natural language understanding, creative writing, or code generation—that would require extensive hand-crafted algorithms in traditional software. These capabilities emerge from the model’s training rather than from explicit programming.</p>
+<p><strong>Limitations and Failure Modes</strong>: AI systems have distinct failure modes, including hallucinations (generating false information), reasoning errors in complex problems, and sensitivity to subtle changes in phrasing. Engineers must anticipate these limitations and design systems that compensate for them.</p>
+</section>
+<section id="the-new-mental-model" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="the-new-mental-model"><span class="header-section-number">3.3.3</span> The New Mental Model</h3>
+<p>Working with AI systems requires a new mental model. Engineers must think in terms of:</p>
+<ul>
+<li><strong>Probability distributions</strong> rather than single correct answers</li>
+<li><strong>Model behavior</strong> as shaped by training data and prompting strategies</li>
+<li><strong>Interface design</strong> through prompts that specify tasks and context</li>
+<li><strong>System architecture</strong> that coordinates models, data, and evaluation mechanisms</li>
+</ul>
+<p>This mental model does not replace traditional engineering skills—it augments them. The AI engineer must be able to think both deterministically (for the surrounding infrastructure and data processing) and probabilistically (for the model-based components).</p>
+</section>
+</section>
+<section id="human-model-collaboration" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="human-model-collaboration"><span class="header-section-number">3.4</span> Human + Model Collaboration</h2>
+<section id="the-collaborative-paradigm" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="the-collaborative-paradigm"><span class="header-section-number">3.4.1</span> The Collaborative Paradigm</h3>
+<p>The shift to probabilistic systems changes the relationship between the engineer and the computational substrate. Rather than the engineer issuing commands to a deterministic machine, we enter a collaborative paradigm:</p>
+<pre><code>Human ↔ Model ↔ System</code></pre>
+<p>In this paradigm:</p>
+<ul>
+<li><strong>Models are partners, not just tools</strong>: The model contributes intelligence—reasoning, synthesis, creative generation—that the engineer could not easily specify through code</li>
+<li><strong>Prompting is a form of programming</strong>: Engineers program behavior through the design of prompts, which specify tasks, provide examples, and constrain outputs</li>
+<li><strong>Iterative refinement through interaction</strong>: Development often involves iterative interaction—observing model behavior, adjusting prompts, and refining system design based on results</li>
+<li><strong>Leveraging strengths while compensating for weaknesses</strong>: Engineers design systems that maximize the model’s capabilities (natural language understanding, pattern recognition, creative problem-solving) while compensating for its limitations (lack of factual grounding, potential for reasoning errors)</li>
+</ul>
+<p>This collaborative model changes how engineers approach problems. Instead of beginning by designing algorithms, the engineer may begin by designing prompts and observing how the model responds. Instead of testing against fixed expected outputs, the engineer may evaluate across a distribution of plausible responses.</p>
+</section>
+<section id="capabilities-of-modern-ai" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="capabilities-of-modern-ai"><span class="header-section-number">3.4.2</span> Capabilities of Modern AI</h3>
+<p>To understand the value of this collaboration, consider the capabilities that modern AI systems bring to engineering work:</p>
+<p><strong>Natural Language Understanding and Generation</strong>: AI models can comprehend instructions in natural language, interpret complex requirements, and generate human-readable responses. This makes it possible to communicate with systems in a way that feels natural to users and developers alike.</p>
+<p><strong>Pattern Recognition Across Diverse Domains</strong>: Models trained on vast datasets can recognize patterns across domains—from code to medical literature to financial reports—bringing cross-domain insights that would be difficult to program explicitly.</p>
+<p><strong>Creative Problem-Solving</strong>: AI systems can propose novel solutions, explore alternative approaches, and generate ideas that human engineers might not have considered. This makes them valuable partners in design and innovation.</p>
+<p><strong>Code Generation and Refactoring</strong>: Models can write code based on natural language descriptions, suggest improvements to existing code, and help with documentation. This accelerates development and can improve code quality.</p>
+<p><strong>Handling Ambiguity</strong>: Unlike traditional systems that often fail when faced with ambiguous inputs, AI models can interpret vague requirements, make reasonable assumptions, and request clarification when needed.</p>
+</section>
+<section id="limitations-to-address" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="limitations-to-address"><span class="header-section-number">3.4.3</span> Limitations to Address</h3>
+<p>The collaborative model also requires attention to the limitations of AI systems. Engineers must design systems that address:</p>
+<p><strong>Lack of Ground Truth</strong>: Models may generate plausible-sounding but incorrect information. Systems must include mechanisms for verification, fact-checking, or retrieval from trusted sources.</p>
+<p><strong>Sensitivity to Phrasing</strong>: Small changes in how a request is phrased can significantly alter model behavior. Engineers must design robust prompts and include examples that clarify expected behavior.</p>
+<p><strong>Limited Context</strong>: Models have finite context windows that restrict how much information can be provided in a single interaction. Systems must manage context strategically, perhaps through retrieval mechanisms or multi-turn interactions.</p>
+<p><strong>Unpredictable Failure Modes</strong>: Models may fail in ways that are difficult to anticipate. Engineers must implement evaluation frameworks, guardrails, and fallback mechanisms to maintain reliability.</p>
+<p><strong>Ethical and Safety Concerns</strong>: AI systems can perpetuate biases, generate harmful content, or be misused. Engineers must incorporate safety measures and ethical considerations into system design.</p>
+</section>
+</section>
+<section id="the-emerging-role" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="the-emerging-role"><span class="header-section-number">3.5</span> The Emerging Role</h2>
+<section id="software-engineer-vs.-ai-engineer" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="software-engineer-vs.-ai-engineer"><span class="header-section-number">3.5.1</span> Software Engineer vs.&nbsp;AI Engineer</h3>
+<p>The transformation from deterministic to probabilistic systems gives rise to a new engineering role. The relationship between traditional software engineering and AI engineering can be characterized as follows:</p>
+<pre><code>Software Engineer
+    ↓
+writes deterministic logic
+manages explicit state
+creates static interfaces
+predicts behavior exactly
+
+AI Engineer
+    ↓
+designs probabilistic systems
+orchestrates intelligent components
+creates dynamic interfaces
+manages uncertainty and variability</code></pre>
+<p>This is not a replacement of one role by another. Rather, AI engineering builds upon the foundations of software engineering while adding new capabilities and concerns. The AI engineer must understand traditional software engineering principles while developing new competencies specific to probabilistic systems.</p>
+</section>
+<section id="core-competencies" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="core-competencies"><span class="header-section-number">3.5.2</span> Core Competencies</h3>
+<p>Effective AI engineering requires a combination of skills drawn from multiple domains:</p>
+<p><strong>Understanding Model Capabilities and Limitations</strong>: Engineers must understand how models behave, what they can and cannot do, and how different models compare in terms of capability, cost, and latency. This knowledge informs model selection and system design decisions.</p>
+<p><strong>System Design for Probabilistic Components</strong>: Engineers must design architectures that integrate probabilistic components with deterministic infrastructure. This includes designing pipelines, orchestrating agents, managing data flows, and structuring evaluation mechanisms.</p>
+<p><strong>Prompt Engineering and Interface Design</strong>: Prompts function as interfaces between systems and models. Engineers must master the art of prompt design—structuring instructions, providing context, specifying formats, and constraining outputs to achieve desired behavior.</p>
+<p><strong>Evaluation and Testing Methodologies</strong>: Traditional unit testing is insufficient for probabilistic systems. Engineers must develop evaluation frameworks that measure performance across distributions of inputs, detect failure patterns, and track system behavior over time.</p>
+<p><strong>Infrastructure for AI Systems</strong>: AI systems have distinct infrastructure requirements, including model serving, vector databases, caching strategies, and observability tools. Engineers must understand how to build and maintain this infrastructure.</p>
+<p><strong>Data Management and Retrieval</strong>: Many AI systems depend on access to external data sources. Engineers must design retrieval mechanisms, manage vector databases, and ensure data quality and relevance.</p>
+<p><strong>Observability and Debugging</strong>: When AI systems fail, the cause is rarely a single line of code. Engineers must develop new approaches to debugging that involve examining prompts, traces, model outputs, and system interactions.</p>
+<p><strong>Ethical and Safety Engineering</strong>: AI systems introduce new ethical and safety concerns. Engineers must understand these issues and design systems that operate responsibly.</p>
+</section>
+<section id="the-hybrid-nature-of-ai-engineering" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="the-hybrid-nature-of-ai-engineering"><span class="header-section-number">3.5.3</span> The Hybrid Nature of AI Engineering</h3>
+<p>AI engineering is fundamentally hybrid in nature. It combines:</p>
+<ul>
+<li><strong>Rigorous engineering discipline</strong> with adaptive, iterative experimentation</li>
+<li><strong>Deterministic infrastructure</strong> with probabilistic model components</li>
+<li><strong>Formal system design</strong> with creative prompt crafting</li>
+<li><strong>Technical optimization</strong> with user experience considerations</li>
+<li><strong>Short-term implementation</strong> with long-term system evolution</li>
+</ul>
+<p>The AI engineer must be comfortable moving between these different modes of thinking, applying the appropriate approach to each aspect of the system.</p>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3.6</span> Conclusion</h2>
+<p>The transition from programmer to AI engineer is not just about learning new tools—it’s about adopting a new way of thinking about software. We’re moving from a world where we write every instruction to one where we design systems that can think, reason, and collaborate with us to achieve complex goals.</p>
+<p>This shift requires us to:</p>
+<ul>
+<li><strong>Embrace uncertainty as a design constraint</strong>: Rather than seeking to eliminate all variability, we design systems that function reliably despite it</li>
+<li><strong>Think in terms of systems and pipelines</strong>: The behavior of the whole emerges from the interaction of components, not from any single element</li>
+<li><strong>Design for collaboration with intelligent agents</strong>: Models are not merely utilities but partners that contribute intelligence to the system</li>
+<li><strong>Build robust evaluation and feedback mechanisms</strong>: Continuous monitoring and improvement are essential for probabilistic systems</li>
+</ul>
+<p>The chapters ahead will explore each of these dimensions in detail. We will examine the conceptual frameworks that organize AI systems, the practical tools and workflows for building them, the architectural components that enable intelligent behavior, and the challenges of ensuring reliability and scalability.</p>
+<p>But first, we must establish a unifying conceptual framework that will guide our exploration. The next chapter introduces the AI engineering stack—a layered architecture that provides a systematic way to understand and design intelligent systems.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ch02.html" class="pagination-link" aria-label="Chapter 2 — The AI Engineering Stack">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 2 — The AI Engineering Stack</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

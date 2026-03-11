@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; Chapter 5 — Terminal as the Control Center – AI Engineer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ch06.html" rel="next">
+<link href="./ch04.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch04.html">Part II — The AI Engineering Environment</a></li><li class="breadcrumb-item"><a href="./ch05.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 5 — Terminal as the Control Center</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">AI Engineer</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface — The End of Software as We Knew It</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — The New Discipline of AI Engineering</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 1 — From Programmer to AI Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 2 — The AI Engineering Stack</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 3 — Thinking in Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — The AI Engineering Environment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 4 — The AI Systems Builder Workstation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch05.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 5 — Terminal as the Control Center</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 6 — IDE + Terminal Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 7 — The AI Systems Builder Workstation Setup</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Building AI Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 8 — Prompt Engineering as Architecture</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 9 — AI Pipelines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 10 — Agents</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 11 — Tools and External Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Reliability and Evaluation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 12 — AI Evaluation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 13 — Observability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chapter 14 — Debugging AI Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Production Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chapter 15 — AI Infrastructure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Chapter 16 — Scaling AI Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Chapter 17 — AI Products</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — The Future of AI Engineers</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Chapter 18 — AI as Co-Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Chapter 19 — From Code to System Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Chapter 20 — The Philosophy of AI Engineering</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">References</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
+  <li><a href="#the-nature-of-ai-system-orchestration" id="toc-the-nature-of-ai-system-orchestration" class="nav-link" data-scroll-target="#the-nature-of-ai-system-orchestration"><span class="header-section-number">7.2</span> The Nature of AI System Orchestration</a>
+  <ul class="collapse">
+  <li><a href="#multiple-concurrent-processes" id="toc-multiple-concurrent-processes" class="nav-link" data-scroll-target="#multiple-concurrent-processes"><span class="header-section-number">7.2.1</span> Multiple Concurrent Processes</a></li>
+  <li><a href="#real-time-observation" id="toc-real-time-observation" class="nav-link" data-scroll-target="#real-time-observation"><span class="header-section-number">7.2.2</span> Real-Time Observation</a></li>
+  <li><a href="#interactive-control" id="toc-interactive-control" class="nav-link" data-scroll-target="#interactive-control"><span class="header-section-number">7.2.3</span> Interactive Control</a></li>
+  </ul></li>
+  <li><a href="#shell-architecture" id="toc-shell-architecture" class="nav-link" data-scroll-target="#shell-architecture"><span class="header-section-number">7.3</span> Shell Architecture</a>
+  <ul class="collapse">
+  <li><a href="#the-shell-as-programmable-environment" id="toc-the-shell-as-programmable-environment" class="nav-link" data-scroll-target="#the-shell-as-programmable-environment"><span class="header-section-number">7.3.1</span> The Shell as Programmable Environment</a></li>
+  <li><a href="#the-shell-as-lightweight-programming-environment" id="toc-the-shell-as-lightweight-programming-environment" class="nav-link" data-scroll-target="#the-shell-as-lightweight-programming-environment"><span class="header-section-number">7.3.2</span> The Shell as Lightweight Programming Environment</a></li>
+  <li><a href="#shell-configuration-for-ai-engineering" id="toc-shell-configuration-for-ai-engineering" class="nav-link" data-scroll-target="#shell-configuration-for-ai-engineering"><span class="header-section-number">7.3.3</span> Shell Configuration for AI Engineering</a></li>
+  </ul></li>
+  <li><a href="#the-command-line-ecosystem" id="toc-the-command-line-ecosystem" class="nav-link" data-scroll-target="#the-command-line-ecosystem"><span class="header-section-number">7.4</span> The Command-Line Ecosystem</a>
+  <ul class="collapse">
+  <li><a href="#the-power-of-cli-tools" id="toc-the-power-of-cli-tools" class="nav-link" data-scroll-target="#the-power-of-cli-tools"><span class="header-section-number">7.4.1</span> The Power of CLI Tools</a></li>
+  <li><a href="#essential-tools-for-ai-engineering" id="toc-essential-tools-for-ai-engineering" class="nav-link" data-scroll-target="#essential-tools-for-ai-engineering"><span class="header-section-number">7.4.2</span> Essential Tools for AI Engineering</a></li>
+  <li><a href="#the-integrated-ecosystem" id="toc-the-integrated-ecosystem" class="nav-link" data-scroll-target="#the-integrated-ecosystem"><span class="header-section-number">7.4.3</span> The Integrated Ecosystem</a></li>
+  </ul></li>
+  <li><a href="#system-orchestration" id="toc-system-orchestration" class="nav-link" data-scroll-target="#system-orchestration"><span class="header-section-number">7.5</span> System Orchestration</a>
+  <ul class="collapse">
+  <li><a href="#the-orchestration-challenge" id="toc-the-orchestration-challenge" class="nav-link" data-scroll-target="#the-orchestration-challenge"><span class="header-section-number">7.5.1</span> The Orchestration Challenge</a></li>
+  <li><a href="#tmux-as-orchestration-platform" id="toc-tmux-as-orchestration-platform" class="nav-link" data-scroll-target="#tmux-as-orchestration-platform"><span class="header-section-number">7.5.2</span> tmux as Orchestration Platform</a></li>
+  <li><a href="#process-management-strategies" id="toc-process-management-strategies" class="nav-link" data-scroll-target="#process-management-strategies"><span class="header-section-number">7.5.3</span> Process Management Strategies</a></li>
+  <li><a href="#real-time-debugging" id="toc-real-time-debugging" class="nav-link" data-scroll-target="#real-time-debugging"><span class="header-section-number">7.5.4</span> Real-Time Debugging</a></li>
+  </ul></li>
+  <li><a href="#the-terminal-as-operational-dashboard" id="toc-the-terminal-as-operational-dashboard" class="nav-link" data-scroll-target="#the-terminal-as-operational-dashboard"><span class="header-section-number">7.6</span> The Terminal as Operational Dashboard</a>
+  <ul class="collapse">
+  <li><a href="#information-at-a-glance" id="toc-information-at-a-glance" class="nav-link" data-scroll-target="#information-at-a-glance"><span class="header-section-number">7.6.1</span> Information at a Glance</a></li>
+  <li><a href="#rapid-decision-making" id="toc-rapid-decision-making" class="nav-link" data-scroll-target="#rapid-decision-making"><span class="header-section-number">7.6.2</span> Rapid Decision Making</a></li>
+  <li><a href="#scripting-and-automation" id="toc-scripting-and-automation" class="nav-link" data-scroll-target="#scripting-and-automation"><span class="header-section-number">7.6.3</span> Scripting and Automation</a></li>
+  </ul></li>
+  <li><a href="#beyond-the-terminal" id="toc-beyond-the-terminal" class="nav-link" data-scroll-target="#beyond-the-terminal"><span class="header-section-number">7.7</span> Beyond the Terminal</a>
+  <ul class="collapse">
+  <li><a href="#integration-with-graphical-tools" id="toc-integration-with-graphical-tools" class="nav-link" data-scroll-target="#integration-with-graphical-tools"><span class="header-section-number">7.7.1</span> Integration with Graphical Tools</a></li>
+  <li><a href="#cloud-and-remote-environments" id="toc-cloud-and-remote-environments" class="nav-link" data-scroll-target="#cloud-and-remote-environments"><span class="header-section-number">7.7.2</span> Cloud and Remote Environments</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7.8</span> Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch04.html">Part II — The AI Engineering Environment</a></li><li class="breadcrumb-item"><a href="./ch05.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 5 — Terminal as the Control Center</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 5 — Terminal as the Control Center</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">7.1</span> Introduction</h2>
+<p>In many modern development environments, the terminal is often perceived as a legacy tool—a remnant of an earlier era of computing before graphical interfaces became dominant. Integrated development environments provide graphical controls for debugging, running programs, managing dependencies, and interacting with version control systems. For many developers, the terminal becomes secondary, used occasionally for executing commands that are not available through graphical interfaces.</p>
+<p>For AI engineers, this perception is deeply misleading.</p>
+<p>In the construction of intelligent systems, the terminal is not an outdated interface. It is the primary control surface through which systems are orchestrated, observed, and manipulated. Rather than being a secondary tool, the terminal functions as the system control layer of the workstation.</p>
+<pre><code>system control layer</code></pre>
+<p>The reason for this centrality lies in the nature of AI engineering itself. Intelligent systems are rarely single processes that run once and terminate. They consist of multiple components operating simultaneously: pipelines that transform information, agents that reason over multiple iterations, model servers that handle inference requests, and evaluation processes that monitor system performance. These components must be started, stopped, inspected, and coordinated continuously.</p>
+<p>The terminal provides the environment in which this orchestration becomes possible.</p>
+</section>
+<section id="the-nature-of-ai-system-orchestration" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-nature-of-ai-system-orchestration"><span class="header-section-number">7.2</span> The Nature of AI System Orchestration</h2>
+<section id="multiple-concurrent-processes" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="multiple-concurrent-processes"><span class="header-section-number">7.2.1</span> Multiple Concurrent Processes</h3>
+<p>A typical AI engineering session may involve several processes running simultaneously:</p>
+<ul>
+<li>A model server serving language model inference requests</li>
+<li>An agent executing iterative reasoning tasks</li>
+<li>A pipeline processing a batch of documents</li>
+<li>An evaluation script generating performance metrics</li>
+<li>A logging process streaming system activity</li>
+</ul>
+<p>Each of these components must be controlled independently. They may need to be started in a specific order, monitored for errors, stopped gracefully, or restarted when failures occur.</p>
+</section>
+<section id="real-time-observation" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="real-time-observation"><span class="header-section-number">7.2.2</span> Real-Time Observation</h3>
+<p>AI systems produce continuous streams of information:</p>
+<ul>
+<li>Logs showing the flow of data through pipelines</li>
+<li>Metrics tracking system performance and resource usage</li>
+<li>Traces revealing how requests propagate through components</li>
+<li>Outputs from agents as they execute reasoning steps</li>
+</ul>
+<p>Engineers must observe this information in real time to understand system behavior, diagnose problems, and make informed decisions about system modifications.</p>
+</section>
+<section id="interactive-control" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="interactive-control"><span class="header-section-number">7.2.3</span> Interactive Control</h3>
+<p>The process of building AI systems is interactive. Engineers must:</p>
+<ul>
+<li>Launch experiments and observe their results</li>
+<li>Modify prompts and immediately test their effects</li>
+<li>Adjust pipeline parameters and verify changes</li>
+<li>Interrupt and restart processes based on observations</li>
+<li>Inspect intermediate states and outputs</li>
+</ul>
+<p>This interactive workflow requires a control interface that is responsive, flexible, and capable of handling multiple concurrent activities.</p>
+<p>The terminal provides precisely this interface.</p>
+</section>
+</section>
+<section id="shell-architecture" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="shell-architecture"><span class="header-section-number">7.3</span> Shell Architecture</h2>
+<section id="the-shell-as-programmable-environment" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="the-shell-as-programmable-environment"><span class="header-section-number">7.3.1</span> The Shell as Programmable Environment</h3>
+<p>The shell is not merely a command interpreter. It is a programmable environment that defines how commands are executed, how tools interact, and how workflows are constructed.</p>
+<p>Modern shells such as zsh provide:</p>
+<ul>
+<li><strong>Command execution</strong>: The ability to run programs and pass arguments</li>
+<li><strong>Variable management</strong>: Environment variables and shell variables for configuration</li>
+<li><strong>Scripting</strong>: The ability to write scripts that automate workflows</li>
+<li><strong>Aliases and functions</strong>: Custom shortcuts and reusable command sequences</li>
+<li><strong>Startup configuration</strong>: Profiles and rc files that set up the environment</li>
+</ul>
+</section>
+<section id="the-shell-as-lightweight-programming-environment" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="the-shell-as-lightweight-programming-environment"><span class="header-section-number">7.3.2</span> The Shell as Lightweight Programming Environment</h3>
+<p>Within this architecture, engineers construct workflows that allow complex operations to be expressed through concise commands. A single command may:</p>
+<ul>
+<li>Launch an agent process and stream its logs</li>
+<li>Start a model server in the background</li>
+<li>Run an evaluation pipeline on a dataset</li>
+<li>Execute a monitoring script that tracks system health</li>
+</ul>
+<p>These capabilities transform the shell from a simple interface into an operational framework for AI systems construction.</p>
+</section>
+<section id="shell-configuration-for-ai-engineering" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="shell-configuration-for-ai-engineering"><span class="header-section-number">7.3.3</span> Shell Configuration for AI Engineering</h3>
+<p>Effective shell configuration for AI engineering includes:</p>
+<ul>
+<li><strong>Prompt customization</strong>: Displays context about the current project, Python environment, and Git state</li>
+<li><strong>Aliases</strong>: Shortcuts for common operations (running experiments, viewing logs, launching services)</li>
+<li><strong>Functions</strong>: Reusable command sequences for complex workflows</li>
+<li><strong>Environment variables</strong>: Configuration for model APIs, database connections, and system paths</li>
+<li><strong>Path management</strong>: Easy navigation between projects and directories</li>
+</ul>
+<p>The shell configuration is not merely a matter of convenience—it is an integral part of the workstation architecture.</p>
+</section>
+</section>
+<section id="the-command-line-ecosystem" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="the-command-line-ecosystem"><span class="header-section-number">7.4</span> The Command-Line Ecosystem</h2>
+<section id="the-power-of-cli-tools" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="the-power-of-cli-tools"><span class="header-section-number">7.4.1</span> The Power of CLI Tools</h3>
+<p>Over decades of development, a powerful collection of command-line tools has emerged that greatly expands the capabilities of the terminal environment. These tools provide:</p>
+<ul>
+<li><strong>Fast search</strong>: Locate files, patterns, and information across large codebases</li>
+<li><strong>Efficient navigation</strong>: Move quickly between directories and projects</li>
+<li><strong>Process management</strong>: Control running processes and system resources</li>
+<li><strong>Data manipulation</strong>: Transform and analyze data directly from the command line</li>
+</ul>
+</section>
+<section id="essential-tools-for-ai-engineering" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="essential-tools-for-ai-engineering"><span class="header-section-number">7.4.2</span> Essential Tools for AI Engineering</h3>
+<p>Several tools have become particularly valuable in modern AI engineering environments:</p>
+<pre><code>zsh
+starship
+tmux
+ripgrep
+fzf
+zoxide</code></pre>
+<p>Let us examine each tool in detail.</p>
+<section id="zsh-z-shell" class="level4" data-number="7.4.2.1">
+<h4 data-number="7.4.2.1" class="anchored" data-anchor-id="zsh-z-shell"><span class="header-section-number">7.4.2.1</span> zsh (Z Shell)</h4>
+<p>The shell itself, providing the foundational command environment:</p>
+<ul>
+<li>Advanced completion for commands and paths</li>
+<li>Powerful globbing and pattern matching</li>
+<li>Configuration through rc files and profiles</li>
+<li>Extensible through plugins and frameworks</li>
+</ul>
+<p>zsh provides the flexibility required for a sophisticated AI engineering environment.</p>
+</section>
+<section id="starship" class="level4" data-number="7.4.2.2">
+<h4 data-number="7.4.2.2" class="anchored" data-anchor-id="starship"><span class="header-section-number">7.4.2.2</span> starship</h4>
+<p>A cross-shell prompt that displays contextual information:</p>
+<ul>
+<li>Current directory and Git branch</li>
+<li>Python environment and package versions</li>
+<li>System status and indicators</li>
+<li>Customizable modules for project-specific information</li>
+</ul>
+<p>The prompt becomes a dashboard that provides situational awareness at a glance.</p>
+</section>
+<section id="tmux" class="level4" data-number="7.4.2.3">
+<h4 data-number="7.4.2.3" class="anchored" data-anchor-id="tmux"><span class="header-section-number">7.4.2.3</span> tmux</h4>
+<p>A terminal multiplexer for session management:</p>
+<ul>
+<li>Multiple panes within a single terminal window</li>
+<li>Persistent sessions that survive network disconnections</li>
+<li>Detach and attach functionality for long-running processes</li>
+<li>Customizable key bindings and configurations</li>
+</ul>
+<p>tmux is essential for managing the multiple concurrent processes that AI engineering requires.</p>
+</section>
+<section id="ripgrep-rg" class="level4" data-number="7.4.2.4">
+<h4 data-number="7.4.2.4" class="anchored" data-anchor-id="ripgrep-rg"><span class="header-section-number">7.4.2.4</span> ripgrep (rg)</h4>
+<p>An extremely fast search tool for codebases and text:</p>
+<ul>
+<li>Recursive search through directories</li>
+<li>Regular expression support</li>
+<li>Git-aware searching (ignoring files in .gitignore)</li>
+<li>Context and highlighting options</li>
+</ul>
+<p>ripgrep enables engineers to locate patterns across thousands of files instantly, accelerating debugging and code exploration.</p>
+</section>
+<section id="fzf-fuzzy-finder" class="level4" data-number="7.4.2.5">
+<h4 data-number="7.4.2.5" class="anchored" data-anchor-id="fzf-fuzzy-finder"><span class="header-section-number">7.4.2.5</span> fzf (fuzzy finder)</h4>
+<p>An interactive fuzzy search tool:</p>
+<ul>
+<li>Searchable command history</li>
+<li>File and directory discovery</li>
+<li>Integration with other tools</li>
+<li>Customizable interfaces</li>
+</ul>
+<p>fzf transforms command-line interaction from exact matching to fluid discovery.</p>
+</section>
+<section id="zoxide" class="level4" data-number="7.4.2.6">
+<h4 data-number="7.4.2.6" class="anchored" data-anchor-id="zoxide"><span class="header-section-number">7.4.2.6</span> zoxide</h4>
+<p>A smarter cd command that learns from usage:</p>
+<ul>
+<li>Jumps to frequently used directories</li>
+<li>Remembers navigation patterns</li>
+<li>Works across shell sessions</li>
+<li>Reduces typing and speeds up workflow</li>
+</ul>
+<p>zoxide turns filesystem navigation into a learned behavior rather than a repetitive task.</p>
+</section>
+</section>
+<section id="the-integrated-ecosystem" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="the-integrated-ecosystem"><span class="header-section-number">7.4.3</span> The Integrated Ecosystem</h3>
+<p>These tools do not operate in isolation. They form an integrated ecosystem:</p>
+<ul>
+<li><strong>starship</strong> provides context within the <strong>zsh</strong> prompt</li>
+<li><strong>fzf</strong> integrates with command history and file navigation</li>
+<li><strong>zoxide</strong> works with shell cd commands</li>
+<li><strong>ripgrep</strong> results can be piped to other tools</li>
+<li><strong>tmux</strong> manages sessions that run all of these tools together</li>
+</ul>
+<p>The value of the ecosystem comes from the synergies between these tools.</p>
+</section>
+</section>
+<section id="system-orchestration" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="system-orchestration"><span class="header-section-number">7.5</span> System Orchestration</h2>
+<section id="the-orchestration-challenge" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="the-orchestration-challenge"><span class="header-section-number">7.5.1</span> The Orchestration Challenge</h3>
+<p>AI systems rarely consist of a single executable program. Instead, they are composed of multiple interacting processes. A typical AI engineering session may involve:</p>
+<ul>
+<li>A model server running locally on port 8000</li>
+<li>An agent executing iterative reasoning tasks on port 8001</li>
+<li>A vector database for document retrieval</li>
+<li>An evaluation script processing test data</li>
+<li>A logging process streaming activity to a file</li>
+</ul>
+<p>Each of these components must be controlled independently: started, monitored, stopped, and restarted as needed.</p>
+</section>
+<section id="tmux-as-orchestration-platform" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="tmux-as-orchestration-platform"><span class="header-section-number">7.5.2</span> tmux as Orchestration Platform</h3>
+<p>tmux provides the infrastructure for managing these concurrent activities. A typical tmux session might be organized as follows:</p>
+<pre><code>┌─────────────────────────────────────────┐
+│ Model Server Logs                       │
+│ [running] python serve_model.py        │
+└─────────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│ Agent Output                            │
+│ [running] python agent.py              │
+└─────────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│ Evaluation Progress                    │
+│ [running] python evaluate.py           │
+└─────────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│ General Shell                          │
+│ [bash] $                                │
+└─────────────────────────────────────────┘</code></pre>
+<p>This configuration allows the engineer to:</p>
+<ul>
+<li>Observe all processes simultaneously</li>
+<li>Execute commands in the general shell while monitoring processes</li>
+<li>Detach the session and return later without losing state</li>
+<li>Resize and rearrange panes as needed</li>
+</ul>
+</section>
+<section id="process-management-strategies" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="process-management-strategies"><span class="header-section-number">7.5.3</span> Process Management Strategies</h3>
+<p>Beyond tmux, several process management strategies are essential:</p>
+<p><strong>Background Processes</strong>: Running processes with <code>&amp;</code> or <code>nohup</code> to keep them running after the terminal closes</p>
+<p><strong>Process Monitoring</strong>: Using <code>htop</code>, <code>ps</code>, or custom scripts to track resource usage</p>
+<p><strong>Process Control</strong>: Using <code>kill</code>, <code>pkill</code>, or process managers to stop and restart services</p>
+<p><strong>Log Management</strong>: Redirecting output to log files and using tools like <code>tail</code> to monitor them</p>
+<p>These strategies form the toolkit for system orchestration at the command line.</p>
+</section>
+<section id="real-time-debugging" class="level3" data-number="7.5.4">
+<h3 data-number="7.5.4" class="anchored" data-anchor-id="real-time-debugging"><span class="header-section-number">7.5.4</span> Real-Time Debugging</h3>
+<p>The terminal excels at real-time debugging. Engineers can:</p>
+<ul>
+<li><strong>Stream logs</strong>: Use <code>tail -f</code> to watch log files as they are written</li>
+<li><strong>Monitor metrics</strong>: Use tools to display system metrics in real time</li>
+<li><strong>Interact with processes</strong>: Send signals and commands to running processes</li>
+<li><strong>Trace execution</strong>: Use strace or similar tools to observe system calls</li>
+</ul>
+<p>This real-time visibility is critical for understanding how AI systems behave as they execute.</p>
+</section>
+</section>
+<section id="the-terminal-as-operational-dashboard" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="the-terminal-as-operational-dashboard"><span class="header-section-number">7.6</span> The Terminal as Operational Dashboard</h2>
+<section id="information-at-a-glance" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="information-at-a-glance"><span class="header-section-number">7.6.1</span> Information at a Glance</h3>
+<p>When properly configured, the terminal provides an operational dashboard that displays:</p>
+<ul>
+<li><strong>System status</strong>: CPU, memory, and disk usage</li>
+<li><strong>Process status</strong>: Which services are running and their health</li>
+<li><strong>Context information</strong>: Current project, environment, and configuration</li>
+<li><strong>Recent activity</strong>: Recent commands and their results</li>
+<li><strong>Warnings and errors</strong>: Error messages and alerts from running processes</li>
+</ul>
+<p>This dashboard enables engineers to maintain situational awareness while working on complex systems.</p>
+</section>
+<section id="rapid-decision-making" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="rapid-decision-making"><span class="header-section-number">7.6.2</span> Rapid Decision Making</h3>
+<p>The terminal supports rapid decision making through:</p>
+<ul>
+<li><strong>Fast command execution</strong>: Commands execute without the overhead of GUI applications</li>
+<li><strong>Immediate feedback</strong>: Results are displayed directly in the terminal</li>
+<li><strong>Easy experimentation</strong>: Commands can be modified and re-executed quickly</li>
+<li><strong>Composable workflows</strong>: Commands can be chained together with pipes</li>
+</ul>
+<p>This agility is essential for the experimental nature of AI engineering.</p>
+</section>
+<section id="scripting-and-automation" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="scripting-and-automation"><span class="header-section-number">7.6.3</span> Scripting and Automation</h3>
+<p>The terminal environment enables powerful scripting and automation:</p>
+<ul>
+<li><strong>Bash scripts</strong>: Automate repetitive workflows</li>
+<li><strong>Makefiles</strong>: Define build and test procedures</li>
+<li><strong>Task runners</strong>: Manage complex project workflows</li>
+<li><strong>Custom tools</strong>: Build specialized utilities for specific tasks</li>
+</ul>
+<p>These automation capabilities allow engineers to scale their workflows as systems grow in complexity.</p>
+</section>
+</section>
+<section id="beyond-the-terminal" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="beyond-the-terminal"><span class="header-section-number">7.7</span> Beyond the Terminal</h2>
+<section id="integration-with-graphical-tools" class="level3" data-number="7.7.1">
+<h3 data-number="7.7.1" class="anchored" data-anchor-id="integration-with-graphical-tools"><span class="header-section-number">7.7.1</span> Integration with Graphical Tools</h3>
+<p>The terminal does not exist in isolation. It integrates with graphical tools:</p>
+<ul>
+<li><strong>Browser-based interfaces</strong>: Model playgrounds, documentation, and dashboards</li>
+<li><strong>IDE integration</strong>: Terminals within IDEs for mixed workflows</li>
+<li><strong>Desktop applications</strong>: System monitors and visualization tools</li>
+<li><strong>Web services</strong>: Cloud consoles and management interfaces</li>
+</ul>
+<p>The terminal serves as the central coordination point that connects these various tools.</p>
+</section>
+<section id="cloud-and-remote-environments" class="level3" data-number="7.7.2">
+<h3 data-number="7.7.2" class="anchored" data-anchor-id="cloud-and-remote-environments"><span class="header-section-number">7.7.2</span> Cloud and Remote Environments</h3>
+<p>The terminal extends beyond local machines:</p>
+<ul>
+<li><strong>SSH connections</strong>: Access remote servers and cloud instances</li>
+<li><strong>Remote development</strong>: Work in cloud environments as if local</li>
+<li><strong>Docker containers</strong>: Run isolated environments with CLI access</li>
+<li><strong>Kubernetes</strong>: Orchestrate containerized systems from the command line</li>
+</ul>
+<p>The terminal provides a consistent interface across local, remote, and cloud environments.</p>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7.8</span> Conclusion</h2>
+<p>The terminal occupies a central position in AI engineering practice. It is not simply an interface for executing commands. It is the layer through which engineers orchestrate intelligent systems, coordinate processes, and maintain visibility into complex computational workflows.</p>
+<p>For the AI systems builder, the terminal is not an accessory to development.</p>
+<p>It is the control center.</p>
+<p>The terminal provides:</p>
+<ul>
+<li><strong>Orchestration</strong>: Managing multiple concurrent processes and services</li>
+<li><strong>Observation</strong>: Real-time monitoring of logs, metrics, and system behavior</li>
+<li><strong>Control</strong>: Interactive manipulation of running systems</li>
+<li><strong>Automation</strong>: Scripting and workflow management</li>
+<li><strong>Integration</strong>: Connecting various tools and environments</li>
+</ul>
+<p>The next chapter examines how the terminal integrates with the IDE to form a unified development environment. Together, these two complementary environments support the full range of AI engineering activities, from code editing to system orchestration.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./ch04.html" class="pagination-link" aria-label="Chapter 4 — The AI Systems Builder Workstation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 4 — The AI Systems Builder Workstation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ch06.html" class="pagination-link" aria-label="Chapter 6 — IDE + Terminal Workflow">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 6 — IDE + Terminal Workflow</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
