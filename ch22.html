@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>27&nbsp; Chapter 22 — Practical Prompt Engineering – AI Engineer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ch23.html" rel="next">
+<link href="./ch21.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch21.html">Part VII — Practical Guide to AI Engineering</a></li><li class="breadcrumb-item"><a href="./ch22.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Chapter 22 — Practical Prompt Engineering</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">AI Engineer</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface — The End of Software as We Knew It</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part I — The New Discipline of AI Engineering</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 1 — From Programmer to AI Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 2 — The AI Engineering Stack</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 3 — Thinking in Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part II — The AI Engineering Environment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 4 — The AI Systems Builder Workstation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 5 — Terminal as the Control Center</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 6 — IDE + Terminal Workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 7 — The AI Systems Builder Workstation Setup</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch07.5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 7.5 — From Shell to Agent: The Evolution of Command Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part III — Building AI Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 8 — Prompt Engineering as Architecture</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 9 — AI Pipelines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 10 — Agents</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 11 — Tools and External Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part IV — Reliability and Evaluation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 12 — AI Evaluation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chapter 13 — Observability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chapter 14 — Debugging AI Systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part V — Production Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Chapter 15 — AI Infrastructure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Chapter 16 — Scaling AI Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Chapter 17 — AI Products</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VI — The Future of AI Engineers</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch18.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Chapter 18 — AI as Co-Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch18.5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Chapter 18.5 — Intent-Driven and Specification-Driven Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Chapter 19 — From Code to System Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch19.5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Chapter 19.5 — Architecture-Driven Engineering</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch20.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Chapter 20 — The Philosophy of AI Engineering</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Practical Guide to AI Engineering</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch21.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Chapter 21 — Building Your First AI System</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch22.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Chapter 22 — Practical Prompt Engineering</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch23.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Chapter 23 — Building Retrieval-Augmented Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch24.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Chapter 24 — Designing Multi-Agent Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch25.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Chapter 25 — Evaluation and Debugging AI Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch26.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Chapter 26 — Cost Optimization Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch27.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Chapter 27 — Core Framework Recap: The AI Engineering Skeleton</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">References</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-a-shell-scripting-tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Appendix A — Shell Scripting Tutorial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-b-cli-tool-design-patterns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Appendix B — CLI Tool Design Patterns</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">27.1</span> Introduction</a></li>
+  <li><a href="#the-prompt-engineering-workflow" id="toc-the-prompt-engineering-workflow" class="nav-link" data-scroll-target="#the-prompt-engineering-workflow"><span class="header-section-number">27.2</span> The Prompt Engineering Workflow</a>
+  <ul class="collapse">
+  <li><a href="#systematic-design-process" id="toc-systematic-design-process" class="nav-link" data-scroll-target="#systematic-design-process"><span class="header-section-number">27.2.1</span> Systematic Design Process</a></li>
+  <li><a href="#step-1-understand-the-task" id="toc-step-1-understand-the-task" class="nav-link" data-scroll-target="#step-1-understand-the-task"><span class="header-section-number">27.2.2</span> Step 1: Understand the Task</a></li>
+  <li><a href="#step-2-select-a-pattern" id="toc-step-2-select-a-pattern" class="nav-link" data-scroll-target="#step-2-select-a-pattern"><span class="header-section-number">27.2.3</span> Step 2: Select a Pattern</a></li>
+  <li><a href="#step-3-draft-the-prompt" id="toc-step-3-draft-the-prompt" class="nav-link" data-scroll-target="#step-3-draft-the-prompt"><span class="header-section-number">27.2.4</span> Step 3: Draft the Prompt</a></li>
+  <li><a href="#step-4-test-with-examples" id="toc-step-4-test-with-examples" class="nav-link" data-scroll-target="#step-4-test-with-examples"><span class="header-section-number">27.2.5</span> Step 4: Test with Examples</a></li>
+  <li><a href="#step-5-analyze-failures" id="toc-step-5-analyze-failures" class="nav-link" data-scroll-target="#step-5-analyze-failures"><span class="header-section-number">27.2.6</span> Step 5: Analyze Failures</a></li>
+  <li><a href="#step-6-refine-and-iterate" id="toc-step-6-refine-and-iterate" class="nav-link" data-scroll-target="#step-6-refine-and-iterate"><span class="header-section-number">27.2.7</span> Step 6: Refine and Iterate</a></li>
+  </ul></li>
+  <li><a href="#essential-prompt-patterns" id="toc-essential-prompt-patterns" class="nav-link" data-scroll-target="#essential-prompt-patterns"><span class="header-section-number">27.3</span> Essential Prompt Patterns</a>
+  <ul class="collapse">
+  <li><a href="#pattern-1-structured-instruction" id="toc-pattern-1-structured-instruction" class="nav-link" data-scroll-target="#pattern-1-structured-instruction"><span class="header-section-number">27.3.1</span> Pattern 1: Structured Instruction</a></li>
+  <li><a href="#pattern-2-role-based" id="toc-pattern-2-role-based" class="nav-link" data-scroll-target="#pattern-2-role-based"><span class="header-section-number">27.3.2</span> Pattern 2: Role-Based</a></li>
+  <li><a href="#pattern-3-chain-of-thought" id="toc-pattern-3-chain-of-thought" class="nav-link" data-scroll-target="#pattern-3-chain-of-thought"><span class="header-section-number">27.3.3</span> Pattern 3: Chain of Thought</a></li>
+  <li><a href="#pattern-4-few-shot-learning" id="toc-pattern-4-few-shot-learning" class="nav-link" data-scroll-target="#pattern-4-few-shot-learning"><span class="header-section-number">27.3.4</span> Pattern 4: Few-Shot Learning</a></li>
+  <li><a href="#pattern-5-step-by-step-reasoning" id="toc-pattern-5-step-by-step-reasoning" class="nav-link" data-scroll-target="#pattern-5-step-by-step-reasoning"><span class="header-section-number">27.3.5</span> Pattern 5: Step-by-Step Reasoning</a></li>
+  </ul></li>
+  <li><a href="#advanced-prompt-techniques" id="toc-advanced-prompt-techniques" class="nav-link" data-scroll-target="#advanced-prompt-techniques"><span class="header-section-number">27.4</span> Advanced Prompt Techniques</a>
+  <ul class="collapse">
+  <li><a href="#technique-1-parameterized-prompts" id="toc-technique-1-parameterized-prompts" class="nav-link" data-scroll-target="#technique-1-parameterized-prompts"><span class="header-section-number">27.4.1</span> Technique 1: Parameterized Prompts</a></li>
+  <li><a href="#technique-2-chain-prompts" id="toc-technique-2-chain-prompts" class="nav-link" data-scroll-target="#technique-2-chain-prompts"><span class="header-section-number">27.4.2</span> Technique 2: Chain Prompts</a></li>
+  <li><a href="#technique-3-self-reflection" id="toc-technique-3-self-reflection" class="nav-link" data-scroll-target="#technique-3-self-reflection"><span class="header-section-number">27.4.3</span> Technique 3: Self-Reflection</a></li>
+  <li><a href="#technique-4-multiple-perspectives" id="toc-technique-4-multiple-perspectives" class="nav-link" data-scroll-target="#technique-4-multiple-perspectives"><span class="header-section-number">27.4.4</span> Technique 4: Multiple Perspectives</a></li>
+  <li><a href="#technique-5-structured-output" id="toc-technique-5-structured-output" class="nav-link" data-scroll-target="#technique-5-structured-output"><span class="header-section-number">27.4.5</span> Technique 5: Structured Output</a></li>
+  </ul></li>
+  <li><a href="#building-a-prompt-library" id="toc-building-a-prompt-library" class="nav-link" data-scroll-target="#building-a-prompt-library"><span class="header-section-number">27.5</span> Building a Prompt Library</a>
+  <ul class="collapse">
+  <li><a href="#library-structure" id="toc-library-structure" class="nav-link" data-scroll-target="#library-structure"><span class="header-section-number">27.5.1</span> Library Structure</a></li>
+  <li><a href="#prompt-metadata" id="toc-prompt-metadata" class="nav-link" data-scroll-target="#prompt-metadata"><span class="header-section-number">27.5.2</span> Prompt Metadata</a></li>
+  <li><a href="#prompt-versioning" id="toc-prompt-versioning" class="nav-link" data-scroll-target="#prompt-versioning"><span class="header-section-number">27.5.3</span> Prompt Versioning</a></li>
+  </ul></li>
+  <li><a href="#prompt-evaluation" id="toc-prompt-evaluation" class="nav-link" data-scroll-target="#prompt-evaluation"><span class="header-section-number">27.6</span> Prompt Evaluation</a>
+  <ul class="collapse">
+  <li><a href="#automated-evaluation" id="toc-automated-evaluation" class="nav-link" data-scroll-target="#automated-evaluation"><span class="header-section-number">27.6.1</span> Automated Evaluation</a></li>
+  <li><a href="#ab-testing-prompts" id="toc-ab-testing-prompts" class="nav-link" data-scroll-target="#ab-testing-prompts"><span class="header-section-number">27.6.2</span> A/B Testing Prompts</a></li>
+  </ul></li>
+  <li><a href="#prompt-optimization-techniques" id="toc-prompt-optimization-techniques" class="nav-link" data-scroll-target="#prompt-optimization-techniques"><span class="header-section-number">27.7</span> Prompt Optimization Techniques</a>
+  <ul class="collapse">
+  <li><a href="#technique-1-iterative-refinement" id="toc-technique-1-iterative-refinement" class="nav-link" data-scroll-target="#technique-1-iterative-refinement"><span class="header-section-number">27.7.1</span> Technique 1: Iterative Refinement</a></li>
+  <li><a href="#technique-2-parameter-tuning" id="toc-technique-2-parameter-tuning" class="nav-link" data-scroll-target="#technique-2-parameter-tuning"><span class="header-section-number">27.7.2</span> Technique 2: Parameter Tuning</a></li>
+  </ul></li>
+  <li><a href="#common-pitfalls-and-solutions" id="toc-common-pitfalls-and-solutions" class="nav-link" data-scroll-target="#common-pitfalls-and-solutions"><span class="header-section-number">27.8</span> Common Pitfalls and Solutions</a>
+  <ul class="collapse">
+  <li><a href="#pitfall-1-over-specification" id="toc-pitfall-1-over-specification" class="nav-link" data-scroll-target="#pitfall-1-over-specification"><span class="header-section-number">27.8.1</span> Pitfall 1: Over-Specification</a></li>
+  <li><a href="#pitfall-2-ambiguous-instructions" id="toc-pitfall-2-ambiguous-instructions" class="nav-link" data-scroll-target="#pitfall-2-ambiguous-instructions"><span class="header-section-number">27.8.2</span> Pitfall 2: Ambiguous Instructions</a></li>
+  <li><a href="#pitfall-3-missing-format-specification" id="toc-pitfall-3-missing-format-specification" class="nav-link" data-scroll-target="#pitfall-3-missing-format-specification"><span class="header-section-number">27.8.3</span> Pitfall 3: Missing Format Specification</a></li>
+  <li><a href="#pitfall-4-ignoring-edge-cases" id="toc-pitfall-4-ignoring-edge-cases" class="nav-link" data-scroll-target="#pitfall-4-ignoring-edge-cases"><span class="header-section-number">27.8.4</span> Pitfall 4: Ignoring Edge Cases</a></li>
+  <li><a href="#pitfall-5-lack-of-examples" id="toc-pitfall-5-lack-of-examples" class="nav-link" data-scroll-target="#pitfall-5-lack-of-examples"><span class="header-section-number">27.8.5</span> Pitfall 5: Lack of Examples</a></li>
+  </ul></li>
+  <li><a href="#prompt-documentation" id="toc-prompt-documentation" class="nav-link" data-scroll-target="#prompt-documentation"><span class="header-section-number">27.9</span> Prompt Documentation</a>
+  <ul class="collapse">
+  <li><a href="#template-documentation" id="toc-template-documentation" class="nav-link" data-scroll-target="#template-documentation"><span class="header-section-number">27.9.1</span> Template Documentation</a></li>
+  </ul></li>
+  <li><a href="#best-practices-summary" id="toc-best-practices-summary" class="nav-link" data-scroll-target="#best-practices-summary"><span class="header-section-number">27.10</span> Best Practices Summary</a>
+  <ul class="collapse">
+  <li><a href="#design-principles" id="toc-design-principles" class="nav-link" data-scroll-target="#design-principles"><span class="header-section-number">27.10.1</span> Design Principles</a></li>
+  <li><a href="#development-workflow" id="toc-development-workflow" class="nav-link" data-scroll-target="#development-workflow"><span class="header-section-number">27.10.2</span> Development Workflow</a></li>
+  <li><a href="#organizational-practices" id="toc-organizational-practices" class="nav-link" data-scroll-target="#organizational-practices"><span class="header-section-number">27.10.3</span> Organizational Practices</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">27.11</span> Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch21.html">Part VII — Practical Guide to AI Engineering</a></li><li class="breadcrumb-item"><a href="./ch22.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Chapter 22 — Practical Prompt Engineering</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Chapter 22 — Practical Prompt Engineering</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2" data-number="27.1">
+<h2 data-number="27.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">27.1</span> Introduction</h2>
+<p>Chapter 8 established prompt engineering as an architectural discipline—prompts function as interfaces between deterministic systems and probabilistic models. This chapter translates that conceptual framework into practical techniques and patterns.</p>
+<p>Effective prompt engineering is not about clever wording. It is a systematic design process that involves understanding tasks, structuring information, specifying constraints, and iteratively refining based on observed behavior.</p>
+<p>This chapter provides concrete techniques for designing, testing, and optimizing prompts. It covers patterns, templates, evaluation methods, and best practices that transform prompt crafting from an art into an engineering practice.</p>
+</section>
+<section id="the-prompt-engineering-workflow" class="level2" data-number="27.2">
+<h2 data-number="27.2" class="anchored" data-anchor-id="the-prompt-engineering-workflow"><span class="header-section-number">27.2</span> The Prompt Engineering Workflow</h2>
+<section id="systematic-design-process" class="level3" data-number="27.2.1">
+<h3 data-number="27.2.1" class="anchored" data-anchor-id="systematic-design-process"><span class="header-section-number">27.2.1</span> Systematic Design Process</h3>
+<p>Effective prompt engineering follows a structured workflow:</p>
+<pre><code>understand task → select pattern → draft prompt → test with examples → analyze failures → refine → iterate</code></pre>
+<p>This workflow ensures that prompts are designed systematically rather than through trial and error.</p>
+</section>
+<section id="step-1-understand-the-task" class="level3" data-number="27.2.2">
+<h3 data-number="27.2.2" class="anchored" data-anchor-id="step-1-understand-the-task"><span class="header-section-number">27.2.2</span> Step 1: Understand the Task</h3>
+<p>Before writing a prompt, clarify:</p>
+<ul>
+<li><strong>What is the model supposed to do?</strong> (task definition)</li>
+<li><strong>What information does it need?</strong> (required context)</li>
+<li><strong>What constraints apply?</strong> (format, length, style)</li>
+<li><strong>What does good output look like?</strong> (success criteria)</li>
+</ul>
+<p><strong>Example</strong>: If building a summarization system, define: - Task: Summarize technical documents - Context: Document text, target audience - Constraints: Maximum length, technical level - Success: Covers key points, accurate, readable</p>
+</section>
+<section id="step-2-select-a-pattern" class="level3" data-number="27.2.3">
+<h3 data-number="27.2.3" class="anchored" data-anchor-id="step-2-select-a-pattern"><span class="header-section-number">27.2.3</span> Step 2: Select a Pattern</h3>
+<p>Choose an appropriate prompt pattern based on the task:</p>
+<ul>
+<li><strong>Structured Instruction</strong>: For clear, step-by-step tasks</li>
+<li><strong>Role-Based</strong>: For domain-specific expertise</li>
+<li><strong>Chain of Thought</strong>: For reasoning tasks</li>
+<li><strong>Few-Shot</strong>: For tasks requiring examples</li>
+<li><strong>Step-by-Step</strong>: For multi-step problems</li>
+</ul>
+</section>
+<section id="step-3-draft-the-prompt" class="level3" data-number="27.2.4">
+<h3 data-number="27.2.4" class="anchored" data-anchor-id="step-3-draft-the-prompt"><span class="header-section-number">27.2.4</span> Step 3: Draft the Prompt</h3>
+<p>Write an initial prompt following the selected pattern. Include:</p>
+<ul>
+<li>Clear task description</li>
+<li>Relevant context</li>
+<li>Explicit constraints</li>
+<li>Format specifications</li>
+<li>Examples (if using few-shot)</li>
+</ul>
+</section>
+<section id="step-4-test-with-examples" class="level3" data-number="27.2.5">
+<h3 data-number="27.2.5" class="anchored" data-anchor-id="step-4-test-with-examples"><span class="header-section-number">27.2.5</span> Step 4: Test with Examples</h3>
+<p>Evaluate the prompt on representative inputs:</p>
+<ul>
+<li>Normal cases: Typical inputs</li>
+<li>Edge cases: Unusual or difficult inputs</li>
+<li>Negative cases: Inputs that should be rejected</li>
+</ul>
+</section>
+<section id="step-5-analyze-failures" class="level3" data-number="27.2.6">
+<h3 data-number="27.2.6" class="anchored" data-anchor-id="step-5-analyze-failures"><span class="header-section-number">27.2.6</span> Step 5: Analyze Failures</h3>
+<p>Identify where the prompt produces poor results:</p>
+<ul>
+<li>Misunderstanding the task</li>
+<li>Ignoring constraints</li>
+<li>Producing incorrect information</li>
+<li>Failing on edge cases</li>
+</ul>
+</section>
+<section id="step-6-refine-and-iterate" class="level3" data-number="27.2.7">
+<h3 data-number="27.2.7" class="anchored" data-anchor-id="step-6-refine-and-iterate"><span class="header-section-number">27.2.7</span> Step 6: Refine and Iterate</h3>
+<p>Adjust the prompt based on failure analysis:</p>
+<ul>
+<li>Clarify instructions</li>
+<li>Add more examples</li>
+<li>Strengthen constraints</li>
+<li>Reorganize structure</li>
+</ul>
+</section>
+</section>
+<section id="essential-prompt-patterns" class="level2" data-number="27.3">
+<h2 data-number="27.3" class="anchored" data-anchor-id="essential-prompt-patterns"><span class="header-section-number">27.3</span> Essential Prompt Patterns</h2>
+<section id="pattern-1-structured-instruction" class="level3" data-number="27.3.1">
+<h3 data-number="27.3.1" class="anchored" data-anchor-id="pattern-1-structured-instruction"><span class="header-section-number">27.3.1</span> Pattern 1: Structured Instruction</h3>
+<p>Organize the prompt into clear sections:</p>
+<pre class="text"><code>Task: [clear description of what to do]
+
+Context: [relevant background information]
+
+Constraints: [limitations on the output]
+
+Format: [required output structure]
+
+Examples: [optional examples]
+
+Output: [the result]</code></pre>
+<p><strong>When to Use</strong>: General-purpose tasks where clarity is essential.</p>
+<p><strong>Example</strong>:</p>
+<pre class="text"><code>Task: Summarize the following technical document.
+
+Context: This is a research paper about machine learning. The summary should be accessible to software engineers who are not machine learning experts.
+
+Constraints:
+- Maximum 3 paragraphs
+- Include the main contribution
+- Use simple language
+- Avoid technical jargon when possible
+
+Format: Plain text without bullet points
+
+Document:
+[document text]
+
+Output:</code></pre>
+<p><strong>Best Practices</strong>: - Use clear section headers - Keep each section focused - Be explicit about constraints - Specify output format precisely</p>
+</section>
+<section id="pattern-2-role-based" class="level3" data-number="27.3.2">
+<h3 data-number="27.3.2" class="anchored" data-anchor-id="pattern-2-role-based"><span class="header-section-number">27.3.2</span> Pattern 2: Role-Based</h3>
+<p>Assign a specific role to the model:</p>
+<pre class="text"><code>You are an expert [domain specialist] with [specific expertise].
+
+Your role is to [task description].
+
+Please provide a response that demonstrates expertise in [domain].
+
+[additional instructions]</code></pre>
+<p><strong>When to Use</strong>: Domain-specific tasks requiring specialized knowledge or perspective.</p>
+<p><strong>Example</strong>:</p>
+<pre class="text"><code>You are an expert software architect with 20 years of experience designing large-scale distributed systems.
+
+Your role is to review the following system design and provide feedback on scalability, reliability, and maintainability.
+
+Please provide a response that demonstrates expertise in:
+- System architecture patterns
+- Scalability considerations
+- Failure handling strategies
+- Best practices for distributed systems
+
+Be thorough but concise. Focus on actionable recommendations.
+
+System Design:
+[design description]
+
+Your Review:</code></pre>
+<p><strong>Best Practices</strong>: - Define the role clearly - Specify the expertise level - Explain what the role entails - Set expectations for the response</p>
+</section>
+<section id="pattern-3-chain-of-thought" class="level3" data-number="27.3.3">
+<h3 data-number="27.3.3" class="anchored" data-anchor-id="pattern-3-chain-of-thought"><span class="header-section-number">27.3.3</span> Pattern 3: Chain of Thought</h3>
+<p>Guide the model through explicit reasoning steps:</p>
+<pre class="text"><code>Let's work through this problem step by step.
+
+Step 1: [first reasoning step]
+Step 2: [second reasoning step]
+Step 3: [third reasoning step]
+...
+
+Based on this reasoning, the answer is: [final answer]
+
+Problem: [the problem to solve]</code></pre>
+<p><strong>When to Use</strong>: Complex reasoning tasks, math problems, logical deduction.</p>
+<p><strong>Example</strong>:</p>
+<pre class="text"><code>Let's work through this database optimization problem step by step.
+
+Step 1: Identify the slow queries by examining the query execution plan.
+Step 2: Analyze the table structure and indexes to find missing opportunities.
+Step 3: Consider the query patterns and data distribution.
+Step 4: Propose index changes based on the analysis.
+Step 5: Estimate the performance improvement.
+
+Based on this reasoning, provide your optimization recommendations.
+
+Problem:
+A database with 10 million rows is experiencing slow query performance. The main query involves joining three tables on ID columns. Current execution time is 45 seconds.
+
+Optimization Plan:</code></pre>
+<p><strong>Best Practices</strong>: - Break down complex problems - Make each step explicit - Show the reasoning process - Arrive at a clear conclusion</p>
+</section>
+<section id="pattern-4-few-shot-learning" class="level3" data-number="27.3.4">
+<h3 data-number="27.3.4" class="anchored" data-anchor-id="pattern-4-few-shot-learning"><span class="header-section-number">27.3.4</span> Pattern 4: Few-Shot Learning</h3>
+<p>Provide examples within the prompt:</p>
+<pre class="text"><code>Here are some examples of [task]:
+
+Example 1:
+Input: [input 1]
+Output: [output 1]
+
+Example 2:
+Input: [input 2]
+Output: [output 2]
+
+Example 3:
+Input: [input 3]
+Output: [output 3]
+
+Now, complete this:
+Input: [new input]
+Output:</code></pre>
+<p><strong>When to Use</strong>: Tasks where examples demonstrate the desired behavior better than instructions.</p>
+<p><strong>Example</strong>:</p>
+<pre class="text"><code>Here are some examples of extracting key information from bug reports:
+
+Example 1:
+Input: "When I click the submit button, nothing happens. The console shows 'Error 500'."
+Output:
+Severity: High
+Component: Submit functionality
+Error: Error 500
+
+Example 2:
+Input: "The text is too small on mobile devices. I can barely read it."
+Output:
+Severity: Medium
+Component: UI/Mobile
+Error: Text size issue
+
+Example 3:
+Input: "I can't login with my Google account. It just spins forever."
+Output:
+Severity: High
+Component: Authentication
+Error: Google login hanging
+
+Now, extract information from this bug report:
+Input: "The images load very slowly on the product page. It takes like 10 seconds."
+Output:</code></pre>
+<p><strong>Best Practices</strong>: - Provide diverse examples - Cover edge cases - Show clear input-output relationships - Use consistent formatting</p>
+</section>
+<section id="pattern-5-step-by-step-reasoning" class="level3" data-number="27.3.5">
+<h3 data-number="27.3.5" class="anchored" data-anchor-id="pattern-5-step-by-step-reasoning"><span class="header-section-number">27.3.5</span> Pattern 5: Step-by-Step Reasoning</h3>
+<p>Explicitly instruct the model to reason step by step:</p>
+<pre class="text"><code>Think through this problem step by step:
+
+1. First, [first step]
+2. Then, [second step]
+3. Next, [third step]
+4. Finally, [fourth step]
+
+Problem: [the problem to solve]
+
+Solution:</code></pre>
+<p><strong>When to Use</strong>: Multi-step problems where the process matters as much as the result.</p>
+<p><strong>Example</strong>:</p>
+<pre class="text"><code>Think through this code review step by step:
+
+1. First, examine the overall structure and architecture.
+2. Then, check for common security vulnerabilities.
+3. Next, analyze the error handling and edge cases.
+4. Finally, provide specific recommendations for improvement.
+
+Code to Review:
+[code snippet]
+
+Code Review:</code></pre>
+<p><strong>Best Practices</strong>: - Number the steps clearly - Make each step actionable - Ensure steps build on each other - Lead to a complete solution</p>
+</section>
+</section>
+<section id="advanced-prompt-techniques" class="level2" data-number="27.4">
+<h2 data-number="27.4" class="anchored" data-anchor-id="advanced-prompt-techniques"><span class="header-section-number">27.4</span> Advanced Prompt Techniques</h2>
+<section id="technique-1-parameterized-prompts" class="level3" data-number="27.4.1">
+<h3 data-number="27.4.1" class="anchored" data-anchor-id="technique-1-parameterized-prompts"><span class="header-section-number">27.4.1</span> Technique 1: Parameterized Prompts</h3>
+<p>Create reusable prompt templates with parameters:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prompts/summarization_template.txt</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>Task: Summarize the following text.</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>Context: {context}</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>Constraints:</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Maximum length: {max_length}</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Target audience: {audience}</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Tone: {tone}</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>Format: {<span class="bu">format</span>}</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>Text:</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>{text}</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>Summary:</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_summarization_prompt(text, context<span class="op">=</span><span class="st">""</span>, max_length<span class="op">=</span><span class="dv">200</span>, </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                                audience<span class="op">=</span><span class="st">"general"</span>, tone<span class="op">=</span><span class="st">"neutral"</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                                <span class="bu">format</span><span class="op">=</span><span class="st">"plain"</span>):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Format the summarization prompt with parameters."""</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    template <span class="op">=</span> load_prompt(<span class="st">"summarization_template"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> template.<span class="bu">format</span>(</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        text<span class="op">=</span>text,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        context<span class="op">=</span>context,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        max_length<span class="op">=</span>max_length,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        audience<span class="op">=</span>audience,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        tone<span class="op">=</span>tone,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">format</span><span class="op">=</span><span class="bu">format</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Benefits</strong>: - Reusability across contexts - Easy parameter tuning - Clear what varies - Version control of templates</p>
+</section>
+<section id="technique-2-chain-prompts" class="level3" data-number="27.4.2">
+<h3 data-number="27.4.2" class="anchored" data-anchor-id="technique-2-chain-prompts"><span class="header-section-number">27.4.2</span> Technique 2: Chain Prompts</h3>
+<p>Break complex tasks into sequential prompts:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Extract key points</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>points_prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="st">Extract the key points from this text:</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="sc">{text}</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">Key points:</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Summarize key points</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>summary_prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="st">Summarize these key points:</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="sc">{points}</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="st">Summary:</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chain_summarize(text):</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 1</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    points <span class="op">=</span> model.generate(points_prompt.<span class="bu">format</span>(text<span class="op">=</span>text))</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 2</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> model.generate(summary_prompt.<span class="bu">format</span>(points<span class="op">=</span>points))</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Benefits</strong>: - More reliable on complex tasks - Each step can be optimized independently - Easier to debug failures - Can use different models for different steps</p>
+</section>
+<section id="technique-3-self-reflection" class="level3" data-number="27.4.3">
+<h3 data-number="27.4.3" class="anchored" data-anchor-id="technique-3-self-reflection"><span class="header-section-number">27.4.3</span> Technique 3: Self-Reflection</h3>
+<p>Ask the model to critique and improve its own output:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_with_reflection(query):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initial generation</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    initial_prompt <span class="op">=</span> <span class="ss">f"Answer this question: </span><span class="sc">{</span>query<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    initial_answer <span class="op">=</span> model.generate(initial_prompt)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reflection</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    reflection_prompt <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="ss">Review this answer:</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="ss">Question: </span><span class="sc">{</span>query<span class="sc">}</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="ss">Answer: </span><span class="sc">{</span>initial_answer<span class="sc">}</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="ss">Critique the answer and identify:</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="ss">1. Any factual errors</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="ss">2. Missing information</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="ss">3. Unclear explanations</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="ss">Then provide an improved answer.</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="ss">Critique and Improved Answer:</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    improved <span class="op">=</span> model.generate(reflection_prompt)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> improved</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Benefits</strong>: - Improves answer quality - Reduces hallucinations - Makes reasoning explicit - Provides transparency</p>
+</section>
+<section id="technique-4-multiple-perspectives" class="level3" data-number="27.4.4">
+<h3 data-number="27.4.4" class="anchored" data-anchor-id="technique-4-multiple-perspectives"><span class="header-section-number">27.4.4</span> Technique 4: Multiple Perspectives</h3>
+<p>Ask the model to consider different viewpoints:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> analyze_from_perspectives(problem):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    perspectives <span class="op">=</span> [</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"technical perspective"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"business perspective"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"user experience perspective"</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    analysis <span class="op">=</span> {}</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> perspective <span class="kw">in</span> perspectives:</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        prompt <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="ss">Analyze this problem from a </span><span class="sc">{</span>perspective<span class="sc">}</span><span class="ss">:</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="sc">{</span>problem<span class="sc">}</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="ss">Analysis:</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        analysis[perspective] <span class="op">=</span> model.generate(prompt)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Synthesize perspectives</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    synthesis_prompt <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="ss">Synthesize these perspectives into a comprehensive analysis:</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="ss">Technical Analysis:</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="sc">{</span>analysis[<span class="st">'technical perspective'</span>]<span class="sc">}</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="ss">Business Analysis:</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="sc">{</span>analysis[<span class="st">'business perspective'</span>]<span class="sc">}</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="ss">UX Analysis:</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="sc">{</span>analysis[<span class="st">'user experience perspective'</span>]<span class="sc">}</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="ss">Comprehensive Analysis:</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> model.generate(synthesis_prompt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Benefits</strong>: - More thorough analysis - Considers multiple stakeholders - Reduces bias - Provides richer insights</p>
+</section>
+<section id="technique-5-structured-output" class="level3" data-number="27.4.5">
+<h3 data-number="27.4.5" class="anchored" data-anchor-id="technique-5-structured-output"><span class="header-section-number">27.4.5</span> Technique 5: Structured Output</h3>
+<p>Enforce specific output formats:</p>
+<pre class="text"><code>Task: Extract information from this text.
+
+Format your output as JSON with the following structure:
+{
+  "name": "string",
+  "date": "string (YYYY-MM-DD)",
+  "amount": "number",
+  "status": "pending|completed|cancelled"
+}
+
+Text:
+{text}
+
+Output:</code></pre>
+<p><strong>Benefits</strong>: - Easy to parse programmatically - Consistent format - Type safety - Direct integration with code</p>
+</section>
+</section>
+<section id="building-a-prompt-library" class="level2" data-number="27.5">
+<h2 data-number="27.5" class="anchored" data-anchor-id="building-a-prompt-library"><span class="header-section-number">27.5</span> Building a Prompt Library</h2>
+<section id="library-structure" class="level3" data-number="27.5.1">
+<h3 data-number="27.5.1" class="anchored" data-anchor-id="library-structure"><span class="header-section-number">27.5.1</span> Library Structure</h3>
+<p>Organize prompts systematically:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">prompts/</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├─</span> library/</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  ├─ summarization/</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  ├─ default.txt</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  ├─ technical.txt</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  └─ executive.txt</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  ├─ classification/</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  ├─ binary.txt</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  └─ multiclass.txt</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  ├─ reasoning/</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  ├─ step_by_step.txt</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  └─ chain_of_thought.txt</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └─ extraction/</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>     ├─ structured.txt</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>     └─ freeform.txt</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="ex">├─</span> templates/</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  ├─ base_template.txt</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └─ role_based.txt</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="ex">└─</span> experiments/</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>   <span class="ex">├─</span> experiment_001.txt</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>   <span class="ex">└─</span> experiment_002.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="prompt-metadata" class="level3" data-number="27.5.2">
+<h3 data-number="27.5.2" class="anchored" data-anchor-id="prompt-metadata"><span class="header-section-number">27.5.2</span> Prompt Metadata</h3>
+<p>Track information about each prompt:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prompts/library/summarization/default.yaml</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"default_summarization"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">"1.2.0"</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">created</span><span class="kw">:</span><span class="at"> </span><span class="st">"2026-01-15"</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"AI Engineer"</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"General-purpose summarization prompt"</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tags</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"summarization"</span><span class="kw">,</span><span class="at"> </span><span class="st">"general"</span><span class="kw">]</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span><span class="kw">:</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"max_length"</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="st">"integer"</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">default</span><span class="kw">:</span><span class="at"> </span><span class="dv">200</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"tone"</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="st">"string"</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">default</span><span class="kw">:</span><span class="at"> </span><span class="st">"neutral"</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">options</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"neutral"</span><span class="kw">,</span><span class="at"> </span><span class="st">"formal"</span><span class="kw">,</span><span class="at"> </span><span class="st">"casual"</span><span class="kw">]</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span><span class="kw">:</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">accuracy</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.85</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">latency_ms</span><span class="kw">:</span><span class="at"> </span><span class="dv">450</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cost_per_1k</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.002</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="prompt-versioning" class="level3" data-number="27.5.3">
+<h3 data-number="27.5.3" class="anchored" data-anchor-id="prompt-versioning"><span class="header-section-number">27.5.3</span> Prompt Versioning</h3>
+<p>Version prompts to track changes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">prompts/library/summarization/</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├─</span> default_v1.0.0.txt</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├─</span> default_v1.1.0.txt</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="ex">└─</span> default_v1.2.0.txt  <span class="co"># current</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Update prompts incrementally:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># src/prompt_manager.py</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PromptManager:</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.prompts <span class="op">=</span> {}</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.load_prompts()</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> load_prompts(<span class="va">self</span>):</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Load all prompts from the library."""</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> root, dirs, files <span class="kw">in</span> os.walk(<span class="st">"prompts/library"</span>):</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">".txt"</span>):</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>                    path <span class="op">=</span> os.path.join(root, <span class="bu">file</span>)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>                    <span class="va">self</span>.prompts[<span class="bu">file</span>] <span class="op">=</span> <span class="va">self</span>.load_prompt(path)</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_prompt(<span class="va">self</span>, name, version<span class="op">=</span><span class="st">"latest"</span>):</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Get a prompt by name and version."""</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>        prompt_key <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_v</span><span class="sc">{</span>version<span class="sc">}</span><span class="ss">"</span> <span class="cf">if</span> version <span class="op">!=</span> <span class="st">"latest"</span> <span class="cf">else</span> name</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.prompts.get(prompt_key)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> version_prompt(<span class="va">self</span>, name, new_version, changes):</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Create a new version of a prompt."""</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Copy current prompt</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add version tag</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Record changes</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Update metadata</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="prompt-evaluation" class="level2" data-number="27.6">
+<h2 data-number="27.6" class="anchored" data-anchor-id="prompt-evaluation"><span class="header-section-number">27.6</span> Prompt Evaluation</h2>
+<section id="automated-evaluation" class="level3" data-number="27.6.1">
+<h3 data-number="27.6.1" class="anchored" data-anchor-id="automated-evaluation"><span class="header-section-number">27.6.1</span> Automated Evaluation</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># src/prompt_evaluator.py</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PromptEvaluator:</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, model):</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.model <span class="op">=</span> model</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> evaluate(<span class="va">self</span>, prompt, test_cases, metrics):</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Evaluate a prompt against test cases."""</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> []</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> test_case <span class="kw">in</span> test_cases:</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>            output <span class="op">=</span> <span class="va">self</span>.model.generate(prompt.<span class="bu">format</span>(<span class="op">**</span>test_case[<span class="st">'input'</span>]))</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> {</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                <span class="st">'input'</span>: test_case[<span class="st">'input'</span>],</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">'expected'</span>: test_case[<span class="st">'expected'</span>],</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>                <span class="st">'actual'</span>: output,</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">'metrics'</span>: {}</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Calculate metrics</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> metric <span class="kw">in</span> metrics:</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>                result[<span class="st">'metrics'</span>][metric] <span class="op">=</span> <span class="va">self</span>.calculate_metric(</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>                    metric,</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>                    test_case[<span class="st">'expected'</span>],</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>                    output</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>            results.append(result)</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.aggregate_results(results)</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> calculate_metric(<span class="va">self</span>, metric, expected, actual):</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Calculate a specific metric."""</span></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> metric <span class="op">==</span> <span class="st">'exact_match'</span>:</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">1</span> <span class="cf">if</span> expected.strip() <span class="op">==</span> actual.strip() <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> metric <span class="op">==</span> <span class="st">'keyword_match'</span>:</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>            expected_keywords <span class="op">=</span> <span class="bu">set</span>(expected.lower().split())</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>            actual_keywords <span class="op">=</span> <span class="bu">set</span>(actual.lower().split())</span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">len</span>(expected_keywords <span class="op">&amp;</span> actual_keywords) <span class="op">/</span> <span class="bu">len</span>(expected_keywords)</span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> metric <span class="op">==</span> <span class="st">'length_appropriate'</span>:</span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>            max_length <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">1</span> <span class="cf">if</span> <span class="bu">len</span>(actual) <span class="op">&lt;=</span> max_length <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ... more metrics</span></span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> aggregate_results(<span class="va">self</span>, results):</span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Aggregate results across all test cases."""</span></span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>        total <span class="op">=</span> <span class="bu">len</span>(results)</span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a>        metrics <span class="op">=</span> results[<span class="dv">0</span>][<span class="st">'metrics'</span>].keys()</span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>        aggregated <span class="op">=</span> {}</span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> metric <span class="kw">in</span> metrics:</span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a>            scores <span class="op">=</span> [r[<span class="st">'metrics'</span>][metric] <span class="cf">for</span> r <span class="kw">in</span> results]</span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a>            aggregated[metric] <span class="op">=</span> {</span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a>                <span class="st">'mean'</span>: <span class="bu">sum</span>(scores) <span class="op">/</span> total,</span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a>                <span class="st">'min'</span>: <span class="bu">min</span>(scores),</span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a>                <span class="st">'max'</span>: <span class="bu">max</span>(scores)</span>
+<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> aggregated</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ab-testing-prompts" class="level3" data-number="27.6.2">
+<h3 data-number="27.6.2" class="anchored" data-anchor-id="ab-testing-prompts"><span class="header-section-number">27.6.2</span> A/B Testing Prompts</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ab_test_prompts(prompt_a, prompt_b, test_cases):</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Compare two prompts using A/B testing."""</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> {</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'prompt_a'</span>: evaluate_prompt(prompt_a, test_cases),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'prompt_b'</span>: evaluate_prompt(prompt_b, test_cases)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Statistical comparison</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    comparison <span class="op">=</span> {}</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> metric <span class="kw">in</span> results[<span class="st">'prompt_a'</span>].keys():</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>        a_scores <span class="op">=</span> results[<span class="st">'prompt_a'</span>][metric]</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>        b_scores <span class="op">=</span> results[<span class="st">'prompt_b'</span>][metric]</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>        comparison[metric] <span class="op">=</span> {</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">'a_mean'</span>: a_scores[<span class="st">'mean'</span>],</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">'b_mean'</span>: b_scores[<span class="st">'mean'</span>],</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">'difference'</span>: b_scores[<span class="st">'mean'</span>] <span class="op">-</span> a_scores[<span class="st">'mean'</span>],</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">'improvement'</span>: (b_scores[<span class="st">'mean'</span>] <span class="op">-</span> a_scores[<span class="st">'mean'</span>]) <span class="op">/</span> a_scores[<span class="st">'mean'</span>]</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> comparison</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="prompt-optimization-techniques" class="level2" data-number="27.7">
+<h2 data-number="27.7" class="anchored" data-anchor-id="prompt-optimization-techniques"><span class="header-section-number">27.7</span> Prompt Optimization Techniques</h2>
+<section id="technique-1-iterative-refinement" class="level3" data-number="27.7.1">
+<h3 data-number="27.7.1" class="anchored" data-anchor-id="technique-1-iterative-refinement"><span class="header-section-number">27.7.1</span> Technique 1: Iterative Refinement</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> optimize_prompt(initial_prompt, test_cases, max_iterations<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Optimize a prompt through iterative refinement."""</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    current_prompt <span class="op">=</span> initial_prompt</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    best_prompt <span class="op">=</span> initial_prompt</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    best_score <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> iteration <span class="kw">in</span> <span class="bu">range</span>(max_iterations):</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Evaluate current prompt</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        score <span class="op">=</span> evaluate_prompt(current_prompt, test_cases)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> score <span class="op">&gt;</span> best_score:</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>            best_score <span class="op">=</span> score</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>            best_prompt <span class="op">=</span> current_prompt</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Analyze failures</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>        failures <span class="op">=</span> analyze_failures(current_prompt, test_cases)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Generate improvements</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>        improvements <span class="op">=</span> suggest_improvements(failures)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Update prompt</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>        current_prompt <span class="op">=</span> apply_improvements(current_prompt, improvements)</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> best_prompt, best_score</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="technique-2-parameter-tuning" class="level3" data-number="27.7.2">
+<h3 data-number="27.7.2" class="anchored" data-anchor-id="technique-2-parameter-tuning"><span class="header-section-number">27.7.2</span> Technique 2: Parameter Tuning</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tune_parameters(template, param_ranges, test_cases):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Tune prompt parameters."""</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> itertools</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate all parameter combinations</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    param_names <span class="op">=</span> <span class="bu">list</span>(param_ranges.keys())</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    param_values <span class="op">=</span> <span class="bu">list</span>(itertools.product(<span class="op">*</span>param_ranges.values()))</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    best_params <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    best_score <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> values <span class="kw">in</span> param_values:</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>        params <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(param_names, values))</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>        prompt <span class="op">=</span> template.<span class="bu">format</span>(<span class="op">**</span>params)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>        score <span class="op">=</span> evaluate_prompt(prompt, test_cases)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> score <span class="op">&gt;</span> best_score:</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>            best_score <span class="op">=</span> score</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>            best_params <span class="op">=</span> params</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> best_params, best_score</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>template <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="st">Task: Summarize this text.</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="st">Max length: </span><span class="sc">{max_length}</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="st">Tone: </span><span class="sc">{tone}</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a><span class="st">Text: </span><span class="sc">{text}</span></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>param_ranges <span class="op">=</span> {</span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_length'</span>: [<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>],</span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">'tone'</span>: [<span class="st">'formal'</span>, <span class="st">'neutral'</span>, <span class="st">'casual'</span>]</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>best_params, best_score <span class="op">=</span> tune_parameters(template, param_ranges, test_cases)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="common-pitfalls-and-solutions" class="level2" data-number="27.8">
+<h2 data-number="27.8" class="anchored" data-anchor-id="common-pitfalls-and-solutions"><span class="header-section-number">27.8</span> Common Pitfalls and Solutions</h2>
+<section id="pitfall-1-over-specification" class="level3" data-number="27.8.1">
+<h3 data-number="27.8.1" class="anchored" data-anchor-id="pitfall-1-over-specification"><span class="header-section-number">27.8.1</span> Pitfall 1: Over-Specification</h3>
+<p><strong>Problem</strong>: Including too many constraints confuses the model.</p>
+<p><strong>Example</strong>:</p>
+<pre class="text"><code>Summarize this text. Use exactly 3 sentences. Start with "The article discusses". End with "In conclusion". Include at least 2 key points. Use formal language. Avoid jargon. Keep sentences under 20 words.</code></pre>
+<p><strong>Solution</strong>: Prioritize the most important constraints.</p>
+<pre class="text"><code>Summarize this text in 3 sentences. Include the main points. Use formal language.
+
+Text: {text}
+
+Summary:</code></pre>
+</section>
+<section id="pitfall-2-ambiguous-instructions" class="level3" data-number="27.8.2">
+<h3 data-number="27.8.2" class="anchored" data-anchor-id="pitfall-2-ambiguous-instructions"><span class="header-section-number">27.8.2</span> Pitfall 2: Ambiguous Instructions</h3>
+<p><strong>Problem</strong>: Vague instructions lead to unpredictable outputs.</p>
+<p><strong>Example</strong>:</p>
+<pre class="text"><code>Make this better.</code></pre>
+<p><strong>Solution</strong>: Be specific about what “better” means.</p>
+<pre class="text"><code>Improve the readability of this text by:
+1. Using shorter sentences
+2. Clarifying technical terms
+3. Improving paragraph structure
+
+Text: {text}
+
+Improved text:</code></pre>
+</section>
+<section id="pitfall-3-missing-format-specification" class="level3" data-number="27.8.3">
+<h3 data-number="27.8.3" class="anchored" data-anchor-id="pitfall-3-missing-format-specification"><span class="header-section-number">27.8.3</span> Pitfall 3: Missing Format Specification</h3>
+<p><strong>Problem</strong>: Without format constraints, outputs vary unpredictably.</p>
+<p><strong>Solution</strong>: Specify output format explicitly.</p>
+<pre class="text"><code>Format your answer as JSON:
+{
+  "summary": "string",
+  "key_points": ["string", "string"],
+  "confidence": "high|medium|low"
+}
+
+Text: {text}
+
+Output:</code></pre>
+</section>
+<section id="pitfall-4-ignoring-edge-cases" class="level3" data-number="27.8.4">
+<h3 data-number="27.8.4" class="anchored" data-anchor-id="pitfall-4-ignoring-edge-cases"><span class="header-section-number">27.8.4</span> Pitfall 4: Ignoring Edge Cases</h3>
+<p><strong>Problem</strong>: Prompts work on typical inputs but fail on edge cases.</p>
+<p><strong>Solution</strong>: Test on diverse inputs and add constraints for edge cases.</p>
+<pre class="text"><code>Summarize this text.
+
+Special cases:
+- If text is empty, return "No content to summarize"
+- If text is very short, return it unchanged
+- If text is in a different language, translate first
+
+Text: {text}
+
+Summary:</code></pre>
+</section>
+<section id="pitfall-5-lack-of-examples" class="level3" data-number="27.8.5">
+<h3 data-number="27.8.5" class="anchored" data-anchor-id="pitfall-5-lack-of-examples"><span class="header-section-number">27.8.5</span> Pitfall 5: Lack of Examples</h3>
+<p><strong>Problem</strong>: Instructions alone don’t convey the desired behavior.</p>
+<p><strong>Solution</strong>: Use few-shot learning with representative examples.</p>
+</section>
+</section>
+<section id="prompt-documentation" class="level2" data-number="27.9">
+<h2 data-number="27.9" class="anchored" data-anchor-id="prompt-documentation"><span class="header-section-number">27.9</span> Prompt Documentation</h2>
+<section id="template-documentation" class="level3" data-number="27.9.1">
+<h3 data-number="27.9.1" class="anchored" data-anchor-id="template-documentation"><span class="header-section-number">27.9.1</span> Template Documentation</h3>
+<p>Document each prompt template thoroughly:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prompts/library/summarization/default.yaml</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"default_summarization"</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"General-purpose summarization prompt"</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">"1.0.0"</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"AI Engineer"</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">created</span><span class="kw">:</span><span class="at"> </span><span class="st">"2026-01-15"</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">purpose</span><span class="kw">: </span><span class="ch">&gt;</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  Generate concise summaries of text documents for a general audience.</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">parameters</span><span class="kw">:</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"text"</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="st">"string"</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">required</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"The text to summarize"</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"max_length"</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="st">"integer"</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">required</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">default</span><span class="kw">:</span><span class="at"> </span><span class="dv">200</span></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"Maximum length of summary in words"</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"tone"</span></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="st">"string"</span></span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">required</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">default</span><span class="kw">:</span><span class="at"> </span><span class="st">"neutral"</span></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">options</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"formal"</span><span class="kw">,</span><span class="at"> </span><span class="st">"neutral"</span><span class="kw">,</span><span class="at"> </span><span class="st">"casual"</span><span class="kw">]</span></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"Tone of the summary"</span></span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a><span class="fu">examples</span><span class="kw">:</span></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">input</span><span class="kw">:</span></span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Python is a programming language..."</span></span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">max_length</span><span class="kw">:</span><span class="at"> </span><span class="dv">100</span></span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">tone</span><span class="kw">:</span><span class="at"> </span><span class="st">"formal"</span></span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">expected</span><span class="kw">:</span><span class="at"> </span><span class="st">"Python is a high-level programming language known for its simplicity and readability."</span></span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a><span class="fu">best_practices</span><span class="kw">:</span></span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"Use appropriate max_length for the document type"</span></span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"Adjust tone based on target audience"</span></span>
+<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"Review output for factual accuracy"</span></span>
+<span id="cb32-41"><a href="#cb32-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-42"><a href="#cb32-42" aria-hidden="true" tabindex="-1"></a><span class="fu">limitations</span><span class="kw">:</span></span>
+<span id="cb32-43"><a href="#cb32-43" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"May miss technical details in highly specialized documents"</span></span>
+<span id="cb32-44"><a href="#cb32-44" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"Performance varies with text complexity"</span></span>
+<span id="cb32-45"><a href="#cb32-45" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"Long documents may be oversimplified"</span></span>
+<span id="cb32-46"><a href="#cb32-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-47"><a href="#cb32-47" aria-hidden="true" tabindex="-1"></a><span class="fu">related_prompts</span><span class="kw">:</span></span>
+<span id="cb32-48"><a href="#cb32-48" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"technical_summarization"</span></span>
+<span id="cb32-49"><a href="#cb32-49" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"executive_summary"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="best-practices-summary" class="level2" data-number="27.10">
+<h2 data-number="27.10" class="anchored" data-anchor-id="best-practices-summary"><span class="header-section-number">27.10</span> Best Practices Summary</h2>
+<section id="design-principles" class="level3" data-number="27.10.1">
+<h3 data-number="27.10.1" class="anchored" data-anchor-id="design-principles"><span class="header-section-number">27.10.1</span> Design Principles</h3>
+<ol type="1">
+<li><strong>Be Specific</strong>: Use precise language and explicit constraints</li>
+<li><strong>Provide Context</strong>: Include relevant background information</li>
+<li><strong>Use Patterns</strong>: Apply proven prompt patterns for consistency</li>
+<li><strong>Test Thoroughly</strong>: Evaluate on diverse test cases</li>
+<li><strong>Iterate Continuously</strong>: Refine based on observed behavior</li>
+</ol>
+</section>
+<section id="development-workflow" class="level3" data-number="27.10.2">
+<h3 data-number="27.10.2" class="anchored" data-anchor-id="development-workflow"><span class="header-section-number">27.10.2</span> Development Workflow</h3>
+<ol type="1">
+<li>Start with a simple prompt</li>
+<li>Add complexity incrementally</li>
+<li>Test at each step</li>
+<li>Analyze failures systematically</li>
+<li>Document changes and rationale</li>
+</ol>
+</section>
+<section id="organizational-practices" class="level3" data-number="27.10.3">
+<h3 data-number="27.10.3" class="anchored" data-anchor-id="organizational-practices"><span class="header-section-number">27.10.3</span> Organizational Practices</h3>
+<ol type="1">
+<li>Build a prompt library for reuse</li>
+<li>Version prompts to track changes</li>
+<li>Standardize prompt documentation</li>
+<li>Share prompts across teams</li>
+<li>Establish prompt review processes</li>
+</ol>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="27.11">
+<h2 data-number="27.11" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">27.11</span> Conclusion</h2>
+<p>Effective prompt engineering is a systematic practice that combines pattern recognition, clear communication, and iterative refinement. By applying structured patterns, building prompt libraries, and evaluating systematically, engineers can design prompts that reliably elicit desired behavior from language models.</p>
+<p>The techniques in this chapter—structured patterns, parameterization, chain prompting, self-reflection, and evaluation—transform prompt engineering from ad hoc experimentation into a disciplined engineering practice.</p>
+<p>The next chapter explores building retrieval-augmented systems, showing how to combine well-designed prompts with external knowledge sources to create more powerful and accurate AI systems.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./ch21.html" class="pagination-link" aria-label="Chapter 21 — Building Your First AI System">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Chapter 21 — Building Your First AI System</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ch23.html" class="pagination-link" aria-label="Chapter 23 — Building Retrieval-Augmented Systems">
+        <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Chapter 23 — Building Retrieval-Augmented Systems</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

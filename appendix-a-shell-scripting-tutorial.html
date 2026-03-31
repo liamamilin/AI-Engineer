@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Lin Mi">
-<meta name="dcterms.date" content="2026-03-09">
 
-<title>AI Engineer</title>
+<title>35&nbsp; Appendix A — Shell Scripting Tutorial – AI Engineer</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./appendix-b-cli-tool-design-patterns.html" rel="next">
+<link href="./references.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -84,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface — The End of Software as We Knew It</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-a-shell-scripting-tutorial.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-a-shell-scripting-tutorial.html"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Appendix A — Shell Scripting Tutorial</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -113,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface — The End of Software as We Knew It</span></span></a>
   </div>
 </li>
@@ -403,7 +437,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./appendix-a-shell-scripting-tutorial.html" class="sidebar-item-text sidebar-link">
+  <a href="./appendix-a-shell-scripting-tutorial.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Appendix A — Shell Scripting Tutorial</span></span></a>
   </div>
 </li>
@@ -425,45 +459,45 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface-the-end-of-software-as-we-knew-it" id="toc-preface-the-end-of-software-as-we-knew-it" class="nav-link active" data-scroll-target="#preface-the-end-of-software-as-we-knew-it"><span class="header-section-number">1</span> Preface — The End of Software as We Knew It</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">35.1</span> Introduction</a></li>
+  <li><a href="#the-execution-model" id="toc-the-execution-model" class="nav-link" data-scroll-target="#the-execution-model"><span class="header-section-number">35.2</span> The Execution Model</a></li>
+  <li><a href="#the-shebang" id="toc-the-shebang" class="nav-link" data-scroll-target="#the-shebang"><span class="header-section-number">35.3</span> The Shebang</a></li>
+  <li><a href="#the-grammar-of-shell-scripts" id="toc-the-grammar-of-shell-scripts" class="nav-link" data-scroll-target="#the-grammar-of-shell-scripts"><span class="header-section-number">35.4</span> The Grammar of Shell Scripts</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables"><span class="header-section-number">35.5</span> Variables</a></li>
+  <li><a href="#command-substitution" id="toc-command-substitution" class="nav-link" data-scroll-target="#command-substitution"><span class="header-section-number">35.6</span> Command Substitution</a></li>
+  <li><a href="#control-flow" id="toc-control-flow" class="nav-link" data-scroll-target="#control-flow"><span class="header-section-number">35.7</span> Control Flow</a>
   <ul class="collapse">
-  <li><a href="#the-nature-of-the-transformation" id="toc-the-nature-of-the-transformation" class="nav-link" data-scroll-target="#the-nature-of-the-transformation"><span class="header-section-number">1.1</span> The Nature of the Transformation</a></li>
-  <li><a href="#the-emerging-discipline" id="toc-the-emerging-discipline" class="nav-link" data-scroll-target="#the-emerging-discipline"><span class="header-section-number">1.2</span> The Emerging Discipline</a></li>
-  <li><a href="#the-purpose-of-this-book" id="toc-the-purpose-of-this-book" class="nav-link" data-scroll-target="#the-purpose-of-this-book"><span class="header-section-number">1.3</span> The Purpose of This Book</a></li>
-  <li><a href="#the-central-claim" id="toc-the-central-claim" class="nav-link" data-scroll-target="#the-central-claim"><span class="header-section-number">1.4</span> The Central Claim</a></li>
-  <li><a href="#who-should-read-this-book" id="toc-who-should-read-this-book" class="nav-link" data-scroll-target="#who-should-read-this-book"><span class="header-section-number">1.5</span> Who Should Read This Book</a></li>
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book"><span class="header-section-number">1.6</span> How to Use This Book</a></li>
-  <li><a href="#the-future-of-engineering" id="toc-the-future-of-engineering" class="nav-link" data-scroll-target="#the-future-of-engineering"><span class="header-section-number">1.7</span> The Future of Engineering</a></li>
+  <li><a href="#if-statements" id="toc-if-statements" class="nav-link" data-scroll-target="#if-statements"><span class="header-section-number">35.7.1</span> If Statements</a></li>
+  <li><a href="#if-else" id="toc-if-else" class="nav-link" data-scroll-target="#if-else"><span class="header-section-number">35.7.2</span> If-Else</a></li>
   </ul></li>
+  <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops"><span class="header-section-number">35.8</span> Loops</a>
+  <ul class="collapse">
+  <li><a href="#for-loop" id="toc-for-loop" class="nav-link" data-scroll-target="#for-loop"><span class="header-section-number">35.8.1</span> For Loop</a></li>
+  <li><a href="#while-loop" id="toc-while-loop" class="nav-link" data-scroll-target="#while-loop"><span class="header-section-number">35.8.2</span> While Loop</a></li>
+  </ul></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">35.9</span> Functions</a></li>
+  <li><a href="#pipelines" id="toc-pipelines" class="nav-link" data-scroll-target="#pipelines"><span class="header-section-number">35.10</span> Pipelines</a></li>
+  <li><a href="#redirection" id="toc-redirection" class="nav-link" data-scroll-target="#redirection"><span class="header-section-number">35.11</span> Redirection</a></li>
+  <li><a href="#process-control" id="toc-process-control" class="nav-link" data-scroll-target="#process-control"><span class="header-section-number">35.12</span> Process Control</a></li>
+  <li><a href="#the-shell-programming-model" id="toc-the-shell-programming-model" class="nav-link" data-scroll-target="#the-shell-programming-model"><span class="header-section-number">35.13</span> The Shell Programming Model</a></li>
+  <li><a href="#the-conceptual-model" id="toc-the-conceptual-model" class="nav-link" data-scroll-target="#the-conceptual-model"><span class="header-section-number">35.14</span> The Conceptual Model</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">35.15</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-a-shell-scripting-tutorial.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-a-shell-scripting-tutorial.html"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Appendix A — Shell Scripting Tutorial</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">AI Engineer</h1>
-<p class="subtitle lead">From Code to Intelligent Systems</p>
+<h1 class="title"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Appendix A — Shell Scripting Tutorial</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Lin Mi </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 9, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -473,118 +507,223 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface-the-end-of-software-as-we-knew-it" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Preface — The End of Software as We Knew It</h1>
-<p>For decades, software engineering was built upon a stable foundation: deterministic logic. Programs were collections of explicit instructions. Given the same input, a program would produce the same output. The task of the engineer was therefore clear. One decomposed problems into functions, wrote algorithms, organized modules, and ensured that the logic of the system remained consistent and correct.</p>
-<p>This paradigm shaped an entire discipline. Programming languages, operating systems, software architectures, and development methodologies were all designed around the assumption that computation was fundamentally deterministic. Software behaved as a machine of precise instructions. Engineers constructed systems by specifying exactly what the machine should do.</p>
-<p>The rise of artificial intelligence changes this foundation.</p>
-<p>Modern AI systems, particularly those based on large language models and other forms of statistical learning, do not operate primarily through explicit instructions. They operate through probabilistic inference. Instead of encoding exact behavior, they generate responses based on patterns learned from vast amounts of data. The result is not a fixed algorithm but a system capable of producing many plausible outputs.</p>
-<p>This shift transforms the nature of software itself.</p>
-<p>Where traditional software systems execute defined procedures, AI systems generate behavior. Their outputs are not guaranteed results but distributions of possibilities. The engineer can no longer fully specify the internal logic of the system; instead, the engineer designs the conditions under which intelligence operates.</p>
-<p>The implications of this shift are profound. The locus of engineering moves upward, away from individual functions and toward system-level orchestration. Engineers no longer control every step of the computation. Instead, they construct environments within which models, tools, data, and feedback loops interact.</p>
-<p>In such systems, the most important questions are no longer:</p>
-<p>What algorithm should this function implement?</p>
-<p>But rather:</p>
-<p>What information should the system receive? How should the system reason about it? What tools should it be able to use? How should its outputs be evaluated? How should the system improve over time?</p>
-<section id="the-nature-of-the-transformation" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="the-nature-of-the-transformation"><span class="header-section-number">1.1</span> The Nature of the Transformation</h2>
-<p>To understand the significance of this transition, we must examine what changes and what remains.</p>
-<p><strong>What Changes:</strong></p>
-<ul>
-<li><strong>Control Mechanism:</strong> From explicit logic to probabilistic inference</li>
-<li><strong>Abstraction Level:</strong> From functions to systems and pipelines</li>
-<li><strong>Engineering Focus:</strong> From implementation to orchestration and architecture</li>
-<li><strong>Validation Approach:</strong> From deterministic testing to statistical evaluation</li>
-<li><strong>System Behavior:</strong> From predictable outputs to adaptive responses</li>
-</ul>
-<p><strong>What Remains:</strong></p>
-<ul>
-<li>The need for rigorous engineering discipline</li>
-<li>The importance of clear requirements and specifications</li>
-<li>The value of modular, maintainable architecture</li>
-<li>The necessity of testing and validation</li>
-<li>The goal of building reliable, useful systems</li>
-</ul>
-<p>This is not an abandonment of engineering principles. It is an evolution that adapts those principles to a new computational substrate. The rigor of traditional engineering remains essential, but it must now be applied to systems whose behavior emerges from the interaction of probabilistic components.</p>
+<section id="introduction" class="level2" data-number="35.1">
+<h2 data-number="35.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">35.1</span> Introduction</h2>
+<p>Many developers think shell scripts are simply collections of commands. This is misleading.</p>
+<p>A shell script is actually a program written in a command-oriented language designed to control processes and automate workflows.</p>
+<p>Unlike general-purpose languages such as Python or Java, the shell language is primarily built around command execution and composition.</p>
+<p>Understanding shell scripting requires seeing it as a language with: - Grammar - Control flow - Variables - Functions - Pipelines - Process management</p>
 </section>
-<section id="the-emerging-discipline" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="the-emerging-discipline"><span class="header-section-number">1.2</span> The Emerging Discipline</h2>
-<p>The role of the engineer therefore expands. Writing code remains necessary, but code alone is no longer sufficient. AI systems require pipelines, prompts, evaluation frameworks, memory mechanisms, and orchestration layers. The behavior of the system emerges from the interaction of these components rather than from a single deterministic procedure.</p>
-<p>In this new landscape, a different kind of practitioner is emerging: the AI engineer.</p>
-<p>An AI engineer does not simply implement algorithms. Instead, the AI engineer designs systems that collaborate with intelligence. These systems integrate models, tools, data sources, and evaluation loops into coherent architectures capable of solving complex tasks.</p>
-<p>The discipline of AI engineering therefore occupies a new space between software engineering, machine learning engineering, and systems design. It demands the rigor of traditional engineering while embracing the uncertainty inherent in probabilistic systems.</p>
-<p>This intersection creates unique challenges and opportunities:</p>
-<ul>
-<li><strong>Software Engineering</strong> contributes system design principles, architectural patterns, and development methodologies</li>
-<li><strong>Machine Learning Engineering</strong> contributes model understanding, data handling, and evaluation techniques</li>
-<li><strong>Systems Design</strong> contributes infrastructure knowledge, scalability considerations, and operational practices</li>
-</ul>
-<p>The AI engineer must synthesize knowledge from all three domains while developing new capabilities specific to the challenges of probabilistic systems.</p>
+<section id="the-execution-model" class="level2" data-number="35.2">
+<h2 data-number="35.2" class="anchored" data-anchor-id="the-execution-model"><span class="header-section-number">35.2</span> The Execution Model</h2>
+<p>Every shell script follows the same execution model:</p>
+<pre><code>Script
+   ↓
+Shell Interpreter
+   ↓
+Command Parsing
+   ↓
+Process Execution</code></pre>
+<p>Example script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Execution steps: 1. The shell reads the script line by line 2. Each line is parsed 3. Commands are executed sequentially</p>
 </section>
-<section id="the-purpose-of-this-book" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="the-purpose-of-this-book"><span class="header-section-number">1.3</span> The Purpose of This Book</h2>
-<p>This book is written for those who wish to understand and practice this emerging discipline.</p>
-<p>Its purpose is not merely to explain how to use particular tools or frameworks. Tools change rapidly, and frameworks come and go. Instead, the goal of this book is to reveal the underlying structures of AI systems: the abstractions, architectures, and engineering principles that make intelligent systems possible.</p>
-<p>Throughout the chapters that follow, we will move from code to systems, from isolated components to integrated architectures. We will examine how prompts function as interfaces, how pipelines structure information flow, how agents enable autonomous behavior, and how evaluation ensures reliability in probabilistic systems.</p>
-<p>The book is organized into six parts:</p>
-<ul>
-<li><strong>Part I</strong> introduces the fundamental shift from deterministic programming to AI engineering</li>
-<li><strong>Part II</strong> examines the environment and tools required for AI systems construction, including the evolution from shell to agent systems</li>
-<li><strong>Part III</strong> explores the core architectural components: prompts, pipelines, agents, and tools</li>
-<li><strong>Part IV</strong> addresses the critical challenges of reliability, evaluation, and observability</li>
-<li><strong>Part V</strong> considers production concerns: infrastructure, scaling, and product development</li>
-<li><strong>Part VI</strong> reflects on the broader implications and future of AI engineering, including intent-driven, specification-driven, and architecture-driven systems</li>
-</ul>
-<p>Each part builds upon the previous ones, creating a comprehensive picture of the discipline. The progression is intentional: we establish the conceptual foundation, then examine the practical components, and finally consider production implications and future directions.</p>
+<section id="the-shebang" class="level2" data-number="35.3">
+<h2 data-number="35.3" class="anchored" data-anchor-id="the-shebang"><span class="header-section-number">35.3</span> The Shebang</h2>
+<p>The first line often looks like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is called the shebang. It tells the operating system which interpreter should run the script.</p>
+<p>Examples:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env node</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Without the shebang, the system may not know how to execute the file.</p>
 </section>
-<section id="the-central-claim" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="the-central-claim"><span class="header-section-number">1.4</span> The Central Claim</h2>
-<p>The central claim of this book is simple but far-reaching:</p>
-<p>AI engineers do not merely write programs.</p>
-<p>They design systems that collaborate with intelligence.</p>
-<p>Understanding this transition—from deterministic software to intelligent systems—is the key to understanding the future of engineering.</p>
-<p>This claim rests on three fundamental observations:</p>
-<ol type="1">
-<li><p><strong>Intelligence is now a component</strong>: AI models have become programmable components that can be integrated into larger systems, much like databases, APIs, or other services. The engineer’s task is to orchestrate these components effectively.</p></li>
-<li><p><strong>Architecture matters more than algorithms</strong>: In traditional software, the choice of algorithm was critical. In AI systems, the architecture—the arrangement of models, data flows, evaluation mechanisms, and feedback loops—determines system performance far more than any individual model choice.</p></li>
-<li><p><strong>System behavior emerges from interaction</strong>: The behavior of an AI system cannot be understood by examining any single component in isolation. It emerges from the interaction of models, prompts, tools, data, and evaluation mechanisms. The engineer must design these interactions deliberately.</p></li>
-</ol>
+<section id="the-grammar-of-shell-scripts" class="level2" data-number="35.4">
+<h2 data-number="35.4" class="anchored" data-anchor-id="the-grammar-of-shell-scripts"><span class="header-section-number">35.4</span> The Grammar of Shell Scripts</h2>
+<p>Shell syntax revolves around commands and arguments. General form:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">command</span> arg1 arg2 arg3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> /home</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Structure:</p>
+<pre><code>command = ls
+argument = -l
+argument = /home</code></pre>
+<p>The shell splits input into tokens based on whitespace.</p>
 </section>
-<section id="who-should-read-this-book" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="who-should-read-this-book"><span class="header-section-number">1.5</span> Who Should Read This Book</h2>
-<p>This book is intended for:</p>
-<ul>
-<li><strong>Software engineers</strong> who wish to understand how AI systems are built and integrated into applications</li>
-<li><strong>Machine learning practitioners</strong> who want to learn about system design and production concerns</li>
-<li><strong>Technical leads and architects</strong> responsible for designing AI-powered products and services</li>
-<li><strong>Students and researchers</strong> seeking a comprehensive understanding of AI engineering as a discipline</li>
-<li><strong>Anyone interested</strong> in how intelligent systems are constructed and what this means for the future of software development</li>
-</ul>
-<p>Readers should have some familiarity with programming concepts and basic software engineering practices. No prior experience with machine learning or AI systems is required, though it will be helpful.</p>
+<section id="variables" class="level2" data-number="35.5">
+<h2 data-number="35.5" class="anchored" data-anchor-id="variables"><span class="header-section-number">35.5</span> Variables</h2>
+<p>Variables store values that can be reused.</p>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">name</span><span class="op">=</span><span class="st">"Alice"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$name</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Important rule:</p>
+<pre><code>NO spaces around =</code></pre>
+<p>Correct:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">name</span><span class="op">=</span><span class="st">"Alice"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Incorrect:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span> = <span class="st">"Alice"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To read a variable:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$name</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>or</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${name}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="how-to-use-this-book" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="how-to-use-this-book"><span class="header-section-number">1.6</span> How to Use This Book</h2>
-<p>This book can be read sequentially from beginning to end, or selectively based on your interests and needs:</p>
-<ul>
-<li><strong>For a comprehensive understanding</strong>, read the chapters in order as they build upon each other</li>
-<li><strong>For practical implementation</strong>, focus on Parts III and IV, which cover architectural components and reliability</li>
-<li><strong>For production deployment</strong>, concentrate on Parts V and VI, which address infrastructure and product concerns</li>
-<li><strong>For conceptual foundations</strong>, start with Parts I and II, which establish the philosophical and environmental framework</li>
-</ul>
-<p>Each chapter is self-contained enough to be understood independently, but the full value of the book emerges from seeing how the pieces fit together into a coherent discipline.</p>
+<section id="command-substitution" class="level2" data-number="35.6">
+<h2 data-number="35.6" class="anchored" data-anchor-id="command-substitution"><span class="header-section-number">35.6</span> Command Substitution</h2>
+<p>Shell allows capturing the output of commands.</p>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="va">today</span><span class="op">=</span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$today</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Execution:</p>
+<pre><code>date → output string → stored in variable</code></pre>
+<p>Older syntax:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="va">today</span><span class="op">=</span><span class="kw">`</span><span class="fu">date</span><span class="kw">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>But modern shells prefer <code>$(...)</code>.</p>
 </section>
-<section id="the-future-of-engineering" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="the-future-of-engineering"><span class="header-section-number">1.7</span> The Future of Engineering</h2>
-<p>We are at the beginning of a transformation in how software is built. The shift from deterministic programs to intelligent systems is comparable in significance to earlier transitions in computing history: from machine code to high-level languages, from batch processing to interactive systems, from desktop applications to cloud services.</p>
-<p>Each transition expanded what was possible and required engineers to develop new skills and perspectives. This transition is no different.</p>
-<p>AI engineering is not a replacement for traditional software engineering. It is an evolution that builds upon decades of engineering knowledge while adding new capabilities and challenges. The most successful engineers will be those who can bridge both worlds—applying the rigor and discipline of traditional engineering to the new possibilities of intelligent systems.</p>
-<p>The chapters that follow provide a roadmap for this journey. They offer both theoretical foundations and practical guidance for those who wish to participate in shaping the future of software.</p>
-<p>The future of engineering is not just about writing code.</p>
-<p>It is about designing systems that think, reason, and collaborate with us to achieve what neither humans nor machines could accomplish alone.</p>
-<p>This is the promise of AI engineering.</p>
+<section id="control-flow" class="level2" data-number="35.7">
+<h2 data-number="35.7" class="anchored" data-anchor-id="control-flow"><span class="header-section-number">35.7</span> Control Flow</h2>
+<section id="if-statements" class="level3" data-number="35.7.1">
+<h3 data-number="35.7.1" class="anchored" data-anchor-id="if-statements"><span class="header-section-number">35.7.1</span> If Statements</h3>
+<p>Basic structure:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="ex">condition</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">command</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> file.txt <span class="bu">]</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"File exists"</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here <code>-f</code> means “file exists.”</p>
+<p>Other common tests:</p>
+<pre><code>-d  directory exists
+-e  file exists
+-z  string empty
+-n  string not empty</code></pre>
+</section>
+<section id="if-else" class="level3" data-number="35.7.2">
+<h3 data-number="35.7.2" class="anchored" data-anchor-id="if-else"><span class="header-section-number">35.7.2</span> If-Else</h3>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> file.txt <span class="bu">]</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"File exists"</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"File missing"</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="loops" class="level2" data-number="35.8">
+<h2 data-number="35.8" class="anchored" data-anchor-id="loops"><span class="header-section-number">35.8</span> Loops</h2>
+<section id="for-loop" class="level3" data-number="35.8.1">
+<h3 data-number="35.8.1" class="anchored" data-anchor-id="for-loop"><span class="header-section-number">35.8.1</span> For Loop</h3>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span>.txt</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$file</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Execution:</p>
+<pre><code>find all .txt files
+iterate over each file</code></pre>
+</section>
+<section id="while-loop" class="level3" data-number="35.8.2">
+<h3 data-number="35.8.2" class="anchored" data-anchor-id="while-loop"><span class="header-section-number">35.8.2</span> While Loop</h3>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="va">count</span><span class="op">=</span>1</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$count</span> <span class="ot">-le</span> 5 <span class="bu">]</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$count</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">count</span><span class="op">=</span><span class="va">$((count</span><span class="op">+</span><span class="dv">1</span><span class="va">))</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="functions" class="level2" data-number="35.9">
+<h2 data-number="35.9" class="anchored" data-anchor-id="functions"><span class="header-section-number">35.9</span> Functions</h2>
+<p>Shell scripts can define functions.</p>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">greet()</span> <span class="kw">{</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Hello </span><span class="va">$1</span><span class="st">"</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Calling:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">greet</span> Alice</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Output:</p>
+<pre><code>Hello Alice</code></pre>
+<p>Arguments:</p>
+<pre><code>$1 first argument
+$2 second argument</code></pre>
+</section>
+<section id="pipelines" class="level2" data-number="35.10">
+<h2 data-number="35.10" class="anchored" data-anchor-id="pipelines"><span class="header-section-number">35.10</span> Pipelines</h2>
+<p>Pipelines are one of the most powerful features of the shell.</p>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> python</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Execution model:</p>
+<pre><code>ps aux
+   ↓
+output pipe
+   ↓
+grep python</code></pre>
+<p>Each program reads input from the previous program. This design allows program composition.</p>
+</section>
+<section id="redirection" class="level2" data-number="35.11">
+<h2 data-number="35.11" class="anchored" data-anchor-id="redirection"><span class="header-section-number">35.11</span> Redirection</h2>
+<p>Shell also supports redirecting input and output.</p>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"hello"</span> <span class="op">&gt;</span> file.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Meaning:</p>
+<pre><code>write output to file</code></pre>
+<p>Append:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"hello"</span> <span class="op">&gt;&gt;</span> file.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Input redirection:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="op">&lt;</span> file.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="process-control" class="level2" data-number="35.12">
+<h2 data-number="35.12" class="anchored" data-anchor-id="process-control"><span class="header-section-number">35.12</span> Process Control</h2>
+<p>Shell scripts often manage processes.</p>
+<p>Running a command in the background:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> server.py <span class="kw">&amp;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The shell returns immediately.</p>
+<p>List background jobs:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">jobs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Bring a job to foreground:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">fg</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="the-shell-programming-model" class="level2" data-number="35.13">
+<h2 data-number="35.13" class="anchored" data-anchor-id="the-shell-programming-model"><span class="header-section-number">35.13</span> The Shell Programming Model</h2>
+<p>We can summarize shell scripting as a process orchestration language.</p>
+<pre><code>Variables
+   ↓
+Commands
+   ↓
+Pipelines
+   ↓
+Processes
+   ↓
+Output</code></pre>
+<p>Unlike traditional programming languages that focus on algorithms, shell scripts focus on coordinating programs.</p>
+</section>
+<section id="the-conceptual-model" class="level2" data-number="35.14">
+<h2 data-number="35.14" class="anchored" data-anchor-id="the-conceptual-model"><span class="header-section-number">35.14</span> The Conceptual Model</h2>
+<p>Shell scripts operate as a control layer above the operating system.</p>
+<pre><code>Script
+   ↓
+Shell
+   ↓
+Programs
+   ↓
+Operating System</code></pre>
+<p>The shell acts as a workflow controller.</p>
+</section>
+<section id="conclusion" class="level2" data-number="35.15">
+<h2 data-number="35.15" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">35.15</span> Conclusion</h2>
+<p>Shell scripting is best understood not as a traditional programming language but as a process orchestration language.</p>
+<p>Its strengths lie in: - Combining tools - Automating workflows - Managing processes - Interacting with the operating system</p>
+<p>By mastering shell scripting, a developer gains direct control over the underlying system.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -990,10 +1129,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">References</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./appendix-b-cli-tool-design-patterns.html" class="pagination-link" aria-label="Appendix B — CLI Tool Design Patterns">
+        <span class="nav-page-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Appendix B — CLI Tool Design Patterns</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -184,6 +219,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 7 — The AI Systems Builder Workstation Setup</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch07.5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 7.5 — From Shell to Agent: The Evolution of Command Systems</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -198,25 +239,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 8 — Prompt Engineering as Architecture</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 8 — Prompt Engineering as Architecture</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 9 — AI Pipelines</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 9 — AI Pipelines</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 10 — Agents</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 10 — Agents</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 11 — Tools and External Systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 11 — Tools and External Systems</span></span></a>
   </div>
 </li>
       </ul>
@@ -233,19 +274,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 12 — AI Evaluation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 12 — AI Evaluation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch13.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 13 — Observability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chapter 13 — Observability</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chapter 14 — Debugging AI Systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chapter 14 — Debugging AI Systems</span></span></a>
   </div>
 </li>
       </ul>
@@ -262,19 +303,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch15.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Chapter 15 — AI Infrastructure</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Chapter 15 — AI Infrastructure</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch16.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Chapter 16 — Scaling AI Systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Chapter 16 — Scaling AI Systems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch17.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Chapter 17 — AI Products</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Chapter 17 — AI Products</span></span></a>
   </div>
 </li>
       </ul>
@@ -291,19 +332,84 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch18.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Chapter 18 — AI as Co-Engineer</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Chapter 18 — AI as Co-Engineer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch18.5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Chapter 18.5 — Intent-Driven and Specification-Driven Systems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch19.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Chapter 19 — From Code to System Design</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Chapter 19 — From Code to System Design</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch19.5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Chapter 19.5 — Architecture-Driven Engineering</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch20.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Chapter 20 — The Philosophy of AI Engineering</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Chapter 20 — The Philosophy of AI Engineering</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part VII — Practical Guide to AI Engineering</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch21.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Chapter 21 — Building Your First AI System</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch22.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Chapter 22 — Practical Prompt Engineering</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch23.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Chapter 23 — Building Retrieval-Augmented Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch24.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Chapter 24 — Designing Multi-Agent Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch25.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Chapter 25 — Evaluation and Debugging AI Systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch26.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Chapter 26 — Cost Optimization Strategies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch27.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Chapter 27 — Core Framework Recap: The AI Engineering Skeleton</span></span></a>
   </div>
 </li>
       </ul>
@@ -311,15 +417,38 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">References</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-a-shell-scripting-tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Appendix A — Shell Scripting Tutorial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-b-cli-tool-design-patterns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Appendix B — CLI Tool Design Patterns</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -343,31 +472,44 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#the-shell-as-lightweight-programming-environment" id="toc-the-shell-as-lightweight-programming-environment" class="nav-link" data-scroll-target="#the-shell-as-lightweight-programming-environment"><span class="header-section-number">7.3.2</span> The Shell as Lightweight Programming Environment</a></li>
   <li><a href="#shell-configuration-for-ai-engineering" id="toc-shell-configuration-for-ai-engineering" class="nav-link" data-scroll-target="#shell-configuration-for-ai-engineering"><span class="header-section-number">7.3.3</span> Shell Configuration for AI Engineering</a></li>
   </ul></li>
-  <li><a href="#the-command-line-ecosystem" id="toc-the-command-line-ecosystem" class="nav-link" data-scroll-target="#the-command-line-ecosystem"><span class="header-section-number">7.4</span> The Command-Line Ecosystem</a>
+  <li><a href="#deep-architecture-the-terminal-as-a-system" id="toc-deep-architecture-the-terminal-as-a-system" class="nav-link" data-scroll-target="#deep-architecture-the-terminal-as-a-system"><span class="header-section-number">7.4</span> Deep Architecture: The Terminal as a System</a>
   <ul class="collapse">
-  <li><a href="#the-power-of-cli-tools" id="toc-the-power-of-cli-tools" class="nav-link" data-scroll-target="#the-power-of-cli-tools"><span class="header-section-number">7.4.1</span> The Power of CLI Tools</a></li>
-  <li><a href="#essential-tools-for-ai-engineering" id="toc-essential-tools-for-ai-engineering" class="nav-link" data-scroll-target="#essential-tools-for-ai-engineering"><span class="header-section-number">7.4.2</span> Essential Tools for AI Engineering</a></li>
-  <li><a href="#the-integrated-ecosystem" id="toc-the-integrated-ecosystem" class="nav-link" data-scroll-target="#the-integrated-ecosystem"><span class="header-section-number">7.4.3</span> The Integrated Ecosystem</a></li>
+  <li><a href="#the-layered-architecture-of-terminal-systems" id="toc-the-layered-architecture-of-terminal-systems" class="nav-link" data-scroll-target="#the-layered-architecture-of-terminal-systems"><span class="header-section-number">7.4.1</span> The Layered Architecture of Terminal Systems</a></li>
+  <li><a href="#the-terminal-emulator-interface-layer" id="toc-the-terminal-emulator-interface-layer" class="nav-link" data-scroll-target="#the-terminal-emulator-interface-layer"><span class="header-section-number">7.4.2</span> The Terminal Emulator: Interface Layer</a></li>
+  <li><a href="#the-shell-interpreter-layer" id="toc-the-shell-interpreter-layer" class="nav-link" data-scroll-target="#the-shell-interpreter-layer"><span class="header-section-number">7.4.3</span> The Shell: Interpreter Layer</a></li>
+  <li><a href="#the-unix-process-model" id="toc-the-unix-process-model" class="nav-link" data-scroll-target="#the-unix-process-model"><span class="header-section-number">7.4.4</span> The Unix Process Model</a></li>
+  <li><a href="#process-tree-and-system-orchestration" id="toc-process-tree-and-system-orchestration" class="nav-link" data-scroll-target="#process-tree-and-system-orchestration"><span class="header-section-number">7.4.5</span> Process Tree and System Orchestration</a></li>
+  <li><a href="#standard-streams-and-pipelines" id="toc-standard-streams-and-pipelines" class="nav-link" data-scroll-target="#standard-streams-and-pipelines"><span class="header-section-number">7.4.6</span> Standard Streams and Pipelines</a></li>
+  <li><a href="#the-shell-as-a-workflow-engine" id="toc-the-shell-as-a-workflow-engine" class="nav-link" data-scroll-target="#the-shell-as-a-workflow-engine"><span class="header-section-number">7.4.7</span> The Shell as a Workflow Engine</a></li>
+  <li><a href="#the-command-resolution-mechanism" id="toc-the-command-resolution-mechanism" class="nav-link" data-scroll-target="#the-command-resolution-mechanism"><span class="header-section-number">7.4.8</span> The Command Resolution Mechanism</a></li>
+  <li><a href="#the-conceptual-model" id="toc-the-conceptual-model" class="nav-link" data-scroll-target="#the-conceptual-model"><span class="header-section-number">7.4.9</span> The Conceptual Model</a></li>
+  <li><a href="#the-cli-system-stack" id="toc-the-cli-system-stack" class="nav-link" data-scroll-target="#the-cli-system-stack"><span class="header-section-number">7.4.10</span> The CLI System Stack</a></li>
   </ul></li>
-  <li><a href="#system-orchestration" id="toc-system-orchestration" class="nav-link" data-scroll-target="#system-orchestration"><span class="header-section-number">7.5</span> System Orchestration</a>
+  <li><a href="#the-command-line-ecosystem" id="toc-the-command-line-ecosystem" class="nav-link" data-scroll-target="#the-command-line-ecosystem"><span class="header-section-number">7.5</span> The Command-Line Ecosystem</a>
   <ul class="collapse">
-  <li><a href="#the-orchestration-challenge" id="toc-the-orchestration-challenge" class="nav-link" data-scroll-target="#the-orchestration-challenge"><span class="header-section-number">7.5.1</span> The Orchestration Challenge</a></li>
-  <li><a href="#tmux-as-orchestration-platform" id="toc-tmux-as-orchestration-platform" class="nav-link" data-scroll-target="#tmux-as-orchestration-platform"><span class="header-section-number">7.5.2</span> tmux as Orchestration Platform</a></li>
-  <li><a href="#process-management-strategies" id="toc-process-management-strategies" class="nav-link" data-scroll-target="#process-management-strategies"><span class="header-section-number">7.5.3</span> Process Management Strategies</a></li>
-  <li><a href="#real-time-debugging" id="toc-real-time-debugging" class="nav-link" data-scroll-target="#real-time-debugging"><span class="header-section-number">7.5.4</span> Real-Time Debugging</a></li>
+  <li><a href="#the-power-of-cli-tools" id="toc-the-power-of-cli-tools" class="nav-link" data-scroll-target="#the-power-of-cli-tools"><span class="header-section-number">7.5.1</span> The Power of CLI Tools</a></li>
+  <li><a href="#essential-tools-for-ai-engineering" id="toc-essential-tools-for-ai-engineering" class="nav-link" data-scroll-target="#essential-tools-for-ai-engineering"><span class="header-section-number">7.5.2</span> Essential Tools for AI Engineering</a></li>
+  <li><a href="#the-integrated-ecosystem" id="toc-the-integrated-ecosystem" class="nav-link" data-scroll-target="#the-integrated-ecosystem"><span class="header-section-number">7.5.3</span> The Integrated Ecosystem</a></li>
   </ul></li>
-  <li><a href="#the-terminal-as-operational-dashboard" id="toc-the-terminal-as-operational-dashboard" class="nav-link" data-scroll-target="#the-terminal-as-operational-dashboard"><span class="header-section-number">7.6</span> The Terminal as Operational Dashboard</a>
+  <li><a href="#system-orchestration" id="toc-system-orchestration" class="nav-link" data-scroll-target="#system-orchestration"><span class="header-section-number">7.6</span> System Orchestration</a>
   <ul class="collapse">
-  <li><a href="#information-at-a-glance" id="toc-information-at-a-glance" class="nav-link" data-scroll-target="#information-at-a-glance"><span class="header-section-number">7.6.1</span> Information at a Glance</a></li>
-  <li><a href="#rapid-decision-making" id="toc-rapid-decision-making" class="nav-link" data-scroll-target="#rapid-decision-making"><span class="header-section-number">7.6.2</span> Rapid Decision Making</a></li>
-  <li><a href="#scripting-and-automation" id="toc-scripting-and-automation" class="nav-link" data-scroll-target="#scripting-and-automation"><span class="header-section-number">7.6.3</span> Scripting and Automation</a></li>
+  <li><a href="#the-orchestration-challenge" id="toc-the-orchestration-challenge" class="nav-link" data-scroll-target="#the-orchestration-challenge"><span class="header-section-number">7.6.1</span> The Orchestration Challenge</a></li>
+  <li><a href="#tmux-as-orchestration-platform" id="toc-tmux-as-orchestration-platform" class="nav-link" data-scroll-target="#tmux-as-orchestration-platform"><span class="header-section-number">7.6.2</span> tmux as Orchestration Platform</a></li>
+  <li><a href="#process-management-strategies" id="toc-process-management-strategies" class="nav-link" data-scroll-target="#process-management-strategies"><span class="header-section-number">7.6.3</span> Process Management Strategies</a></li>
+  <li><a href="#real-time-debugging" id="toc-real-time-debugging" class="nav-link" data-scroll-target="#real-time-debugging"><span class="header-section-number">7.6.4</span> Real-Time Debugging</a></li>
   </ul></li>
-  <li><a href="#beyond-the-terminal" id="toc-beyond-the-terminal" class="nav-link" data-scroll-target="#beyond-the-terminal"><span class="header-section-number">7.7</span> Beyond the Terminal</a>
+  <li><a href="#the-terminal-as-operational-dashboard" id="toc-the-terminal-as-operational-dashboard" class="nav-link" data-scroll-target="#the-terminal-as-operational-dashboard"><span class="header-section-number">7.7</span> The Terminal as Operational Dashboard</a>
   <ul class="collapse">
-  <li><a href="#integration-with-graphical-tools" id="toc-integration-with-graphical-tools" class="nav-link" data-scroll-target="#integration-with-graphical-tools"><span class="header-section-number">7.7.1</span> Integration with Graphical Tools</a></li>
-  <li><a href="#cloud-and-remote-environments" id="toc-cloud-and-remote-environments" class="nav-link" data-scroll-target="#cloud-and-remote-environments"><span class="header-section-number">7.7.2</span> Cloud and Remote Environments</a></li>
+  <li><a href="#information-at-a-glance" id="toc-information-at-a-glance" class="nav-link" data-scroll-target="#information-at-a-glance"><span class="header-section-number">7.7.1</span> Information at a Glance</a></li>
+  <li><a href="#rapid-decision-making" id="toc-rapid-decision-making" class="nav-link" data-scroll-target="#rapid-decision-making"><span class="header-section-number">7.7.2</span> Rapid Decision Making</a></li>
+  <li><a href="#scripting-and-automation" id="toc-scripting-and-automation" class="nav-link" data-scroll-target="#scripting-and-automation"><span class="header-section-number">7.7.3</span> Scripting and Automation</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7.8</span> Conclusion</a></li>
+  <li><a href="#beyond-the-terminal" id="toc-beyond-the-terminal" class="nav-link" data-scroll-target="#beyond-the-terminal"><span class="header-section-number">7.8</span> Beyond the Terminal</a>
+  <ul class="collapse">
+  <li><a href="#integration-with-graphical-tools" id="toc-integration-with-graphical-tools" class="nav-link" data-scroll-target="#integration-with-graphical-tools"><span class="header-section-number">7.8.1</span> Integration with Graphical Tools</a></li>
+  <li><a href="#cloud-and-remote-environments" id="toc-cloud-and-remote-environments" class="nav-link" data-scroll-target="#cloud-and-remote-environments"><span class="header-section-number">7.8.2</span> Cloud and Remote Environments</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7.9</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -479,10 +621,191 @@ ul.task-list li input[type="checkbox"] {
 <p>The shell configuration is not merely a matter of convenience—it is an integral part of the workstation architecture.</p>
 </section>
 </section>
-<section id="the-command-line-ecosystem" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="the-command-line-ecosystem"><span class="header-section-number">7.4</span> The Command-Line Ecosystem</h2>
-<section id="the-power-of-cli-tools" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="the-power-of-cli-tools"><span class="header-section-number">7.4.1</span> The Power of CLI Tools</h3>
+<section id="deep-architecture-the-terminal-as-a-system" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="deep-architecture-the-terminal-as-a-system"><span class="header-section-number">7.4</span> Deep Architecture: The Terminal as a System</h2>
+<section id="the-layered-architecture-of-terminal-systems" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="the-layered-architecture-of-terminal-systems"><span class="header-section-number">7.4.1</span> The Layered Architecture of Terminal Systems</h3>
+<p>The terminal is not a single program. It is an entire computing environment composed of multiple layers. Understanding this architecture is essential for mastering AI system orchestration.</p>
+<pre><code>Terminal Ecosystem
+│
+├─ Terminal Emulator
+│
+├─ Shell
+│
+├─ Environment System
+│
+├─ Command System
+│
+├─ Programs
+│
+└─ Operating System</code></pre>
+<p>Each layer has a distinct responsibility.</p>
+</section>
+<section id="the-terminal-emulator-interface-layer" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="the-terminal-emulator-interface-layer"><span class="header-section-number">7.4.2</span> The Terminal Emulator: Interface Layer</h3>
+<p>The terminal emulator is the user interface of the command line world. Examples include WezTerm, iTerm2, and Apple Terminal.</p>
+<p>Its responsibilities are limited: - Rendering text - Capturing keyboard input - Communicating with the shell process</p>
+<p>The terminal itself does not understand commands. It simply sends user input to the shell.</p>
+<pre><code>User → Terminal Emulator → Shell</code></pre>
+</section>
+<section id="the-shell-interpreter-layer" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="the-shell-interpreter-layer"><span class="header-section-number">7.4.3</span> The Shell: Interpreter Layer</h3>
+<p>The shell is the command interpreter. Popular shells include bash, zsh, and fish.</p>
+<p>The shell performs several critical functions: - Parsing commands - Resolving programs - Managing environment variables - Spawning processes - Coordinating pipelines</p>
+<p>In other words, the shell acts as the execution engine of the command line environment.</p>
+</section>
+<section id="the-unix-process-model" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="the-unix-process-model"><span class="header-section-number">7.4.4</span> The Unix Process Model</h3>
+<p>Everything in the shell ultimately relies on the Unix process model. When a command is executed:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>the shell performs two operations:</p>
+<pre><code>fork
+exec</code></pre>
+<p>Execution flow:</p>
+<pre><code>Shell Process
+      │
+      ├─ fork
+      │
+      └─ child process
+            │
+            └─ exec(ls)</code></pre>
+<ol type="1">
+<li><strong>fork</strong>: The shell creates a new process</li>
+<li><strong>exec</strong>: The new process replaces itself with the program</li>
+</ol>
+<p>The shell itself continues running.</p>
+</section>
+<section id="process-tree-and-system-orchestration" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="process-tree-and-system-orchestration"><span class="header-section-number">7.4.5</span> Process Tree and System Orchestration</h3>
+<p>Example process tree:</p>
+<pre><code>zsh
+ ├─ git
+ ├─ node
+ └─ python
+     └─ model_server</code></pre>
+<p>Every command you run becomes a child process of the shell. This design allows the shell to coordinate multiple programs.</p>
+<p>In AI systems, this becomes particularly important:</p>
+<pre><code>zsh
+ ├─ model_server (port 8000)
+ ├─ agent_executor (port 8001)
+ ├─ vector_db (port 8002)
+ └─ evaluation_pipeline</code></pre>
+<p>The shell serves as the parent process that manages the entire AI system stack.</p>
+</section>
+<section id="standard-streams-and-pipelines" class="level3" data-number="7.4.6">
+<h3 data-number="7.4.6" class="anchored" data-anchor-id="standard-streams-and-pipelines"><span class="header-section-number">7.4.6</span> Standard Streams and Pipelines</h3>
+<p>Every Unix process has three standard streams:</p>
+<pre><code>stdin
+stdout
+stderr</code></pre>
+<p>Diagram:</p>
+<pre><code>        stdin
+          ↓
+    ┌──────────┐
+    │ program  │
+    └──────────┘
+       ↓     ↓
+    stdout stderr</code></pre>
+<p>Pipes connect stdout → stdin:</p>
+<pre><code>stdout(A) → stdin(B)</code></pre>
+<p>Example pipeline:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="kw">|</span> <span class="fu">grep</span> log <span class="kw">|</span> <span class="fu">sort</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Execution pipeline:</p>
+<pre><code>ls
+ ↓
+grep log
+ ↓
+sort</code></pre>
+<p>This architecture allows simple tools to form complex systems through composition.</p>
+</section>
+<section id="the-shell-as-a-workflow-engine" class="level3" data-number="7.4.7">
+<h3 data-number="7.4.7" class="anchored" data-anchor-id="the-shell-as-a-workflow-engine"><span class="header-section-number">7.4.7</span> The Shell as a Workflow Engine</h3>
+<p>Once commands can be composed and redirected, the shell becomes a workflow engine. Example script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build .</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> push repo/image</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Execution model:</p>
+<pre><code>Task 1 → Task 2 → Task 3 → Task 4</code></pre>
+<p>The shell orchestrates the steps. This is essentially task automation.</p>
+</section>
+<section id="the-command-resolution-mechanism" class="level3" data-number="7.4.8">
+<h3 data-number="7.4.8" class="anchored" data-anchor-id="the-command-resolution-mechanism"><span class="header-section-number">7.4.8</span> The Command Resolution Mechanism</h3>
+<p>When a user enters a command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>the shell must determine what “git” refers to. This process follows a specific order:</p>
+<pre><code>1. Built-in commands
+2. Shell functions
+3. Aliases
+4. PATH search</code></pre>
+<p>If the command is not built-in, the shell searches directories listed in PATH.</p>
+<p>Example PATH:</p>
+<pre><code>/usr/bin
+/usr/local/bin
+/opt/homebrew/bin</code></pre>
+<p>The shell checks each directory sequentially:</p>
+<pre><code>for dir in PATH:
+    if dir/command exists:
+        execute</code></pre>
+<p>If no match is found:</p>
+<pre><code>command not found</code></pre>
+</section>
+<section id="the-conceptual-model" class="level3" data-number="7.4.9">
+<h3 data-number="7.4.9" class="anchored" data-anchor-id="the-conceptual-model"><span class="header-section-number">7.4.9</span> The Conceptual Model</h3>
+<p>The entire terminal architecture can be summarized as a transformation pipeline:</p>
+<pre><code>Human Intent
+      ↓
+Command
+      ↓
+Shell Interpretation
+      ↓
+Program Discovery
+      ↓
+Program Execution
+      ↓
+Output</code></pre>
+<p>This model describes how user intent becomes system actions.</p>
+</section>
+<section id="the-cli-system-stack" class="level3" data-number="7.4.10">
+<h3 data-number="7.4.10" class="anchored" data-anchor-id="the-cli-system-stack"><span class="header-section-number">7.4.10</span> The CLI System Stack</h3>
+<p>A modern command-line environment forms a stack:</p>
+<pre><code>User
+ ↓
+Terminal Emulator
+ ↓
+Shell
+ ↓
+Command System
+ ↓
+Programs
+ ↓
+Operating System</code></pre>
+<p>Expanded example for AI engineering:</p>
+<pre><code>WezTerm
+   ↓
+zsh
+   ↓
+starship
+zoxide
+fzf
+   ↓
+node / python runtimes
+   ↓
+CLI tools
+git
+docker
+kubectl
+iflow</code></pre>
+<p>This stack acts as a developer command platform specifically optimized for AI systems construction.</p>
+</section>
+</section>
+<section id="the-command-line-ecosystem" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="the-command-line-ecosystem"><span class="header-section-number">7.5</span> The Command-Line Ecosystem</h2>
+<section id="the-power-of-cli-tools" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="the-power-of-cli-tools"><span class="header-section-number">7.5.1</span> The Power of CLI Tools</h3>
 <p>Over decades of development, a powerful collection of command-line tools has emerged that greatly expands the capabilities of the terminal environment. These tools provide:</p>
 <ul>
 <li><strong>Fast search</strong>: Locate files, patterns, and information across large codebases</li>
@@ -491,8 +814,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Data manipulation</strong>: Transform and analyze data directly from the command line</li>
 </ul>
 </section>
-<section id="essential-tools-for-ai-engineering" class="level3" data-number="7.4.2">
-<h3 data-number="7.4.2" class="anchored" data-anchor-id="essential-tools-for-ai-engineering"><span class="header-section-number">7.4.2</span> Essential Tools for AI Engineering</h3>
+<section id="essential-tools-for-ai-engineering" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="essential-tools-for-ai-engineering"><span class="header-section-number">7.5.2</span> Essential Tools for AI Engineering</h3>
 <p>Several tools have become particularly valuable in modern AI engineering environments:</p>
 <pre><code>zsh
 starship
@@ -501,8 +824,8 @@ ripgrep
 fzf
 zoxide</code></pre>
 <p>Let us examine each tool in detail.</p>
-<section id="zsh-z-shell" class="level4" data-number="7.4.2.1">
-<h4 data-number="7.4.2.1" class="anchored" data-anchor-id="zsh-z-shell"><span class="header-section-number">7.4.2.1</span> zsh (Z Shell)</h4>
+<section id="zsh-z-shell" class="level4" data-number="7.5.2.1">
+<h4 data-number="7.5.2.1" class="anchored" data-anchor-id="zsh-z-shell"><span class="header-section-number">7.5.2.1</span> zsh (Z Shell)</h4>
 <p>The shell itself, providing the foundational command environment:</p>
 <ul>
 <li>Advanced completion for commands and paths</li>
@@ -512,8 +835,8 @@ zoxide</code></pre>
 </ul>
 <p>zsh provides the flexibility required for a sophisticated AI engineering environment.</p>
 </section>
-<section id="starship" class="level4" data-number="7.4.2.2">
-<h4 data-number="7.4.2.2" class="anchored" data-anchor-id="starship"><span class="header-section-number">7.4.2.2</span> starship</h4>
+<section id="starship" class="level4" data-number="7.5.2.2">
+<h4 data-number="7.5.2.2" class="anchored" data-anchor-id="starship"><span class="header-section-number">7.5.2.2</span> starship</h4>
 <p>A cross-shell prompt that displays contextual information:</p>
 <ul>
 <li>Current directory and Git branch</li>
@@ -523,8 +846,8 @@ zoxide</code></pre>
 </ul>
 <p>The prompt becomes a dashboard that provides situational awareness at a glance.</p>
 </section>
-<section id="tmux" class="level4" data-number="7.4.2.3">
-<h4 data-number="7.4.2.3" class="anchored" data-anchor-id="tmux"><span class="header-section-number">7.4.2.3</span> tmux</h4>
+<section id="tmux" class="level4" data-number="7.5.2.3">
+<h4 data-number="7.5.2.3" class="anchored" data-anchor-id="tmux"><span class="header-section-number">7.5.2.3</span> tmux</h4>
 <p>A terminal multiplexer for session management:</p>
 <ul>
 <li>Multiple panes within a single terminal window</li>
@@ -534,8 +857,8 @@ zoxide</code></pre>
 </ul>
 <p>tmux is essential for managing the multiple concurrent processes that AI engineering requires.</p>
 </section>
-<section id="ripgrep-rg" class="level4" data-number="7.4.2.4">
-<h4 data-number="7.4.2.4" class="anchored" data-anchor-id="ripgrep-rg"><span class="header-section-number">7.4.2.4</span> ripgrep (rg)</h4>
+<section id="ripgrep-rg" class="level4" data-number="7.5.2.4">
+<h4 data-number="7.5.2.4" class="anchored" data-anchor-id="ripgrep-rg"><span class="header-section-number">7.5.2.4</span> ripgrep (rg)</h4>
 <p>An extremely fast search tool for codebases and text:</p>
 <ul>
 <li>Recursive search through directories</li>
@@ -545,8 +868,8 @@ zoxide</code></pre>
 </ul>
 <p>ripgrep enables engineers to locate patterns across thousands of files instantly, accelerating debugging and code exploration.</p>
 </section>
-<section id="fzf-fuzzy-finder" class="level4" data-number="7.4.2.5">
-<h4 data-number="7.4.2.5" class="anchored" data-anchor-id="fzf-fuzzy-finder"><span class="header-section-number">7.4.2.5</span> fzf (fuzzy finder)</h4>
+<section id="fzf-fuzzy-finder" class="level4" data-number="7.5.2.5">
+<h4 data-number="7.5.2.5" class="anchored" data-anchor-id="fzf-fuzzy-finder"><span class="header-section-number">7.5.2.5</span> fzf (fuzzy finder)</h4>
 <p>An interactive fuzzy search tool:</p>
 <ul>
 <li>Searchable command history</li>
@@ -556,8 +879,8 @@ zoxide</code></pre>
 </ul>
 <p>fzf transforms command-line interaction from exact matching to fluid discovery.</p>
 </section>
-<section id="zoxide" class="level4" data-number="7.4.2.6">
-<h4 data-number="7.4.2.6" class="anchored" data-anchor-id="zoxide"><span class="header-section-number">7.4.2.6</span> zoxide</h4>
+<section id="zoxide" class="level4" data-number="7.5.2.6">
+<h4 data-number="7.5.2.6" class="anchored" data-anchor-id="zoxide"><span class="header-section-number">7.5.2.6</span> zoxide</h4>
 <p>A smarter cd command that learns from usage:</p>
 <ul>
 <li>Jumps to frequently used directories</li>
@@ -568,8 +891,8 @@ zoxide</code></pre>
 <p>zoxide turns filesystem navigation into a learned behavior rather than a repetitive task.</p>
 </section>
 </section>
-<section id="the-integrated-ecosystem" class="level3" data-number="7.4.3">
-<h3 data-number="7.4.3" class="anchored" data-anchor-id="the-integrated-ecosystem"><span class="header-section-number">7.4.3</span> The Integrated Ecosystem</h3>
+<section id="the-integrated-ecosystem" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="the-integrated-ecosystem"><span class="header-section-number">7.5.3</span> The Integrated Ecosystem</h3>
 <p>These tools do not operate in isolation. They form an integrated ecosystem:</p>
 <ul>
 <li><strong>starship</strong> provides context within the <strong>zsh</strong> prompt</li>
@@ -581,10 +904,10 @@ zoxide</code></pre>
 <p>The value of the ecosystem comes from the synergies between these tools.</p>
 </section>
 </section>
-<section id="system-orchestration" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="system-orchestration"><span class="header-section-number">7.5</span> System Orchestration</h2>
-<section id="the-orchestration-challenge" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="the-orchestration-challenge"><span class="header-section-number">7.5.1</span> The Orchestration Challenge</h3>
+<section id="system-orchestration" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="system-orchestration"><span class="header-section-number">7.6</span> System Orchestration</h2>
+<section id="the-orchestration-challenge" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="the-orchestration-challenge"><span class="header-section-number">7.6.1</span> The Orchestration Challenge</h3>
 <p>AI systems rarely consist of a single executable program. Instead, they are composed of multiple interacting processes. A typical AI engineering session may involve:</p>
 <ul>
 <li>A model server running locally on port 8000</li>
@@ -595,8 +918,8 @@ zoxide</code></pre>
 </ul>
 <p>Each of these components must be controlled independently: started, monitored, stopped, and restarted as needed.</p>
 </section>
-<section id="tmux-as-orchestration-platform" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="tmux-as-orchestration-platform"><span class="header-section-number">7.5.2</span> tmux as Orchestration Platform</h3>
+<section id="tmux-as-orchestration-platform" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="tmux-as-orchestration-platform"><span class="header-section-number">7.6.2</span> tmux as Orchestration Platform</h3>
 <p>tmux provides the infrastructure for managing these concurrent activities. A typical tmux session might be organized as follows:</p>
 <pre><code>┌─────────────────────────────────────────┐
 │ Model Server Logs                       │
@@ -622,8 +945,8 @@ zoxide</code></pre>
 <li>Resize and rearrange panes as needed</li>
 </ul>
 </section>
-<section id="process-management-strategies" class="level3" data-number="7.5.3">
-<h3 data-number="7.5.3" class="anchored" data-anchor-id="process-management-strategies"><span class="header-section-number">7.5.3</span> Process Management Strategies</h3>
+<section id="process-management-strategies" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="process-management-strategies"><span class="header-section-number">7.6.3</span> Process Management Strategies</h3>
 <p>Beyond tmux, several process management strategies are essential:</p>
 <p><strong>Background Processes</strong>: Running processes with <code>&amp;</code> or <code>nohup</code> to keep them running after the terminal closes</p>
 <p><strong>Process Monitoring</strong>: Using <code>htop</code>, <code>ps</code>, or custom scripts to track resource usage</p>
@@ -631,8 +954,8 @@ zoxide</code></pre>
 <p><strong>Log Management</strong>: Redirecting output to log files and using tools like <code>tail</code> to monitor them</p>
 <p>These strategies form the toolkit for system orchestration at the command line.</p>
 </section>
-<section id="real-time-debugging" class="level3" data-number="7.5.4">
-<h3 data-number="7.5.4" class="anchored" data-anchor-id="real-time-debugging"><span class="header-section-number">7.5.4</span> Real-Time Debugging</h3>
+<section id="real-time-debugging" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="real-time-debugging"><span class="header-section-number">7.6.4</span> Real-Time Debugging</h3>
 <p>The terminal excels at real-time debugging. Engineers can:</p>
 <ul>
 <li><strong>Stream logs</strong>: Use <code>tail -f</code> to watch log files as they are written</li>
@@ -643,10 +966,10 @@ zoxide</code></pre>
 <p>This real-time visibility is critical for understanding how AI systems behave as they execute.</p>
 </section>
 </section>
-<section id="the-terminal-as-operational-dashboard" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="the-terminal-as-operational-dashboard"><span class="header-section-number">7.6</span> The Terminal as Operational Dashboard</h2>
-<section id="information-at-a-glance" class="level3" data-number="7.6.1">
-<h3 data-number="7.6.1" class="anchored" data-anchor-id="information-at-a-glance"><span class="header-section-number">7.6.1</span> Information at a Glance</h3>
+<section id="the-terminal-as-operational-dashboard" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="the-terminal-as-operational-dashboard"><span class="header-section-number">7.7</span> The Terminal as Operational Dashboard</h2>
+<section id="information-at-a-glance" class="level3" data-number="7.7.1">
+<h3 data-number="7.7.1" class="anchored" data-anchor-id="information-at-a-glance"><span class="header-section-number">7.7.1</span> Information at a Glance</h3>
 <p>When properly configured, the terminal provides an operational dashboard that displays:</p>
 <ul>
 <li><strong>System status</strong>: CPU, memory, and disk usage</li>
@@ -657,8 +980,8 @@ zoxide</code></pre>
 </ul>
 <p>This dashboard enables engineers to maintain situational awareness while working on complex systems.</p>
 </section>
-<section id="rapid-decision-making" class="level3" data-number="7.6.2">
-<h3 data-number="7.6.2" class="anchored" data-anchor-id="rapid-decision-making"><span class="header-section-number">7.6.2</span> Rapid Decision Making</h3>
+<section id="rapid-decision-making" class="level3" data-number="7.7.2">
+<h3 data-number="7.7.2" class="anchored" data-anchor-id="rapid-decision-making"><span class="header-section-number">7.7.2</span> Rapid Decision Making</h3>
 <p>The terminal supports rapid decision making through:</p>
 <ul>
 <li><strong>Fast command execution</strong>: Commands execute without the overhead of GUI applications</li>
@@ -668,8 +991,8 @@ zoxide</code></pre>
 </ul>
 <p>This agility is essential for the experimental nature of AI engineering.</p>
 </section>
-<section id="scripting-and-automation" class="level3" data-number="7.6.3">
-<h3 data-number="7.6.3" class="anchored" data-anchor-id="scripting-and-automation"><span class="header-section-number">7.6.3</span> Scripting and Automation</h3>
+<section id="scripting-and-automation" class="level3" data-number="7.7.3">
+<h3 data-number="7.7.3" class="anchored" data-anchor-id="scripting-and-automation"><span class="header-section-number">7.7.3</span> Scripting and Automation</h3>
 <p>The terminal environment enables powerful scripting and automation:</p>
 <ul>
 <li><strong>Bash scripts</strong>: Automate repetitive workflows</li>
@@ -680,10 +1003,10 @@ zoxide</code></pre>
 <p>These automation capabilities allow engineers to scale their workflows as systems grow in complexity.</p>
 </section>
 </section>
-<section id="beyond-the-terminal" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="beyond-the-terminal"><span class="header-section-number">7.7</span> Beyond the Terminal</h2>
-<section id="integration-with-graphical-tools" class="level3" data-number="7.7.1">
-<h3 data-number="7.7.1" class="anchored" data-anchor-id="integration-with-graphical-tools"><span class="header-section-number">7.7.1</span> Integration with Graphical Tools</h3>
+<section id="beyond-the-terminal" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="beyond-the-terminal"><span class="header-section-number">7.8</span> Beyond the Terminal</h2>
+<section id="integration-with-graphical-tools" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="integration-with-graphical-tools"><span class="header-section-number">7.8.1</span> Integration with Graphical Tools</h3>
 <p>The terminal does not exist in isolation. It integrates with graphical tools:</p>
 <ul>
 <li><strong>Browser-based interfaces</strong>: Model playgrounds, documentation, and dashboards</li>
@@ -693,8 +1016,8 @@ zoxide</code></pre>
 </ul>
 <p>The terminal serves as the central coordination point that connects these various tools.</p>
 </section>
-<section id="cloud-and-remote-environments" class="level3" data-number="7.7.2">
-<h3 data-number="7.7.2" class="anchored" data-anchor-id="cloud-and-remote-environments"><span class="header-section-number">7.7.2</span> Cloud and Remote Environments</h3>
+<section id="cloud-and-remote-environments" class="level3" data-number="7.8.2">
+<h3 data-number="7.8.2" class="anchored" data-anchor-id="cloud-and-remote-environments"><span class="header-section-number">7.8.2</span> Cloud and Remote Environments</h3>
 <p>The terminal extends beyond local machines:</p>
 <ul>
 <li><strong>SSH connections</strong>: Access remote servers and cloud instances</li>
@@ -705,8 +1028,8 @@ zoxide</code></pre>
 <p>The terminal provides a consistent interface across local, remote, and cloud environments.</p>
 </section>
 </section>
-<section id="conclusion" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7.8</span> Conclusion</h2>
+<section id="conclusion" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7.9</span> Conclusion</h2>
 <p>The terminal occupies a central position in AI engineering practice. It is not simply an interface for executing commands. It is the layer through which engineers orchestrate intelligent systems, coordinate processes, and maintain visibility into complex computational workflows.</p>
 <p>For the AI systems builder, the terminal is not an accessory to development.</p>
 <p>It is the control center.</p>
